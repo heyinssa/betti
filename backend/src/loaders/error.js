@@ -25,9 +25,12 @@ async function errorConverter(error, req, res, next) {
  *    서버 log 에서 확인하면 되지, 이걸 메세지로 띄울 필요가 있을까
  */
 async function errorHandler(error, req, res, next) {
-    let { statusCode, message } = error;
+    const { statusCode, message } = error;
 
-    res.status(statusCode).send(message);
+	const body = {
+		message
+	}
+    res.status(statusCode).json(body);
 }
 
 export default [
