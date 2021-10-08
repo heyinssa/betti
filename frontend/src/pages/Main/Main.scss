@@ -1,0 +1,40 @@
+@import '../../theme';
+
+.main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .booked-title {
+    @include text($color: $bgColor);
+    margin: 10px;
+    .booked-title-bold {
+      font-weight: bold;
+    }
+  }
+
+  .make-book-button {
+    height: 130px;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: $mainColor;
+    border: 0px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 5px 5px gray;
+
+    .text {
+      @include text(20px, white);
+      font-weight: bold;
+    }
+  }
+}
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
