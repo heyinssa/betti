@@ -5,7 +5,8 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "test": "eslint src && prettier --check src",
+    "lint": "eslint src",
+    "format": "prettier --check src",
     "start": "nodemon -e '.js, .mjs, .coffee, .litcoffee, .json, .yaml'"
   },
   "author": "",
