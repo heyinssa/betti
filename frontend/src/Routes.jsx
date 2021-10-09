@@ -1,21 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { Main, Chatting, Login, MyPage } from 'pages';
+// import { Main, Chatting, Login, MyPage } from './src/pages';
 
 const Main = () => {
-  return <div>hello!</div>;
+  return <div className="container">main page</div>;
 };
 
-const Chatting = () => {
-  return <div>hello!</div>;
+const Search = () => {
+  return <div className="container">search page</div>;
 };
-
-const Login = () => {
-  return <div>hello!</div>;
-};
-
 const MyPage = () => {
-  return <div>hello!</div>;
+  return <div className="container">mypage</div>;
 };
 
 const Routes = () => {
@@ -23,8 +18,7 @@ const Routes = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/chatting" component={Chatting} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/mypage" component={MyPage} />
       </Switch>
     </Router>

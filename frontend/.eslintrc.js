@@ -17,19 +17,16 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  settings: {
-    'import/resolver': {
-      node: {
-        paths: ['src'],
-      },
-      react: {
-        version: 'detect',
-      },
-    },
-  },
   rules: {
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'react/prop-types': ['off'],
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
