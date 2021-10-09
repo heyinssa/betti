@@ -8,6 +8,6 @@ import helmet from 'helmet';
 export default [
     express.json(),
     cors(),
-    morgan('tiny'),
+    morgan('combined'),
     helmet()
 ]
