@@ -1,5 +1,3 @@
-import UserModel from './user/user.js'
+import UserModel from './user/user.js';
 
-export {
-    UserModel,
-}
+export { UserModel };

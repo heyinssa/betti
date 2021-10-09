@@ -6,8 +6,8 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 
 export default [
-    express.json(),
-    cors(),
-    morgan('combined'),
-    helmet()
-]
+  express.json(), //
+  cors(),
+  morgan('combined'),
+  helmet(),
+];
