@@ -2,7 +2,7 @@
   "name": "betti",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 8002",
     "build": "vite build",
     "serve": "vite preview"
   },
