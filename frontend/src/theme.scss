@@ -1,0 +1,8 @@
+$bgColor: #c4c4c4;
+
+@mixin text($size: 16px, $color: $mainColor) {
+  font-size: $size;
+  font-family: 'nanum-gothic';
+  color: $color;
+  src: url(https://fonts.google.com/specimen/Nanum+Gothic?query=nanum#about);
+}
