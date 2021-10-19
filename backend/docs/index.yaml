@@ -6,4 +6,6 @@ info:
 servers:
   - url: 'http://ec2-3-34-2-242.ap-northeast-2.compute.amazonaws.com:8000'
     description: 'Development server'
+  - url: 'http://ec2-3-34-2-242.ap-northeast-2.compute.amazonaws.com:8001'
+    description: 'Production server'
 basePath: '/api'
