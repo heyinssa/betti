@@ -76,7 +76,7 @@ async function create(
 }
 
 async function update(
-  test_id, //
+  tester_id, //
   id,
   password,
   birth,
@@ -85,7 +85,7 @@ async function update(
   oauth_token,
   access_token,
 ) {
-  return Tester.findByPk(test_id).then(tester => {
+  return Tester.findByPk(tester_id).then(tester => {
     tester.id = id;
     tester.password = password;
     tester.birth = birth;
