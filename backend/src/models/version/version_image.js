@@ -42,12 +42,6 @@ async function getByImageId(image_id) {
   });
 }
 
-async function getByVersionImageId(version_id, image_id) {
-  return VersionImage.findOne({
-    where: { version_id, image_id },
-  });
-}
-
 async function create(
   version_id, //
   image_id,
@@ -63,16 +57,22 @@ async function create(
   );
 }
 
-async function remove(version_id, image_id) {
-  return VersionImage.getByVersionImageId(version_id, image_id).then(
-    version_image => version_image.destroy(),
-  );
+async function removeByVersionId(version_id) {
+  return VersionImage.destroy({
+    where: { version_id },
+  });
+}
+
+async function removeByImageId(image_id) {
+  return VersionImage.destroy({
+    where: { image_id },
+  });
 }
 
 export default {
   getByVersionId,
   getByImageId,
-  getByVersionImageId,
   create,
-  remove,
+  removeByImageId,
+  removeByVersionId,
 };

@@ -44,6 +44,18 @@ async function getByFeedbackId(feedback_id) {
   });
 }
 
+async function getByTesterId(tester_id) {
+  return Feedback.find({
+    where: { tester_id },
+  });
+}
+
+async function getByVersionId(version_id) {
+  return Feedback.find({
+    where: { version_id },
+  });
+}
+
 async function create(
   state, //
   tester_id,
@@ -78,6 +90,8 @@ async function remove(feedback_id) {
 
 export default {
   getByFeedbackId,
+  getByTesterId,
+  getByVersionId,
   create,
   update,
   remove,

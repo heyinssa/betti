@@ -42,12 +42,6 @@ async function getByTeamId(team_id) {
   });
 }
 
-async function getByProviderTeamId(provider_id, team_id) {
-  return ProviderTeam.findOne({
-    where: { provider_id, team_id },
-  });
-}
-
 async function create(
   provider_id, //
   team_id,
@@ -72,7 +66,6 @@ async function remove(provider_id, team_id) {
 export default {
   getByProviderId,
   getByTeamId,
-  getByProviderTeamId,
   create,
   remove,
 };

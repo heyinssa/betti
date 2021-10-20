@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-//import UserRouter from './user/user.js';
+import ProviderRouter from './user/provider.js';
 
 export default () => {
   const router = Router();
 
-//  router.use('/user', UserRouter);
+  router.use('/providers', ProviderRouter);
 
   return router;
 };

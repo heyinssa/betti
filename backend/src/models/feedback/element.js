@@ -20,7 +20,6 @@ const Element = Sequelize.define(
     image_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
       references: {
         model: 'image',
         key: 'image_id',
@@ -45,6 +44,12 @@ const Element = Sequelize.define(
 async function getByElementId(element_id) {
   return Element.findOne({
     where: { element_id },
+  });
+}
+
+async function getByFeedbackId(feedback_id) {
+  return Element.find({
+    where: { feedback_id },
   });
 }
 
@@ -87,6 +92,7 @@ async function remove(element_id) {
 
 export default {
   getByElementId,
+  getByFeedbackId,
   create,
   update,
   remove,

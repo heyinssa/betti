@@ -55,6 +55,12 @@ async function getByVersionId(version_id) {
   });
 }
 
+async function getByTeamId(team_id) {
+  return Version.find({
+    where: { team_id },
+  });
+}
+
 async function create(
   introduce, //
   link,
@@ -105,6 +111,7 @@ async function remove(version_id) {
 
 export default {
   getByVersionId,
+  getByTeamId,
   create,
   update,
   remove,

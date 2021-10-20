@@ -1,7 +1,7 @@
 import { TesterModel } from '../../models/index.js';
 import ApiError from '../../modules/error.js';
 
-async function getTester(tester_id) {
+async function getByTesterId(tester_id) {
   const tester = await TesterModel.getByTesterId(tester_id);
 
   if (!tester) throw new ApiError(404, `Tester not found: ${tester_id}`);
@@ -9,7 +9,7 @@ async function getTester(tester_id) {
   return tester;
 }
 
-async function createTester(
+async function create(
   id, //
   password,
   birth,
@@ -31,7 +31,7 @@ async function createTester(
   return tester;
 }
 
-async function updateTester(
+async function update(
   tester_id, //
   id,
   password,
@@ -59,7 +59,7 @@ async function updateTester(
   return updated;
 }
 
-async function deleteTester(tester_id) {
+async function removeByTesterId(tester_id) {
   const tester = await TesterModel.getByTesterId(tester_id);
 
   if (!tester) throw new ApiError(404, `Tester not found: ${tester_id}`);
@@ -68,8 +68,8 @@ async function deleteTester(tester_id) {
 }
 
 export default {
-  getTester,
-  createTester,
-  updateTester,
-  deleteTester,
+  getByTesterId,
+  create,
+  update,
+  removeByTesterId,
 };
