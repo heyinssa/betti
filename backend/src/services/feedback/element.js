@@ -1,5 +1,5 @@
 import { ElementModel } from '../../models/index.js';
-import ImageService from '../media/image.js';
+import { ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
 async function getByElementId(element_id) {

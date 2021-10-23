@@ -1,6 +1,5 @@
 import { VersionModel, VersionImageModel } from '../../models/index.js';
-import ImageService from '../media/image.js';
-import FeedbackService from '../feedback/feedback.js';
+import { ImageService, FeedbackService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
 async function getByVersionId(version_id) {

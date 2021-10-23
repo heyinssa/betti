@@ -1,6 +1,5 @@
 import { ProviderModel, ProviderTeamModel } from '../../models/index.js';
-import TeamServcie from '../team/team.js';
-import ImageServcie from '../media/image.js';
+import { TeamService, ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
 async function getByProviderId(provider_id) {
@@ -69,7 +68,7 @@ async function getTeams(provider_id) {
 
 async function joinTeam(provider_id, team_id) {
   const provider = await ProviderModel.getByProviderId(provider_id);
-  const team = await TeamServcie.getByTeamId(team_id);
+  const team = await TeamService.getByTeamId(team_id);
 
   if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
   if (!team) throw new ApiError(404, `Team not found: ${team_id}`);
@@ -81,7 +80,7 @@ async function joinTeam(provider_id, team_id) {
 
 async function leaveTeam(provider_id, team_id) {
   const provider = await ProviderModel.getByProviderId(provider_id);
-  const team = await TeamServcie.getByteamId(team_id);
+  const team = await TeamService.getByteamId(team_id);
 
   if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
   if (!team) throw new ApiError(404, `Team not found: ${team_id}`);
@@ -94,7 +93,7 @@ async function removeByProviderId(provider_id) {
 
   if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
 
-  await ImageServcie.removeByImageId(provider.image_id);
+  await ImageService.removeByImageId(provider.image_id);
   await ProviderModel.remove(provider_id);
 }
 

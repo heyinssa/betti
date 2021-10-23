@@ -1,5 +1,5 @@
 import { FeedbackModel } from '../../models/index.js';
-import ElementService from 'element.js';
+import { ElementService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
 async function getByFeedbackId(feedback_id) {

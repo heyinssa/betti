@@ -50,7 +50,7 @@ async function update(req, res, next) {
     access_token,
   } = req.body;
 
-  const provider = await ProviderService.updateProvider(
+  const provider = await ProviderService.update(
     provider_id,
     id, //
     password,
