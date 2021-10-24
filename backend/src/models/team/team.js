@@ -20,7 +20,7 @@ const Team = Sequelize.define(
     image_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'image',
         key: 'image_id',
