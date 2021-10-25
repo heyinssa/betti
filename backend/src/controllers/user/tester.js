@@ -1,112 +1,82 @@
-import { TesterService } from '../../services/index.js';
+import { FeedbackService, TesterService } from '../../services/index.js';
 
-/**
- * @method GET /api/providers/:provider
- */
+/* Tester (PK) */
+
 async function get(req, res, next) {
-  const provider_id = req.params.provider;
+  const tester_id = req.params.tester;
 
-  const provider = await TesterService.getByProviderId(provider_id);
+  const tester = await TesterService.getByTesterId(tester_id);
 
-  res.status(200).json(provider);
+  res.status(200).json(tester);
 }
 
-/**
- * @method POST /api/providers
- */
 async function create(req, res, next) {
   const {
     id, //
     password,
+    birth,
     nickname,
     image_id,
     oauth_token,
     access_token,
   } = req.body;
 
-  const provider = await TesterService.create(
+  const tester = await TesterService.create(
     id, //
     password,
+    birth,
     nickname,
     image_id,
     oauth_token,
     access_token,
   );
 
-  res.status(200).json(provider);
+  res.status(200).json(tester);
 }
 
-/**
- * @method PUT /api/providers/:provider
- */
 async function update(req, res, next) {
-  const provider_id = req.params.provider;
+  const tester_id = req.params.tester;
   const {
-    id, //
+    id,
     password,
+    birth,
     nickname,
     image_id,
     oauth_token,
     access_token,
   } = req.body;
 
-  const provider = await TesterService.update(
-    provider_id,
-    id, //
+  const tester = await TesterService.update(
+    tester_id, //
+    id,
     password,
+    birth,
     nickname,
     image_id,
     oauth_token,
     access_token,
   );
 
-  res.status(200).json(provider);
+  res.status(200).json(tester);
 }
 
-/**
- * @method DELETE /api/providers/:id
- */
 async function remove(req, res, next) {
-  const provider_id = req.params.provider;
+  const tester_id = req.params.tester;
 
-  await TesterService.removeByProviderId(provider_id);
-
-  res.sendStatus(200);
-}
-
-/**
- * @method GET /api/providers/:provider/teams
- */
-async function getTeams(req, res, next) {
-  const provider_id = req.params.provider;
-
-  const teams = await TesterService.getTeams(provider_id);
-
-  res.status(200).json(teams);
-}
-
-/**
- * @method POST /api/providers/:provider/teams/:team
- */
-async function joinTeam(req, res, next) {
-  const provider_id = req.params.provider;
-  const team_id = req.params.team;
-
-  await TesterService.joinTeams(provider_id, team_id);
+  await TesterService.removeByTesterId(tester_id);
 
   res.sendStatus(200);
 }
 
-/**
- * @method DELETE /api/providers/:provider/teams/:team
- */
-async function leaveTeam(req, res, next) {
-  const provider_id = req.params.provider;
-  const team_id = req.params.team;
 
-  await TesterService.getTeams(provider_id, team_id);
+/* Feedback (Lower FK) */
 
-  res.sendStatus(200);
+ async function getFeedbacks(req, res, next) {
+  const tester_id = req.params.tester;
+
+  const tester = await FeedbackService.getByTesterId(tester_id);
+
+  res.status(200).json(tester);
 }
 
 export default {
@@ -114,7 +84,5 @@ export default {
   create,
   update,
   remove,
-  getTeams,
-  joinTeam,
-  leaveTeam,
+  getFeedbacks,
 };

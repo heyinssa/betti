@@ -1,8 +1,7 @@
-import ProviderService from '../../services/user/provider.js';
+import { ProviderService } from '../../services/index.js';
 
-/**
- * @method GET /api/providers/:provider
- */
+/* Provider (PK) */
+
 async function get(req, res, next) {
   const provider_id = req.params.provider;
 
@@ -11,9 +10,6 @@ async function get(req, res, next) {
   res.status(200).json(provider);
 }
 
-/**
- * @method POST /api/providers
- */
 async function create(req, res, next) {
   const {
     id, //
@@ -36,9 +32,6 @@ async function create(req, res, next) {
   res.status(200).json(provider);
 }
 
-/**
- * @method PUT /api/providers/:provider
- */
 async function update(req, res, next) {
   const provider_id = req.params.provider;
   const {
@@ -63,9 +56,6 @@ async function update(req, res, next) {
   res.status(200).json(provider);
 }
 
-/**
- * @method DELETE /api/providers/:id
- */
 async function remove(req, res, next) {
   const provider_id = req.params.provider;
 
@@ -74,9 +64,9 @@ async function remove(req, res, next) {
   res.sendStatus(200);
 }
 
-/**
- * @method GET /api/providers/:provider/teams
- */
+
+/* Team (Equal FK) */
+
 async function getTeams(req, res, next) {
   const provider_id = req.params.provider;
 
@@ -85,26 +75,20 @@ async function getTeams(req, res, next) {
   res.status(200).json(teams);
 }
 
-/**
- * @method POST /api/providers/:provider/teams/:team
- */
 async function joinTeam(req, res, next) {
   const provider_id = req.params.provider;
   const team_id = req.params.team;
 
-  await ProviderService.joinTeams(provider_id, team_id);
+  await ProviderService.joinTeam(provider_id, team_id);
 
   res.sendStatus(200);
 }
 
-/**
- * @method DELETE /api/providers/:provider/teams/:team
- */
 async function leaveTeam(req, res, next) {
   const provider_id = req.params.provider;
   const team_id = req.params.team;
 
-  await ProviderService.getTeams(provider_id, team_id);
+  await ProviderService.leaveTeam(provider_id, team_id);
 
   res.sendStatus(200);
 }
