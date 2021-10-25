@@ -1,6 +1,5 @@
 import ElementController from './feedback/element.js';
 import FeedbackController from './feedback/feedback.js';
-import ImageController from './media/image.js';
 import TeamController from './team/team.js';
 import ProviderController from './user/provider.js';
 import TesterController from './user/tester.js';
@@ -38,7 +37,6 @@ import VersionController from './version/version.js';
 export {
   ElementController,
   FeedbackController,
-  ImageController,
   TeamController,
   ProviderController,
   TesterController,
