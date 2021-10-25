@@ -68,6 +68,7 @@ async function removeByVersionId(version_id) {
   if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
 
   await FeedbackService.removeByVersionId(version_id);
+  await VersionImageModel.removeByVersionId(version_id);
   await VersionModel.remove(version_id);
 }
 

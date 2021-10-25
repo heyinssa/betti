@@ -64,6 +64,7 @@ async function removeByProviderId(provider_id) {
   if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
 
   await ImageService.removeByImageId(provider.image_id);
+  await ProviderTeamModel.removeByProviderId(provider_id);
   await ProviderModel.remove(provider_id);
 }
 
