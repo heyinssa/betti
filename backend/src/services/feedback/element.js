@@ -2,18 +2,14 @@ import { ElementModel } from '../../models/index.js';
 import { ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
+/* Element (Upper FK) */
+
 async function getByElementId(element_id) {
   const element = await ElementModel.getByElementId(element_id);
 
   if (!element) throw new ApiError(404, `Element not found: ${element_id}`);
 
   return element;
-}
-
-async function getByFeedbackId(feedback_id) {
-  const elements = await ElementModel.getByFeedbackId(feedback_id);
-
-  return elements;
 }
 
 async function create(
@@ -62,6 +58,15 @@ async function removeByElementId(element_id) {
   await ElementModel.remove(element_id);
 }
 
+
+/* Feedback (Upper FK) */
+
+async function getByFeedbackId(feedback_id) {
+  const elements = await ElementModel.getByFeedbackId(feedback_id);
+
+  return elements;
+}
+
 async function removeByFeedbackId(feedback_id) {
   const elements = await ElementModel.getByFeedbackId(feedback_id);
 
@@ -70,9 +75,9 @@ async function removeByFeedbackId(feedback_id) {
 
 export default {
   getByElementId,
-  getByFeedbackId,
   create,
   update,
   removeByElementId,
+  getByFeedbackId,
   removeByFeedbackId,
 };

@@ -1,6 +1,8 @@
 import { ImageModel } from '../../models/index.js';
 import ApiError from '../../modules/error.js';
 
+/* Image (PK) */
+
 async function getByImageId(image_id) {
   const image = await ImageModel.getByImageId(image_id);
 

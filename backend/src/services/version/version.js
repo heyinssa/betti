@@ -2,18 +2,14 @@ import { VersionModel, VersionImageModel } from '../../models/index.js';
 import { ImageService, FeedbackService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
+/* Version (PK) */
+
 async function getByVersionId(version_id) {
   const version = await VersionModel.getByVersionId(version_id);
 
   if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
 
   return version;
-}
-
-async function getByTeamId(team_id) {
-  const versions = await VersionModel.getByVersionId(team_id);
-
-  return versions;
 }
 
 async function create(
@@ -75,11 +71,23 @@ async function removeByVersionId(version_id) {
   await VersionModel.remove(version_id);
 }
 
+
+/* Team (Upper FK) */
+
+async function getByTeamId(team_id) {
+  const versions = await VersionModel.getByTeamId(team_id);
+
+  return versions;
+}
+
 async function removeByTeamId(team_id) {
   const versions = await VersionModel.getByVersionId(team_id);
 
   versions.forEach(version => removeByVersionId(version.version_id));
 }
+
+
+/* VersionImage (Equal FK) */
 
 async function getImages(version_id) {
   const version = await VersionModel.getByVersionId(version_id);
@@ -112,9 +120,7 @@ async function addImage(version_id, image_id) {
   if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
   if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
 
-  const versionImage = await VersionImageModel.create(version_id, image_id);
-
-  return versionImage;
+  await VersionImageModel.create(version_id, image_id);
 }
 
 async function updateImage(version_id, old_image_id, new_image_id) {
@@ -139,10 +145,10 @@ async function removeImage(version_id, image_id) {
 
 export default {
   getByVersionId,
-  getByTeamId,
   create,
   update,
   removeByVersionId,
+  getByTeamId,
   removeByTeamId,
   getImages,
   addImage,

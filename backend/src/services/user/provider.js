@@ -2,6 +2,8 @@ import { ProviderModel, ProviderTeamModel } from '../../models/index.js';
 import { TeamService, ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
+/* Provider (PK) */
+
 async function getByProviderId(provider_id) {
   const provider = await ProviderModel.getByProviderId(provider_id);
 
@@ -56,6 +58,18 @@ async function update(
   return updated;
 }
 
+async function removeByProviderId(provider_id) {
+  const provider = await ProviderModel.getByProviderId(provider_id);
+
+  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
+
+  await ImageService.removeByImageId(provider.image_id);
+  await ProviderModel.remove(provider_id);
+}
+
+
+/* Team (Equal FK) */
+
 async function getTeams(provider_id) {
   const provider = await ProviderModel.getByProviderId(provider_id);
 
@@ -88,21 +102,12 @@ async function leaveTeam(provider_id, team_id) {
   await ProviderTeamModel.remove(provider_id, team_id);
 }
 
-async function removeByProviderId(provider_id) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
-
-  await ImageService.removeByImageId(provider.image_id);
-  await ProviderModel.remove(provider_id);
-}
-
 export default {
   getByProviderId,
   create,
   update,
+  removeByProviderId,
   getTeams,
   joinTeam,
   leaveTeam,
-  removeByProviderId,
 };

@@ -1,5 +1,8 @@
 import { TesterModel } from '../../models/index.js';
+import { ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
+
+/* Tetser (PK) */
 
 async function getByTesterId(tester_id) {
   const tester = await TesterModel.getByTesterId(tester_id);
@@ -64,6 +67,7 @@ async function removeByTesterId(tester_id) {
 
   if (!tester) throw new ApiError(404, `Tester not found: ${tester_id}`);
 
+  await ImageService.removeByImageId(tester.image_id);
   await TesterModel.remove(tester_id);
 }
 
