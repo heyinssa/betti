@@ -1,15 +1,26 @@
-// import express from 'express';
-// import 'express-async-errors';
+import express from 'express';
+import 'express-async-errors';
 
-// import UserController from '../../controllers/user/user.js';
-// import { validateUserBody } from '../../middleware/validator/validateUser.js';
-// import { validateError } from '../../middleware/validator/validateError.js';
+import TeamControlelr from '../../controllers/team/team.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.get('/:id', UserController.getUser);
-// router.post('/', validateUserBody, validateError, UserController.createUser);
-// router.put('/:id', validateUserBody, validateError, UserController.updateUser);
-// router.delete('/:id', UserController.deleteUser);
+/* Team (PK) */
 
-// export default router;
+router.get('/:team', TeamControlelr.get);
+router.post('/', TeamControlelr.create);
+router.put('/:team', TeamControlelr.update);
+router.delete('/:team', TeamControlelr.remove);
+
+
+/* Versions (Lower FK) */
+
+router.get('/:team/versions', TeamControlelr.getVersions);
+
+
+/* Providers (Equal FK) */
+
+router.get('/:team/providers', TeamControlelr.getProviders);
+
+
+export default router;

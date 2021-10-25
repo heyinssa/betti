@@ -1,17 +1,19 @@
 import express from 'express';
 import 'express-async-errors';
 
-import ProviderController from '../../controllers/user/tester.js';
+import TesterController from '../../controllers/user/tester.js';
 
 const router = express.Router();
 
-router.get('/:provider', ProviderController.get);
-router.post('/', ProviderController.create);
-router.put('/:provider', ProviderController.update);
-router.delete('/:provider', ProviderController.remove);
+/* Tester (PK) */
 
-router.get('/:provider/teams', ProviderController.getTeams);
-router.post('/:provider/teams/:team', ProviderController.joinTeam);
-router.delete('/:provider/teams/:team', ProviderController.leaveTeam);
+router.get('/:tester', TesterController.get);
+router.post('/', TesterController.create);
+router.put('/:tester', TesterController.update);
+router.delete('/:tester', TesterController.remove);
+
+/* Feedback (Lower FK) */
+
+router.get('/:tester/feedbacks', TesterController.getFeedbacks);
 
 export default router;
