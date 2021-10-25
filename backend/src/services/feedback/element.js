@@ -58,7 +58,6 @@ async function removeByElementId(element_id) {
   await ElementModel.remove(element_id);
 }
 
-
 /* Feedback (Upper FK) */
 
 async function getByFeedbackId(feedback_id) {

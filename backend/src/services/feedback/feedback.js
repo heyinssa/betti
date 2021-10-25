@@ -55,7 +55,6 @@ async function removeByFeedbackId(feedback_id) {
   await FeedbackModel.remove(feedback_id);
 }
 
-
 /* Version (Upper FK) */
 
 async function getByVersionId(version_id) {
@@ -70,7 +69,6 @@ async function removeByVersionId(version_id) {
   feedbacks.forEach(feedback => removeByFeedbackId(feedback.feedback_id));
 }
 
-
 /* Tester (Upper FK) */
 
 async function getByTesterId(tester_id) {
@@ -78,7 +76,6 @@ async function getByTesterId(tester_id) {
 
   return feedbacks;
 }
-
 
 export default {
   getByFeedbackId,

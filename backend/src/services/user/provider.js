@@ -67,7 +67,6 @@ async function removeByProviderId(provider_id) {
   await ProviderModel.remove(provider_id);
 }
 
-
 /* Team (Equal FK) */
 
 async function getTeams(provider_id) {

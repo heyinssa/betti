@@ -29,7 +29,7 @@ async function create(req, res, next) {
 async function update(req, res, next) {
   const feedback_id = req.params.feedback;
   const {
-    state,
+    state, //
     tester_id,
     version_id,
   } = req.body;
@@ -52,7 +52,6 @@ async function remove(req, res, next) {
   res.sendStatus(200);
 }
 
-
 /* Element (Lower FK) */
 
 async function getElements(req, res, next) {
@@ -62,7 +61,6 @@ async function getElements(req, res, next) {
 
   res.status(200).json(elements);
 }
-
 
 export default {
   get,

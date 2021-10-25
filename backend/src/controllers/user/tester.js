@@ -37,7 +37,7 @@ async function create(req, res, next) {
 async function update(req, res, next) {
   const tester_id = req.params.tester;
   const {
-    id,
+    id, //
     password,
     birth,
     nickname,
@@ -68,10 +68,9 @@ async function remove(req, res, next) {
   res.sendStatus(200);
 }
 
-
 /* Feedback (Lower FK) */
 
- async function getFeedbacks(req, res, next) {
+async function getFeedbacks(req, res, next) {
   const tester_id = req.params.tester;
 
   const tester = await FeedbackService.getByTesterId(tester_id);

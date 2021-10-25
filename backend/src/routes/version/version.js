@@ -12,11 +12,9 @@ router.post('/', VersionController.create);
 router.put('/:version', VersionController.update);
 router.delete('/:version', VersionController.remove);
 
-
 /* Feedback (Lower FK) */
 
 router.get('/:version/feedbacks', VersionController.getFeedbacks);
-
 
 /* VersionImage (Equal FK) */
 

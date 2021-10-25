@@ -71,7 +71,6 @@ async function removeByVersionId(version_id) {
   await VersionModel.remove(version_id);
 }
 
-
 /* Team (Upper FK) */
 
 async function getByTeamId(team_id) {
@@ -85,7 +84,6 @@ async function removeByTeamId(team_id) {
 
   versions.forEach(version => removeByVersionId(version.version_id));
 }
-
 
 /* VersionImage (Equal FK) */
 

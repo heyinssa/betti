@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
-import TesterController from '../../controllers/user/tester.js';
+import { TesterController } from '../../controllers/index.js';
 
 const router = express.Router();
 

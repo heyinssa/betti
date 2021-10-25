@@ -12,23 +12,23 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   const {
-	introduce, //
-	link,
-	platform,
-	start_date,
-	end_date,
-	max_number,
-	team_id,
+    introduce, //
+    link,
+    platform,
+    start_date,
+    end_date,
+    max_number,
+    team_id,
   } = req.body;
 
   const version = await VersionService.create(
-	introduce, //
-	link,
-	platform,
-	start_date,
-	end_date,
-	max_number,
-	team_id,
+    introduce, //
+    link,
+    platform,
+    start_date,
+    end_date,
+    max_number,
+    team_id,
   );
 
   res.status(200).json(version);
@@ -37,24 +37,24 @@ async function create(req, res, next) {
 async function update(req, res, next) {
   const version_id = req.params.version;
   const {
-	introduce, //
-	link,
-	platform,
-	start_date,
-	end_date,
-	max_number,
-	team_id,
+    introduce, //
+    link,
+    platform,
+    start_date,
+    end_date,
+    max_number,
+    team_id,
   } = req.body;
 
   const version = await VersionService.update(
     version_id, //
-	introduce,
-	link,
-	platform,
-	start_date,
-	end_date,
-	max_number,
-	team_id,
+    introduce,
+    link,
+    platform,
+    start_date,
+    end_date,
+    max_number,
+    team_id,
   );
 
   res.status(200).json(version);
@@ -68,54 +68,52 @@ async function remove(req, res, next) {
   res.sendStatus(200);
 }
 
-
 /* Feedback (Lower FK) */
 
 async function getFeedbacks(req, res, next) {
-  const version_id =  req.params.version;
+  const version_id = req.params.version;
 
   const feedbacks = await FeedbackService.getByVersionId(version_id);
 
   res.status(200).json(feedbacks);
 }
 
-
 /* VersionImage (Equal FK) */
 
 async function getImages(req, res, next) {
-	const version_id =  req.params.version;
-  
-	const images = await VersionService.getImages(version_id);
-  
-	res.status(200).json(images);
+  const version_id = req.params.version;
+
+  const images = await VersionService.getImages(version_id);
+
+  res.status(200).json(images);
 }
 
 async function addImage(req, res, next) {
-	const version_id =  req.params.version;
-	const image_id =  req.body.image_id;
-  
-	const images = await VersionService.addImage(version_id, image_id);
-  
-	res.sendStatus(200);
+  const version_id = req.params.version;
+  const image_id = req.body.image_id;
+
+  await VersionService.addImage(version_id, image_id);
+
+  res.sendStatus(200);
 }
 
 async function updateImage(req, res, next) {
-	const version_id =  req.params.version;
-	const old_image_id =  req.body.old_image_id;
-	const new_image_id =  req.body.new_image_id;
-  
-	const images = await VersionService.updateImage(version_id, old_image_id, new_image_id)
-  
-	res.sendStatus(200);
+  const version_id = req.params.version;
+  const old_image_id = req.body.old_image_id;
+  const new_image_id = req.body.new_image_id;
+
+  await VersionService.updateImage(version_id, old_image_id, new_image_id);
+
+  res.sendStatus(200);
 }
 
 async function removeImage(req, res, next) {
-	const version_id =  req.params.version;
-	const image_id =  req.body.image_id;
-  
-	const images = await VersionService.removeImage(version_id, image_id);
-  
-	res.sendStatus(200);
+  const version_id = req.params.version;
+  const image_id = req.body.image_id;
+
+  await VersionService.removeImage(version_id, image_id);
+
+  res.sendStatus(200);
 }
 
 export default {

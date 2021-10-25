@@ -44,8 +44,8 @@ async function update(req, res, next) {
   } = req.body;
 
   const provider = await ProviderService.update(
-    provider_id,
-    id, //
+    provider_id, //
+    id,
     password,
     nickname,
     image_id,
@@ -63,7 +63,6 @@ async function remove(req, res, next) {
 
   res.sendStatus(200);
 }
-
 
 /* Team (Equal FK) */
 

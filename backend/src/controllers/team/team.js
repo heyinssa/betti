@@ -36,15 +36,8 @@ async function create(req, res, next) {
 
 async function update(req, res, next) {
   const team_id = req.params.team;
-  const {
-    id,
-    password,
-    birth,
-    nickname,
-    image_id,
-    oauth_token,
-    access_token,
-  } = req.body;
+  const { id, password, birth, nickname, image_id, oauth_token, access_token } =
+    req.body;
 
   const team = await TeamService.update(
     team_id, //
@@ -68,7 +61,6 @@ async function remove(req, res, next) {
   res.sendStatus(200);
 }
 
-
 /* Versions (Lower FK) */
 
 async function getVersions(req, res, next) {
@@ -78,7 +70,6 @@ async function getVersions(req, res, next) {
 
   res.status(200).json(versions);
 }
-
 
 /* Providers (Equal FK) */
 

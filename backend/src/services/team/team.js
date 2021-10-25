@@ -1,5 +1,5 @@
 import { TeamModel, ProviderTeamModel } from '../../models/index.js';
-import { ImageService, VersionService } from '../index.js';
+import { ImageService } from '../index.js';
 import ApiError from '../../modules/error.js';
 
 /* Team (PK) */

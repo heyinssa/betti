@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
-import TeamControlelr from '../../controllers/team/team.js';
+import { TeamControlelr } from '../../controllers/index.js';
 
 const router = express.Router();
 
@@ -12,15 +12,12 @@ router.post('/', TeamControlelr.create);
 router.put('/:team', TeamControlelr.update);
 router.delete('/:team', TeamControlelr.remove);
 
-
 /* Versions (Lower FK) */
 
 router.get('/:team/versions', TeamControlelr.getVersions);
 
-
 /* Providers (Equal FK) */
 
 router.get('/:team/providers', TeamControlelr.getProviders);
-
 
 export default router;

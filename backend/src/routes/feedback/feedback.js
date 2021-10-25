@@ -12,7 +12,6 @@ router.post('/', FeedbackController.create);
 router.put('/:feedback', FeedbackController.update);
 router.delete('/:feedback', FeedbackController.remove);
 
-
 /* Element (Lower FK) */
 
 router.get('/:feedback/elements', FeedbackController.getElements);
