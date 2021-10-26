@@ -15,12 +15,19 @@ async function getByTeamId(team_id) {
 async function create(
   name, //
   introduce,
-  image_id,
+  imagefile,
 ) {
+  const image = await ImageService.create(
+    imagefile.file_name, //
+    imagefile.file_path,
+    imagefile.file_type,
+    imagefile.file_size,
+  );
+
   const team = await TeamModel.create(
     name, //
     introduce,
-    image_id,
+    image.image_id,
   );
 
   return team;

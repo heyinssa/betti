@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
+import { uploadImage } from '../../middleware/upload/imageHandle.js';
 import { TeamController } from '../../controllers/index.js';
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 /* Team (PK) */
 
 router.get('/:team', TeamController.get);
-router.post('/', TeamController.create);
+router.post('/', ...uploadImage('image'), TeamController.create);
 router.put('/:team', TeamController.update);
 router.delete('/:team', TeamController.remove);
 

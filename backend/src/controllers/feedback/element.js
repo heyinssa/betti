@@ -11,17 +11,17 @@ async function get(req, res, next) {
 }
 
 async function create(req, res, next) {
+  const imagefile = req.image;
   const {
     content, //
     apply_state,
-    image_id,
     feedback_id,
   } = req.body;
 
   const element = await ElementService.create(
     content, //
     apply_state,
-    image_id,
+    imagefile,
     feedback_id,
   );
 

@@ -16,15 +16,22 @@ async function create(
   id, //
   password,
   nickname,
-  image_id,
+  imagefile,
   oauth_token,
   access_token,
 ) {
+  const image = await ImageService.create(
+    imagefile.file_name, //
+    imagefile.file_path,
+    imagefile.file_type,
+    imagefile.file_size,
+  );
+
   const provider = await ProviderModel.create(
     id, //
     password,
     nickname,
-    image_id,
+    image.image_id,
     oauth_token,
     access_token,
   );

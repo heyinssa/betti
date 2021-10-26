@@ -112,23 +112,28 @@ async function getImages(version_id) {
   return images;
 }
 
-async function addImage(version_id, image_id) {
+async function addImage(version_id, imagefile) {
   const version = await VersionModel.getByVersitonID(version_id);
-  const image = await ImageService.getByImageId(image_id);
 
   if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
-  if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
 
-  await VersionImageModel.create(version_id, image_id);
+  const image = await ImageService.create(
+    imagefile.file_name, //
+    imagefile.file_path,
+    imagefile.file_type,
+    imagefile.file_size,
+  );
+
+  await VersionImageModel.create(version_id, image.image_id);
 }
 
-async function updateImage(version_id, old_image_id, new_image_id) {
+async function updateImage(version_id, old_image_id, new_imagefile) {
   const version = await VersionModel.getByVersitonID(version_id);
 
   if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
 
   await removeImage(version_id, old_image_id);
-  await addImage(version_id, new_image_id);
+  await addImage(version_id, new_imagefile);
 }
 
 async function removeImage(version_id, image_id) {

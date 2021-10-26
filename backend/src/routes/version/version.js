@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
+import { uploadImage } from '../../middleware/upload/imageHandle.js';
 import { VersionController } from '../../controllers/index.js';
 
 const router = express.Router();
@@ -19,8 +20,16 @@ router.get('/:version/feedbacks', VersionController.getFeedbacks);
 /* VersionImage (Equal FK) */
 
 router.get('/:version/images', VersionController.getImages);
-router.post('/:version/image', VersionController.addImage);
-router.put('/:version/images/:image', VersionController.updateImage);
+router.post(
+  '/:version/image',
+  ...uploadImage('image'),
+  VersionController.addImage,
+);
+router.put(
+  '/:version/images/:image',
+  ...uploadImage('image'),
+  VersionController.updateImage,
+);
 router.delete('/:version/images/:image', VersionController.removeImage);
 
 export default router;

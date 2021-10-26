@@ -22,6 +22,9 @@ export default {
   host: {
     port: parseInt(configCheck('HOST_PORT')),
   },
+  upload: {
+    path: configCheck('UPLOAD_PATH'),
+  },
   db: {
     host: configCheck('DB_HOST'),
     port: parseInt(configCheck('DB_PORT')),

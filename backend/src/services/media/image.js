@@ -12,17 +12,13 @@ async function getByImageId(image_id) {
 }
 
 async function create(
-  width, //
-  height,
-  file_size,
-  file_name,
-  file_type,
+  file_name, //
   file_path,
+  file_type,
+  file_size,
 ) {
   const image = await ImageModel.create(
-    width, //
-    height,
-    file_size,
+    file_size, //
     file_name,
     file_type,
     file_path,
@@ -33,8 +29,6 @@ async function create(
 
 async function update(
   image_id, //
-  width,
-  height,
   file_size,
   file_name,
   file_type,
@@ -46,8 +40,6 @@ async function update(
 
   const updated = await ImageModel.update(
     image_id, //
-    width,
-    height,
     file_size,
     file_name,
     file_type,
@@ -59,6 +51,7 @@ async function update(
 
 async function removeByImageId(image_id) {
   const image = await ImageModel.getByImageId(image_id);
+  // delete actual file
 
   if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
 

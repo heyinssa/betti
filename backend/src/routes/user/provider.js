@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
+import { uploadImage } from '../../middleware/upload/imageHandle.js';
 import { ProviderController } from '../../controllers/index.js';
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 /* Provider (PK) */
 
 router.get('/:provider', ProviderController.get);
-router.post('/', ProviderController.create);
+router.post('/', ...uploadImage('image'), ProviderController.create);
 router.put('/:provider', ProviderController.update);
 router.delete('/:provider', ProviderController.remove);
 

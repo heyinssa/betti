@@ -11,11 +11,11 @@ async function get(req, res, next) {
 }
 
 async function create(req, res, next) {
+  const imagefile = req.image;
   const {
     id, //
     password,
     nickname,
-    image_id,
     oauth_token,
     access_token,
   } = req.body;
@@ -24,7 +24,7 @@ async function create(req, res, next) {
     id, //
     password,
     nickname,
-    image_id,
+    imagefile,
     oauth_token,
     access_token,
   );

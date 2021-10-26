@@ -90,9 +90,9 @@ async function getImages(req, res, next) {
 
 async function addImage(req, res, next) {
   const version_id = req.params.version;
-  const image_id = req.body.image_id;
+  const imagefile = req.image;
 
-  await VersionService.addImage(version_id, image_id);
+  await VersionService.addImage(version_id, imagefile);
 
   res.sendStatus(200);
 }
@@ -100,9 +100,9 @@ async function addImage(req, res, next) {
 async function updateImage(req, res, next) {
   const version_id = req.params.version;
   const old_image_id = req.body.old_image_id;
-  const new_image_id = req.body.new_image_id;
+  const new_imagefile = req.image;
 
-  await VersionService.updateImage(version_id, old_image_id, new_image_id);
+  await VersionService.updateImage(version_id, old_image_id, new_imagefile);
 
   res.sendStatus(200);
 }

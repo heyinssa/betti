@@ -11,24 +11,16 @@ async function get(req, res, next) {
 }
 
 async function create(req, res, next) {
+  const imagefile = req.image;
   const {
-    id, //
-    password,
-    birth,
-    nickname,
-    image_id,
-    oauth_token,
-    access_token,
+    name, //
+    introduce,
   } = req.body;
 
   const team = await TeamService.create(
-    id, //
-    password,
-    birth,
-    nickname,
-    image_id,
-    oauth_token,
-    access_token,
+    name, //
+    introduce,
+    imagefile,
   );
 
   res.status(200).json(team);
@@ -36,18 +28,17 @@ async function create(req, res, next) {
 
 async function update(req, res, next) {
   const team_id = req.params.team;
-  const { id, password, birth, nickname, image_id, oauth_token, access_token } =
-    req.body;
+  const {
+    name, //
+    introduce,
+    image_id,
+  } = req.body;
 
   const team = await TeamService.update(
     team_id, //
-    id,
-    password,
-    birth,
-    nickname,
+    name,
+    introduce,
     image_id,
-    oauth_token,
-    access_token,
   );
 
   res.status(200).json(team);

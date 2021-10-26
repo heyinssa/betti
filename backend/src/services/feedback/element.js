@@ -15,13 +15,20 @@ async function getByElementId(element_id) {
 async function create(
   content, //
   apply_state,
-  image_id,
+  imagefile,
   feedback_id,
 ) {
+  const image = await ImageService.create(
+    imagefile.file_name, //
+    imagefile.file_path,
+    imagefile.file_type,
+    imagefile.file_size,
+  );
+
   const element = await ElementModel.create(
     content, //
     apply_state,
-    image_id,
+    image.image_id,
     feedback_id,
   );
   return element;

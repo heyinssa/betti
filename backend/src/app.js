@@ -7,11 +7,13 @@ import routes from './routes/index.js';
 import swaggerLoader from './loaders/swagger.js';
 import expressLoader from './loaders/express.js';
 import errorLoader from './loaders/error.js';
+import uploadLoader from './loaders/upload.js';
 
 const app = express();
 
 app.use('/api/docs', ...swaggerLoader);
 app.use(...expressLoader);
+uploadLoader();
 
 app.use('/api', routes());
 
