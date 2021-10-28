@@ -1,0 +1,28 @@
+components:
+  schemas:
+    Tester:
+      required:
+        - tester_id
+        - id
+        - password
+        - birth
+        - nickname
+      properties:
+        tester_id:
+          type: string
+          description: 테스터 고유 아이디
+        id:
+          type: string
+          description: 데스터 아이디
+        password:
+          type: string
+          description: 테스터 비밀번호
+        birth:
+          type: string
+          description: 테스터 생년월일
+        nickname:
+          type: string
+          description: 테스터 닉네임
+        image_id:
+          type: string
+          description: 테스터 프로필 이미지

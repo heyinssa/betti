@@ -1,0 +1,29 @@
+paths:
+  /api/user:
+    post:
+      tags:
+        - 유저
+      summary: 유저를 만듭니다.
+      description: >
+        새로운 유저를 만듭니다.
+      requestBody:
+        description: 유저 정보
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+            example:
+              name: ycha
+      responses:
+        '200':
+          description: 유저가 생성되었습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                id: 6e846587-3c40-44c7-bf90-5033e396196a
+                name: ycha
+                created_at: 2021-10-07T10:47:53.000Z
+                updated_at: 2021-10-07T10:47:53.000Z

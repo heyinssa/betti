@@ -1,0 +1,44 @@
+paths:
+  /api/provider/{id}:
+    put:
+      tags:
+        - 서비스 제공자
+      summary: 서비스 제공자 아이디를 수정합니다.
+      description: >
+        서비스 제공자를 수정합니다. <br>
+        주어진 id의 서비스 제공자 정보를 수정합니다.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            example: 예시 id 넣어야함
+          required: true
+          description: 서비스 제공자 아이디
+      requestBody:
+        description: 서비스 제공자 정보
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderInput'
+            example:
+              nickname: suhshin
+      responses:
+        '200':
+          description: 서비스 제공자 정보가 변경되었습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                id: '6e846587-3c40-44c7-bf90-5033e396196a'
+                nickname: 'suhshin'
+        '404':
+          description: 존재하지 않는 서비스 제공자입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'User not found: 6e846587-3c40-44c7-bf90-5033e396196b'
