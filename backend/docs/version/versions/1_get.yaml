@@ -1,0 +1,39 @@
+paths:
+  /api/versions/{version}:
+    get:
+      tags:
+        - 버전 / 버전
+      summary: 버전 정보를 가져옵니다.
+      parameters:
+        - in: path
+          name: version
+          description: 버전 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 버전 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+              example:
+                version_id: '[UUID]'
+                introduce: 버전 소개
+                link: 버전 링크
+                platform: 버전 플랫폼
+                start_date: 시작 날짜
+                end_date: 종료 날짜
+                max_number: 참가 최대 인원
+                team_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 버전입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Version not found: [UUID]'

@@ -9,6 +9,7 @@ components:
       properties:
         element_id:
           type: string
+          format: uuid
           description: 요소 고유 아이디
         content:
           type: string
@@ -18,7 +19,9 @@ components:
           description: 요소 적용 상황
         image_id:
           type: string
+          format: uuid
           description: 이미지 고유 아이디
         feedback_id:
           type: string
+          format: uuid
           description: 피드백 고유 아이디

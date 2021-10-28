@@ -1,41 +1,60 @@
 paths:
-  /api/provider/{id}:
+  /api/providers/{id}:
     put:
       tags:
-        - 서비스 제공자
-      summary: 서비스 제공자 정보를 수정합니다.
+        - 유저 / 제공자
+      summary: 제공자 정보를 수정합니다.
       description: >
-        서비스 제공자를 수정합니다. <br>
-        주어진 id의 서비스 제공자 정보를 수정합니다.
+        제공자를 수정합니다. <br>
+        주어진 id의 제공자 정보를 수정합니다.
       parameters:
         - in: path
           name: id
           schema:
             type: string
+            format: uuid
             example: 예시 id 넣어야함
           required: true
-          description: 서비스 제공자 아이디
+          description: 제공자 아이디
       requestBody:
-        description: 서비스 제공자 정보
-        required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProviderInput'
-            example:
-              nickname: suhshin
+              type: object
+              properties:
+                provider_id:
+                  type: string
+                  format: uuid
+                id:
+                  type: string
+                password:
+                  type: string
+                nickname:
+                  type: string
+                image_id:
+                  type: string
+                  format: uuid
+                oauth_token:
+                  type: string
+                access_token:
+                  type: string
       responses:
         '200':
-          description: 서비스 제공자 정보가 변경되었습니다.
+          description: 제공자 정보가 변경되었습니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
               example:
-                id: '6e846587-3c40-44c7-bf90-5033e396196a'
-                nickname: 'suhshin'
+                provider_id: '[UUID]'
+                id: 제공자 아이디
+                password: 제공자 비밀번호
+                nickname: 제공자 닉네임
+                image_id: '[UUID]'
+                oauth_token: '로그인 토큰'
+                access_token: '로그인 토큰'
         '404':
-          description: 존재하지 않는 서비스 제공자입니다.
+          description: 존재하지 않는 제공자입니다.
           content:
             application/json:
               schema:

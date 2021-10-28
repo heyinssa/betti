@@ -2,36 +2,36 @@ paths:
   /api/testers/{tester}:
     get:
       tags:
-        - 테스터
+        - 유저 / 테스터
       summary: 테스터 정보를 가져옵니다.
       parameters:
         - in: path
-          name: provider
-          description: 서비스 제공자 아이디
+          name: feedback
+          description: 테스터 고유 아이디
           required: true
           schema:
             type: string
+            format: uuid
             example: '[UUID]'
       responses:
         '200':
-          description: 서비스 제공자 정보를 보여줍니다.
+          description: 테스터 정보를 보여줍니다.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Provider'
+                $ref: '#/components/schemas/Tester'
               example:
-                provider_id: '[UUID]'
-                id: ycha
-                password: qwer
-                nickname: ycha
+                tester_id: '[UUID]'
+                id: 테스터 아이디
+                password: 테스터 비밀번호
+                birth: 테스터 생년월일
+                nickname: 테스터 닉네임
                 image_id: '[UUID]'
-                oauth_token: ...
-                access_token: ...
         '404':
-          description: 존재하지 않는 서비스 제공자입니다.
+          description: 존재하지 않는 테스터입니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
               example:
-                message: 'Provider not found: [UUID]'
+                message: 'Tester not found: [UUID]'

@@ -2,7 +2,7 @@ paths:
   /api/teams/{team}:
     get:
       tags:
-        - 팀
+        - 팀 / 팀
       summary: 팀을 가져옵니다.
       parameters:
         - in: path
@@ -11,6 +11,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
             example: '[UUID]'
       responses:
         '200':
@@ -21,8 +22,8 @@ paths:
                 $ref: '#/components/schemas/Team'
               example:
                 team_id: '[UUID]'
-                name: betti
-                introduce: qwer
+                name: 팀 이름
+                introduce: 팀 소개
                 image_id: '[UUID]'
         '404':
           description: 존재하지 않는 팀입니다.

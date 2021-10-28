@@ -1,25 +1,27 @@
 paths:
-  /api/provider/{id}:
+  /api/providers/{id}:
     delete:
       tags:
-        - 서비스 제공자
-      summary: 서비스 제공자를 삭제합니다.
+        - 유저 / 제공자
+      summary: 제공자를 삭제합니다.
       description: >
-        서비스 제공자를 삭제합니다. <br>
-        주어진 id의 서비스 제공자를 삭제합니다.
+        제공자를 삭제합니다. <br>
+        주어진 id의 제공자를 삭제합니다.
       parameters:
         - in: path
           name: id
           schema:
             type: string
+            format: uuid
+            example: '[UUID]'
           example: 6e846587-3c40-44c7-bf90-5033e396196a
           required: true
-          description: 서비스 제공자 아이디
+          description: 제공자 아이디
       responses:
         '200':
-          description: 서비스 제공자 아이디가 삭제 되었습니다.
+          description: 제공자 아이디가 삭제 되었습니다.
         '404':
-          description: 존재하지 않는 서비스 제공자입니다.
+          description: 존재하지 않는 제공자입니다.
           content:
             application/json:
               schema:

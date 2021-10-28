@@ -1,28 +1,26 @@
 paths:
-  /api/user/{id}:
+  /api/testers/{tester}:
     delete:
       tags:
-        - 유저
-      summary: 유저를 삭제합니다.
-      description: >
-        유저를 삭제합니다. <br>
-        주어진 id의 유저를 삭제합니다.
+        - 유저 / 테스터
+      summary: 테스터를 삭제합니다.
       parameters:
         - in: path
-          name: id
+          name: tester
+          description: 테스터 고유 아이디
+          required: true
           schema:
             type: string
-          example: 6e846587-3c40-44c7-bf90-5033e396196a
-          required: true
-          description: 유저 아이디
+            format: uuid
+            example: '[UUID]'
       responses:
         '200':
-          description: 유저 아이디가 삭제 되었습니다.
+          description: 테스터를 삭제하였습니다.
         '404':
-          description: 존재하지 않는 유저입니다.
+          description: 존재하지 않는 테스터입니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
               example:
-                message: 'User not found: 6e846587-3c40-44c7-bf90-5033e396196b'
+                message: 'Tester not found: [UUID]'

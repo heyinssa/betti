@@ -2,34 +2,53 @@ paths:
   /api/providers:
     post:
       tags:
-        - 서비스 제공자
-      summary: 서비스 제공자를 생성합니다.
+        - 유저 / 제공자
+      summary: 제공자를 생성합니다.
       requestBody:
-        description: 서비스 제공자 정보
-        required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProviderInput'
-            example:
-              name: ycha
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: ycha
+                password:
+                  type: string
+                  example: qwer
+                nickname:
+                  type: string
+                  example: ycha
+                image:
+                  type: string
+                  format: binary
+                oauth_token:
+                  type: string
+                access_token:
+                  type: string
+              required:
+                - id
+                - password
+                - nickname
+                - oauth_token
+                - access_token
       responses:
         '200':
-          description: 서비스 제공자 정보를 보여줍니다.
+          description: 제공자 생성에 성공하였습니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Provider'
               example:
                 provider_id: '[UUID]'
-                id: ycha
-                password: qwer
-                nickname: ycha
+                id: 제공자 아이디
+                password: 제공자 비밀번호
+                nickname: 제공자 닉네임
                 image_id: '[UUID]'
-                oauth_token: ...
-                access_token: ...
+                oauth_token: '로그인 토큰'
+                access_token: '로그인 토큰'
         '404':
-          description: 존재하지 않는 서비스 제공자입니다.
+          description: 존재하지 않는 제공자입니다.
           content:
             application/json:
               schema:

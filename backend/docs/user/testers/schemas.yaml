@@ -10,6 +10,7 @@ components:
       properties:
         tester_id:
           type: string
+          format: uuid
           description: 테스터 고유 아이디
         id:
           type: string
@@ -25,4 +26,5 @@ components:
           description: 테스터 닉네임
         image_id:
           type: string
+          format: uuid
           description: 테스터 프로필 이미지

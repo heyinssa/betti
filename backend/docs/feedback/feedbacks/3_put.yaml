@@ -1,0 +1,58 @@
+paths:
+  /api/feedbacks/{feedback}:
+    put:
+      tags:
+        - 피드백 / 피드백
+      summary: 피드백을 수정합니다.
+      parameters:
+        - in: path
+          name: feedback
+          description: 피드백 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: string
+                  example: 0
+                tester_id:
+                  type: string
+                  format: uuid
+                version_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: 피드백 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+              example:
+                feedback_id: '[UUID]'
+                state: '상태값'
+                tester_id: '[UUID]'
+                version_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 피드백입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Feedback not found: [UUID]'
+        '406':
+          description: 잘못된 요청으로 인한 DB 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'DB ERROR: [error message]'

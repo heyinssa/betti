@@ -2,7 +2,7 @@ paths:
   /api/elements/:
     post:
       tags:
-        - 요소
+        - 피드백 / 요소
       summary: 요소를 생성합니다.
       requestBody:
         content:
@@ -12,17 +12,23 @@ paths:
               properties:
                 content:
                   type: string
+                  example: 'hello world'
                 apply_state:
-                  type: integar
-                image_id:
+                  type: integer
+                  example: 0
+                image:
                   type: string
                   format: binary
                 feedback_id:
                   type: string
                   format: uuid
+              required:
+                - content
+                - apply_state
+                - feedback_id
       responses:
         '200':
-          description: 요소 정보를 보여줍니다.
+          description: 요소 생성에 성공하였습니다.
           content:
             application/json:
               schema:
@@ -40,45 +46,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
               example:
-                message: 'Provider not found: [UUID]'
-# paths:
-#   /api/elements/:
-#     post:
-#       tags:
-#         - 요소
-#       summary: 요소를 생성합니다.
-#       requestBody:
-#         description: 요소 정보
-#         required: true
-#         content:
-#           multipart/form-data:
-#             schema:
-#               $ref: '#/components/schemas/Element'
-#               image:
-#                 type: string
-#                 format: binary
-#             example:
-#               content: '요소 내용'
-#               apply_state: '0'
-#               feedback_id: '[UUID]'
-#       responses:
-#         '200':
-#           description: 요소 정보를 보여줍니다.
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/Element'
-#               example:
-#                 element_id: '[UUID]'
-#                 content: '요소 내용'
-#                 apply_state: '적용 여부'
-#                 image_id: '[UUID]'
-#                 feedback_id: '[UUID]'
-#         '404':
-#           description: 존재하지 않는 요소입니다.
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/Error'
-#               example:
-#                 message: 'Provider not found: [UUID]'
+                message: 'Element not found: [UUID]'
+        '406':
+          description: 잘못된 요청으로 인한 DB 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'DB ERROR: [error message]'

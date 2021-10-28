@@ -2,7 +2,7 @@ paths:
   /api/elements/{element}:
     get:
       tags:
-        - 요소
+        - 피드백 / 요소
       summary: 요소 정보를 가져옵니다.
       parameters:
         - in: path
@@ -11,6 +11,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
             example: '[UUID]'
       responses:
         '200':
@@ -22,7 +23,7 @@ paths:
               example:
                 element_id: '[UUID]'
                 content: '요소 내용'
-                apply_state: '적용 여부'
+                apply_state: '0'
                 image_id: '[UUID]'
                 feedback_id: '[UUID]'
         '404':
