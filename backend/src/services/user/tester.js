@@ -21,22 +21,31 @@ async function create(
   oauth_token,
   access_token,
 ) {
-  const image = await ImageService.create(
-    imagefile.file_name, //
-    imagefile.file_path,
-    imagefile.file_type,
-    imagefile.file_size,
-  );
+  let image_id = null;
+
+  if (imagefile) {
+    const image = await ImageService.create(
+      imagefile.file_name, //
+      imagefile.file_path,
+      imagefile.file_type,
+      imagefile.file_size,
+    );
+    image_id = image.image_id;
+  }
 
   const tester = await TesterModel.create(
     id, //
     password,
     birth,
     nickname,
-    image.image_id,
+    image_id,
     oauth_token,
     access_token,
-  );
+  ).catch(async err => {
+    if (image_id) await ImageService.removeByImageId(image_id);
+
+    throw new ApiError(406, 'DB ERROR: ' + err);
+  });
 
   return tester;
 }
@@ -51,9 +60,7 @@ async function update(
   oauth_token,
   access_token,
 ) {
-  const tester = await TesterModel.getByTesterId(tester_id);
-
-  if (!tester) throw new ApiError(404, `Tester not found: ${tester_id}`);
+  await getByTesterId(tester_id);
 
   const updated = await TesterModel.update(
     tester_id, //
@@ -70,9 +77,7 @@ async function update(
 }
 
 async function removeByTesterId(tester_id) {
-  const tester = await TesterModel.getByTesterId(tester_id);
-
-  if (!tester) throw new ApiError(404, `Tester not found: ${tester_id}`);
+  const tester = await getByTesterId(tester_id);
 
   await ImageService.removeByImageId(tester.image_id);
   await TesterModel.remove(tester_id);

@@ -44,9 +44,7 @@ async function update(
   max_number,
   team_id,
 ) {
-  const version = await VersionModel.getByVersionId(version_id);
-
-  if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
+  await getByVersionId(version_id);
 
   const updated = await VersionModel.update(
     version_id,
@@ -83,15 +81,14 @@ async function getByTeamId(team_id) {
 async function removeByTeamId(team_id) {
   const versions = await VersionModel.getByVersionId(team_id);
 
-  versions.forEach(version => removeByVersionId(version.version_id));
+  if (versions)
+    versions.forEach(version => removeByVersionId(version.version_id));
 }
 
 /* VersionImage (Equal FK) */
 
 async function getImages(version_id) {
-  const version = await VersionModel.getByVersionId(version_id);
-
-  if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
+  await getByVersionId(version_id);
 
   const versionImages = await VersionImageModel.getByVersionId(version_id);
 
@@ -113,9 +110,7 @@ async function getImages(version_id) {
 }
 
 async function addImage(version_id, imagefile) {
-  const version = await VersionModel.getByVersitonID(version_id);
-
-  if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
+  await getByVersionId(version_id);
 
   const image = await ImageService.create(
     imagefile.file_name, //
@@ -128,20 +123,15 @@ async function addImage(version_id, imagefile) {
 }
 
 async function updateImage(version_id, old_image_id, new_imagefile) {
-  const version = await VersionModel.getByVersitonID(version_id);
-
-  if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
+  await getByVersionId(version_id);
 
   await removeImage(version_id, old_image_id);
   await addImage(version_id, new_imagefile);
 }
 
 async function removeImage(version_id, image_id) {
-  const version = await VersionModel.getByVersitonID(version_id);
-  const image = await ImageService.getByImageId(image_id);
-
-  if (!version) throw new ApiError(404, `Version not found: ${version_id}`);
-  if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
+  await getByVersionId(version_id);
+  await ImageService.getByImageId(image_id);
 
   await ImageService.removeByImageId(image_id);
   await VersionImageModel.remove(version_id, image_id);

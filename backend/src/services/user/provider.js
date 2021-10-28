@@ -20,21 +20,30 @@ async function create(
   oauth_token,
   access_token,
 ) {
-  const image = await ImageService.create(
-    imagefile.file_name, //
-    imagefile.file_path,
-    imagefile.file_type,
-    imagefile.file_size,
-  );
+  let image_id = null;
+
+  if (imagefile) {
+    const image = await ImageService.create(
+      imagefile.file_name, //
+      imagefile.file_path,
+      imagefile.file_type,
+      imagefile.file_size,
+    );
+    image_id = image.image_id;
+  }
 
   const provider = await ProviderModel.create(
     id, //
     password,
     nickname,
-    image.image_id,
+    image_id,
     oauth_token,
     access_token,
-  );
+  ).catch(async err => {
+    if (image_id) await ImageService.removeByImageId(image_id);
+
+    throw new ApiError(406, 'DB ERROR: ' + err);
+  });
 
   return provider;
 }
@@ -48,9 +57,7 @@ async function update(
   oauth_token,
   access_token,
 ) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
+  await getByProviderId(provider_id);
 
   const updated = await ProviderModel.update(
     provider_id, //
@@ -66,9 +73,7 @@ async function update(
 }
 
 async function removeByProviderId(provider_id) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
+  const provider = await getByProviderId(provider_id);
 
   await ImageService.removeByImageId(provider.image_id);
   await ProviderTeamModel.removeByProviderId(provider_id);
@@ -78,9 +83,7 @@ async function removeByProviderId(provider_id) {
 /* Team (Equal FK) */
 
 async function getTeams(provider_id) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
+  await getByProviderId(provider_id);
 
   const teams = await ProviderTeamModel.getByProviderId(provider_id);
 
@@ -88,11 +91,8 @@ async function getTeams(provider_id) {
 }
 
 async function joinTeam(provider_id, team_id) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-  const team = await TeamService.getByTeamId(team_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
-  if (!team) throw new ApiError(404, `Team not found: ${team_id}`);
+  await getByProviderId(provider_id);
+  await TeamService.getByTeamId(team_id);
 
   const join = await ProviderTeamModel.create(provider_id, team_id);
 
@@ -100,11 +100,8 @@ async function joinTeam(provider_id, team_id) {
 }
 
 async function leaveTeam(provider_id, team_id) {
-  const provider = await ProviderModel.getByProviderId(provider_id);
-  const team = await TeamService.getByteamId(team_id);
-
-  if (!provider) throw new ApiError(404, `Provider not found: ${provider_id}`);
-  if (!team) throw new ApiError(404, `Team not found: ${team_id}`);
+  await getByProviderId(provider_id);
+  await TeamService.getByTeamId(team_id);
 
   await ProviderTeamModel.remove(provider_id, team_id);
 }

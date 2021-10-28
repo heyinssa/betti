@@ -14,13 +14,13 @@ import VersionService from './version/version.js';
  *
  * @role
  * 유효한 PK 인지 확인
- * 유효한 FK 인지 확인 .. (보류)
+ * 유효한 FK 인지 확인 ... (보류)
  * 적절한 Model 사용
  * 외부 Model 필요시, 외부 Service 사용할 것
  *
  * @interface
  * PK 에 대한 아래의 인터페이스 제공
- *   - getByPK
+ *   - getByPK -> 없으면 throw
  *   - create
  *   - update
  *   - removeByPK -> 하위 계층 리소스도 remove

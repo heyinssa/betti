@@ -18,10 +18,10 @@ async function create(
   file_size,
 ) {
   const image = await ImageModel.create(
-    file_size, //
-    file_name,
-    file_type,
+    file_name, //
     file_path,
+    file_type,
+    file_size,
   );
 
   return image;
@@ -29,31 +29,27 @@ async function create(
 
 async function update(
   image_id, //
-  file_size,
   file_name,
-  file_type,
   file_path,
+  file_type,
+  file_size,
 ) {
-  const image = await ImageModel.getByImageId(image_id);
-
-  if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
+  await getByImageId(image_id);
 
   const updated = await ImageModel.update(
     image_id, //
-    file_size,
     file_name,
-    file_type,
     file_path,
+    file_type,
+    file_size,
   );
 
   return updated;
 }
 
 async function removeByImageId(image_id) {
-  const image = await ImageModel.getByImageId(image_id);
+  await getByImageId(image_id);
   // delete actual file
-
-  if (!image) throw new ApiError(404, `Image not found: ${image_id}`);
 
   await ImageModel.remove(image_id);
 }
