@@ -1,0 +1,121 @@
+paths:
+  /api/provider/{id}:
+    get:
+      tags:
+        - 서비스 제공자
+      summary: 서비스 제공자 아이디를 가져옵니다.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            example: 예제 넣어야함
+          required: true
+          description: 서비스 제공자 아이디
+      responses:
+        '200':
+          description: 서비스 제공자 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+              example:
+                id: 예시 id 넣어야함
+                password: 예시 password 넣어야함
+                nickname: 예시 nickname 넣어야함
+                image_id: 예시 image_id 넣어야함
+                oauth_token: 예시 oauth_token 넣어야함
+                access_token: 예시 access_token 넣어야함
+        '404':
+          description: 존재하지 않는 서비스 제공자입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: "Provider not found: 예시 id 넣어야함"
+    put:
+      tags:
+        - 서비스 제공자
+      summary: 서비스 제공자 아이디를 수정합니다.
+      description: >
+        서비스 제공자를 수정합니다. <br>
+        주어진 id의 서비스 제공자 정보를 수정합니다.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            example: 예시 id 넣어야함
+          required: true
+          description: 서비스 제공자 아이디
+      requestBody:
+        description: 서비스 제공자 정보
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderInput'
+            example:
+              nickname: suhshin
+      responses:
+        '200':
+          description: 서비스 제공자 정보가 변경되었습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                id: "6e846587-3c40-44c7-bf90-5033e396196a"
+                nickname: "suhshin"
+        '404':
+          description: 존재하지 않는 서비스 제공자입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: "User not found: 6e846587-3c40-44c7-bf90-5033e396196b"
+    delete:
+
+
+  /api/provider:
+    post:
+
+
+
+
+components:
+  schemas:
+    Provider:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          description: 서비스 제공자 아이디
+        password:
+          type: string
+          description: 서비스 제공자 비밀번호
+        nickname:
+          type: string
+          description: 서비스 제공자 닉네임
+        image_id:
+          type: UUID
+          description: 서비스 제공자 프로필 이미지
+        oauth_token:
+          type: string
+          description: 서비스 제공자 oauth 토큰
+        access_token:
+          type: string
+          description: 서비스 제공자 access 토큰
+    ProviderInput:
+      required:
+        - name
+        -
+      properties:
+        name:
+          type: string
+          description: 서비스 제공자 이름
+
