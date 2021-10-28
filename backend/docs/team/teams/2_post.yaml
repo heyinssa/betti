@@ -1,0 +1,35 @@
+paths:
+  /api/team:
+    post:
+      tags:
+        - 팀
+      summary: 팀을 가져옵니다.
+      requestBody:
+        description: 팀 정보
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamInput'
+            example:
+              name: betti
+      responses:
+        '200':
+          description: 팀 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+              example:
+                team_id: '[UUID]'
+                name: betti
+                introduce: qwer
+                image_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 팀입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Team not found: [UUID]'

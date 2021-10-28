@@ -6,7 +6,7 @@ const swaggerDocument = YAML.load('./docs/index.yaml');
 
 const options = {
   definition: swaggerDocument,
-  apis: ['./docs/*.yaml', './docs/*/*.yaml'],
+  apis: ['./docs/*.yaml', './docs/*/*.yaml', './docs/*/*/*.yaml'],
 };
 
 const specs = swaggereJsdoc(options);

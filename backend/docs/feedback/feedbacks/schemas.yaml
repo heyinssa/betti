@@ -1,0 +1,21 @@
+components:
+  schemas:
+    Feedback:
+      required:
+        - feedback_id
+        - state
+        - tester_id
+        - version_id
+      properties:
+        feedback_id:
+          type: string
+          description: 피드백 고유 아이디
+        state:
+          type: integar
+          description: 피드백 진행 상황
+        tester_id:
+          type: string
+          description: 테스터 고유 아이디
+        version_id:
+          type: string
+          description: 버전 고유 아이디
