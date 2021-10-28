@@ -32,4 +32,4 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
               example:
-                message: 'Provider not found: [UUID]'
+                message: 'Element not found: [UUID]'

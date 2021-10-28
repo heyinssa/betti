@@ -3,7 +3,7 @@ paths:
     put:
       tags:
         - 서비스 제공자
-      summary: 서비스 제공자 아이디를 수정합니다.
+      summary: 서비스 제공자 정보를 수정합니다.
       description: >
         서비스 제공자를 수정합니다. <br>
         주어진 id의 서비스 제공자 정보를 수정합니다.

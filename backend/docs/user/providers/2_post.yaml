@@ -3,7 +3,7 @@ paths:
     post:
       tags:
         - 서비스 제공자
-      summary: 서비스 제공자를 가져옵니다.
+      summary: 서비스 제공자를 생성합니다.
       requestBody:
         description: 서비스 제공자 정보
         required: true
