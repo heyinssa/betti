@@ -1,9 +1,15 @@
 @import 'theme.scss';
 
-div {
-  background: $bgColor;
+html,
+body,
+#root {
+  height: 100%;
 }
 
-.container {
-  height: 400px;
+#root {
+  display: flex;
+}
+
+* {
+  @include text-inter;
 }
