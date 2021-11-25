@@ -1,12 +1,12 @@
 import { React } from "react";
-import ScreenTitleBar from "../titleBar/ScreenTitleBar";
+import TitleBar from "../titleBar/titleBar";
 import FrontPageBody from "./frontPageBody";
 import "./frontPage.scss";
 
 const FrontPage = () => {
   return (
     <div className="front-page">
-      <ScreenTitleBar />
+      <TitleBar />
       <FrontPageBody />
     </div>
   );
