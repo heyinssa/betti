@@ -1,4 +1,4 @@
-import Main from './Main';
+import ProviderMain from './ProviderMain';
 import MakeTest from './MakeTest';
 
-export { Main, MakeTest };
+export { ProviderMain, MakeTest };

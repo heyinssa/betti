@@ -3,11 +3,13 @@ import TeamBarHeader from './TeamBarHeader';
 import TeamBarBody from './TeamBarBody';
 import Modal from '../../util/Modal';
 import useModalHandle from '../../util/hooks/useModalHandle';
+import { cusUseDispatch } from "../../contexts/Context"
 import './TeamBar.scss';
 
-const TeamBar = ({ teamData, dispatch }) => {
+const TeamBar = ({ teamData }) => {
   const [open, close, isOpen] = useModalHandle();
   const [teamName, setTeamName] = useState('');
+  const dispatch = cusUseDispatch();
 
   const changeName = e => {
     setTeamName(e.currentTarget.value);

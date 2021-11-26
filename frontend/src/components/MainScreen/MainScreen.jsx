@@ -1,10 +1,9 @@
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import MainScreenHeader from './MainScreenHeader';
 import MainScreenBody from './MainScreenBody';
 import './MainScreen.scss';
 
-const MainScreen = ({ teamData, curTeam, curTest, dispatch }) => {
-  useEffect(() => {}, []);
+const MainScreen = ({ teamData, curTeam, curTest }) => {
   return (
     <div className="main-screen">
       <MainScreenHeader teamData={teamData} curTeam={curTeam} />
@@ -12,7 +11,6 @@ const MainScreen = ({ teamData, curTeam, curTest, dispatch }) => {
         teamData={teamData}
         curTeam={curTeam}
         curTest={curTest}
-        dispatch={dispatch}
       />
       <div className="separation"></div>
     </div>

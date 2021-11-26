@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const MainScreenBody = ({ teamData, curTeam, curTest, dispatch }) => {
+import {cusUseDispatch} from '../../contexts/Context';
+
+const MainScreenBody = ({ teamData, curTeam, curTest }) => {
+  const dispatch = cusUseDispatch();
+  
   const addTestEvent = () => {
     dispatch({
       type: 'addTest',
