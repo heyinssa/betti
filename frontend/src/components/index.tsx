@@ -1,3 +1,6 @@
-import TesterMainScreen from "./testerMain/testerMainScreen";
+import { FrontPage } from "./frontPage";
+import { SideBar } from "./sideBar";
+import { TesterServiceRow } from "./testerServiceRow";
+import { TitleBar } from "./titleBar";
 
-export default TesterMainScreen;
+export { FrontPage, SideBar, TesterServiceRow };
