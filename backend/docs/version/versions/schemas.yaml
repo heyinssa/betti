@@ -1,0 +1,39 @@
+components:
+  schemas:
+    Version:
+      required:
+        - version_id
+        - introduce
+        - link
+        - platform
+        - start_date
+        - end_date
+        - max_number
+        - team_id
+      properties:
+        version_id:
+          type: string
+          format: uuid
+          description: 버전 고유 아이디
+        introduce:
+          type: string
+          description: 버전 소개
+        link:
+          type: string
+          description: 버전 링크
+        platform:
+          type: integer
+          description: 버전 플랫폼
+        start_date:
+          type: date
+          description: 시작 날짜
+        end_date:
+          type: date
+          description: 종료 날짜
+        max_number:
+          type: integer
+          description: 참가 최대 인원
+        team_id:
+          type: string
+          format: uuid
+          description: 팀 고유 아이디

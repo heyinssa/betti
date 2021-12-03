@@ -1,0 +1,35 @@
+paths:
+  /api/feedbacks/{feedback}:
+    get:
+      tags:
+        - 피드백 / 피드백
+      summary: 피드백 정보를 가져옵니다.
+      parameters:
+        - in: path
+          name: feedback
+          description: 피드백 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 피드백 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+              example:
+                feedback_id: '[UUID]'
+                state: '0'
+                tester_id: '[UUID]'
+                version_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 피드백입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Element not found: [UUID]'

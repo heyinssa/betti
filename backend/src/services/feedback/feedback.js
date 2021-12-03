@@ -32,9 +32,7 @@ async function update(
   tester_id,
   version_id,
 ) {
-  const feedback = await FeedbackModel.getByFeedbackId(feedback_id);
-
-  if (!feedback) throw new ApiError(404, `Feedback not found: ${feedback_id}`);
+  await getByFeedbackId(feedback_id);
 
   const updated = await FeedbackModel.update(
     feedback_id, //
@@ -47,9 +45,7 @@ async function update(
 }
 
 async function removeByFeedbackId(feedback_id) {
-  const feedback = await FeedbackModel.getByFeedbackId(feedback_id);
-
-  if (!feedback) throw new ApiError(404, `Feedback not found: ${feedback_id}`);
+  await getByFeedbackId(feedback_id);
 
   await ElementService.removeByFeedbackId(feedback_id);
   await FeedbackModel.remove(feedback_id);

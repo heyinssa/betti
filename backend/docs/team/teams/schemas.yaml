@@ -1,0 +1,22 @@
+components:
+  schemas:
+    Team:
+      required:
+        - team_id
+        - name
+        - introduce
+      properties:
+        team_id:
+          type: string
+          format: uuid
+          description: 팀 고유 아이디
+        name:
+          type: string
+          description: 팀 이름
+        introduce:
+          type: string
+          description: 팀 소개
+        image_id:
+          type: string
+          format: uuid
+          description: 팀 이미지

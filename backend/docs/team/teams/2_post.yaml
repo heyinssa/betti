@@ -1,0 +1,44 @@
+paths:
+  /api/teams:
+    post:
+      tags:
+        - 팀 / 팀
+      summary: 팀을 생성합니다.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: betti
+                introduce:
+                  type: string
+                  example: qwer
+                image:
+                  type: string
+                  format: binary
+              required:
+                - name
+                - introduce
+      responses:
+        '200':
+          description: 팀 생성에 성공하였습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+              example:
+                team_id: '[UUID]'
+                name: 팀 이름
+                introduce: 팀 소개
+                image_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 팀입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Team not found: [UUID]'
