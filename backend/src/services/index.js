@@ -5,6 +5,7 @@ import TeamService from './team/team.js';
 import ProviderService from './user/provider.js';
 import TesterService from './user/tester.js';
 import VersionService from './version/version.js';
+import UserService from './user/user.js';
 
 /**
  * Service
@@ -46,4 +47,5 @@ export {
   ProviderService,
   TesterService,
   VersionService,
+  UserService,
 };

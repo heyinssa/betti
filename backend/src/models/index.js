@@ -7,6 +7,7 @@ import ProviderModel from './user/provider.js';
 import TesterModel from './user/tester.js';
 import VersionImageModel from './version/version_image.js';
 import VersionModel from './version/version.js';
+import UserModel from './user/user.js';
 
 /**
  * Model
@@ -42,4 +43,5 @@ export {
   TesterModel,
   VersionImageModel,
   VersionModel,
+  UserModel,
 };

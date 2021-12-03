@@ -4,7 +4,7 @@ import TeamController from './team/team.js';
 import ProviderController from './user/provider.js';
 import TesterController from './user/tester.js';
 import VersionController from './version/version.js';
-
+import UserController from './user/user.js';
 /**
  * Controller
  *
@@ -41,4 +41,5 @@ export {
   ProviderController,
   TesterController,
   VersionController,
+  UserController,
 };
