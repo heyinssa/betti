@@ -3,13 +3,14 @@ import TeamBarHeader from './TeamBarHeader';
 import TeamBarBody from './TeamBarBody';
 import Modal from '../../util/Modal';
 import useModalHandle from '../../util/hooks/useModalHandle';
-import { cusUseDispatch } from "../../contexts/Context"
+import { useDispatch } from 'react-redux'
+import {addTeam } from '../../modules/Provider'
 import './TeamBar.scss';
 
 const TeamBar = ({ teamData }) => {
   const [open, close, isOpen] = useModalHandle();
   const [teamName, setTeamName] = useState('');
-  const dispatch = cusUseDispatch();
+  const dispatch = useDispatch();
 
   const changeName = e => {
     setTeamName(e.currentTarget.value);
@@ -17,7 +18,7 @@ const TeamBar = ({ teamData }) => {
   const addTeamEvent = e => {
     e.preventDefault();
     if (teamName === '') return;
-    dispatch({ type: 'addTeam', name: teamName });
+    dispatch(addTeam(teamName));
     setTeamName('');
     close();
   };

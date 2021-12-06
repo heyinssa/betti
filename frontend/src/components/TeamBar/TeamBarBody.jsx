@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {changeTeam } from '../../modules/Provider'
 const TeamBarBody = ({ teamData, dispatch, open }) => {
   return (
     <div className="team-body">
@@ -8,7 +8,7 @@ const TeamBarBody = ({ teamData, dispatch, open }) => {
           <div
             className="team"
             key={e.index}
-            onClick={() => dispatch({ type: 'changeTeam', dst: e.index })}
+            onClick={() => dispatch(changeTeam(e.index))}
           >
             {e.name}
           </div>

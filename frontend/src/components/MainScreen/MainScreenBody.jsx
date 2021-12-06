@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {cusUseDispatch} from '../../contexts/Context';
-
+import { useDispatch } from 'react-redux';
+import {addTest, changeTest } from '../../modules/Provider' 
 const MainScreenBody = ({ teamData, curTeam, curTest }) => {
-  const dispatch = cusUseDispatch();
+  const dispatch = useDispatch();
   
   const addTestEvent = () => {
-    dispatch({
-      type: 'addTest',
-      curTeam: curTeam,
-      curTestArray: teamData[curTeam].test, // push로 끝에 넣을꺼니 의미 X ?
-      newTestName: 'xwxa',
-    });
-  };
+    dispatch(addTest(curTeam,teamData[curTeam].test,'xwxa'));
+  }
   return (
     <div className="main-screen-body">
       <div className="main-screen-tests">
@@ -21,7 +16,7 @@ const MainScreenBody = ({ teamData, curTeam, curTest }) => {
             <div
               key={`${curTeam}-${i}`}
               className="main-screen-test"
-              onClick={() => dispatch({ type: 'changeTest', dst: i })}
+              onClick={() => dispatch(changeTest(i))}
             >
               {e}
             </div>
