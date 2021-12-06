@@ -10,9 +10,9 @@ const Rounter = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={ProviderMain} />
-        <Route exact path="/makeTest" component={MakeTest} />
-        <Route exact path="/mypage" component={MyPage} />
+        <Route exact path="/pro" component={ProviderMain} />
+        <Route exact path="/pro/makeTest" component={MakeTest} />
+        <Route exact path="/pro/mypage" component={MyPage} />
       </Switch>
     </Router>
   );
