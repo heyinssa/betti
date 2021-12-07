@@ -2,9 +2,10 @@ import axios from 'axios';
 import passport from 'passport';
 
 const DefaultLoginForm: React.FC = () => {
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('id:', e.target.username.value, 'pw:', e.target.password.value);
+    const target = e.target as Element;
+    console.log('id:', target.username.value, 'pw:', target.password.value);
     axios.post(
       '/login',
       passport.authenticate('local', {
