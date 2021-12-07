@@ -1,5 +1,6 @@
 import axios from 'axios';
 import passport from 'passport';
+import { Button, Form } from 'semantic-ui-react';
 
 const DefaultLoginForm: React.FC = () => {
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,19 +18,17 @@ const DefaultLoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} method="post">
-      <div>
-        <label>Username : </label>
-        <input id="name" type="text" name="username" />
-      </div>
-      <div>
-        <label>Password : </label>
-        <input id="password" type="password" name="password" />
-      </div>
-      <div>
-        <input type="submit" value="로그인" />
-      </div>
-    </form>
+    <Form onSubmit={handleLogin} method="post">
+      <Form.Field>
+        <label>Username</label>
+        <input placeholder="username" type="text" name="username" />
+      </Form.Field>
+      <Form.Field>
+        <label>Password</label>
+        <input placeholder="password" type="password" name="password" />
+      </Form.Field>
+      <Button type="submit">Login</Button>
+    </Form>
   );
 };
 
