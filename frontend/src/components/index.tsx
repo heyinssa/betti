@@ -1,6 +1,15 @@
-import { FrontPage } from "./FrontPage";
-import { SideBar } from "./SideBar";
-import { TesterServiceRow } from "./TesterServiceRow";
-import { TitleBar } from "./TitleBar";
+import MarkdownTextContainer from "./MarkdownTextContainer";
+import ProjectDetailHeader from "./ProjectDetailHeader";
+import ProjectImageRow from "./ProjectImageRow";
+import TesterServiceRow from "./TesterServiceRow";
+import TesterServiceColumn from "./TesterServiceColumn";
+import TitleBar from "./TitleBar";
 
-export { FrontPage, SideBar, TesterServiceRow };
+export {
+  MarkdownTextContainer,
+  ProjectDetailHeader,
+  ProjectImageRow,
+  TesterServiceRow,
+  TesterServiceColumn,
+  TitleBar,
+};
