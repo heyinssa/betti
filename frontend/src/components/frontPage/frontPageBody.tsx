@@ -1,5 +1,3 @@
-import { React } from "react";
-
 const FrontPageBody = () => {
   return (
     <div className="front-page-body">

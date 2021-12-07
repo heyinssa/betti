@@ -1,6 +1,5 @@
-import { React } from "react";
 import TitleBar from "../titleBar/titleBar";
-import FrontPageBody from "./frontPageBody";
+import FrontPageBody from "./FrontPageBody";
 import "./frontPage.scss";
 
 const FrontPage = () => {
