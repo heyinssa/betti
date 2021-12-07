@@ -1,5 +1,6 @@
 import TesterServiceContainer from "./TesterServiceContainer";
 import { Header } from "semantic-ui-react";
+import "./TesterServiceRow.scss";
 
 const TesterServiceRow = () => {
   return (
@@ -8,6 +9,7 @@ const TesterServiceRow = () => {
         {
           //컨테이너 타이틀
         }
+        컨테이너 타이틀 임시
       </Header>
       <div className="tester-service-row-box">
         <TesterServiceContainer />

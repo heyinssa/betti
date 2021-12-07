@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.tester-service-row {
+  display: flex;
+  flex-direction: column;
+  .tester-service-row-box {
+    display: flex;
+    flex-direction: row;
+  }
+}
