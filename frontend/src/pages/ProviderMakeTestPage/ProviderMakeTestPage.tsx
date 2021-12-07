@@ -1,8 +1,8 @@
 import {  useState } from 'react';
 
-import './ProviderMakeTest.scss';
+import './ProviderMakeTestPage.scss';
 
-const MakeTest = () => {
+const ProviderMakeTestPage = () => {
   const [testName, setTestName] = useState('');
   const [testInfo, setTestInfo] = useState('');
   const [testLink, setTestLink] = useState('');
@@ -99,4 +99,4 @@ const MakeTest = () => {
   );
 };
 
-export default MakeTest;
+export default ProviderMakeTestPage;

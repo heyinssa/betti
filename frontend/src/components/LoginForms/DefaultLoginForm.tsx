@@ -5,7 +5,7 @@ const DefaultLoginForm: React.FC = () => {
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as Element;
-    console.log('id:', target.username.value, 'pw:', target.password.value);
+    console.log(target);
     axios.post(
       '/login',
       passport.authenticate('local', {
@@ -20,11 +20,11 @@ const DefaultLoginForm: React.FC = () => {
     <form onSubmit={handleLogin} method="post">
       <div>
         <label>Username : </label>
-        <input type="text" name="username" />
+        <input id="name" type="text" name="username" />
       </div>
       <div>
         <label>Password : </label>
-        <input type="password" name="password" />
+        <input id="password" type="password" name="password" />
       </div>
       <div>
         <input type="submit" value="로그인" />

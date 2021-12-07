@@ -1,4 +1,5 @@
 import ProviderMainPage from './ProviderMainPage';
-import ProviderMakeTest from './ProviderMakeTest';
+import ProviderMakeTestPage from './ProviderMakeTestPage';
+import LoginPage from './LoginPage';
 
-export { ProviderMainPage, ProviderMakeTest };
+export { ProviderMainPage, ProviderMakeTestPage, LoginPage };

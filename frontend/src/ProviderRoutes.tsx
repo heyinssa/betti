@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './modules';
 import { toggleLogin } from "./modules/Login"
-import { ProviderMainPage, ProviderMakeTest } from './pages';
+import { ProviderMainPage, ProviderMakeTestPage } from './pages';
 
 const Rounter = () => {
   const state = useSelector((state: RootState) => state.Login);
@@ -16,7 +16,7 @@ const Rounter = () => {
    <Router>
       <Switch>
         <Route exact path="/pro" component={ProviderMainPage} />
-        <Route exact path="/pro/makeTest" component={ProviderMakeTest} />
+        <Route exact path="/pro/makeTest" component={ProviderMakeTestPage} />
       </Switch>
       {!state.isLogin && <Redirect to="/"/>}
 
