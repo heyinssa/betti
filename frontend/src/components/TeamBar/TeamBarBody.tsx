@@ -1,4 +1,3 @@
-import React from 'react';
 import { changeTeam } from '../../modules/Provider'
 import {  teamDataType, curStateAction} from '../../modules/Provider'
 

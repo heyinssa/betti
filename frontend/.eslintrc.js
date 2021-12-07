@@ -14,7 +14,8 @@ module.exports = {
   rules: {
     // 추후 .prettierrc.js 파일에서 설정해줄 예정
     '@typescript-eslint/no-empty-function': 'off',
-    'prettier/prettier' : 'off'
+    'prettier/prettier': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   settings: {
     react: {

@@ -39,7 +39,7 @@ export type teamDataType = {
 export type StateType = {
     stateData: {
         curTeam: number,
-        curTest: number
+        curTest: number,
     },
     teamData: teamDataType[]
 };

@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ProviderRoutes from './ProviderRoutes';
 import UserRoutes from './UserRoutes';
-
-// import { ContextProvider } from './contexts/Context';
 import './App.scss';
 
 const Which = () => {
@@ -18,12 +16,12 @@ const Which = () => {
     </>
   )
 }
-function App() {
-  return (
+const App = () => { 
+
+  return ( 
     <Router>
       <Switch>
         <Route exact path="/" component={Which} />
-
         <Route exact path="/pro" component={ProviderRoutes} />
         <Route exact path="/use" component={UserRoutes} />
       </Switch>
