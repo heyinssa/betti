@@ -1,13 +1,20 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {addTest, changeTest } from '../../modules/Provider' 
-const MainScreenBody = ({ teamData, curTeam, curTest }) => {
+import { addTest, changeTest } from '../../modules/Provider';
+import { teamDataType } from "../../modules/Provider"
+
+type MainScreenType = {
+  teamData : teamDataType[],
+  curTeam : number,
+  curTest : number
+}
+
+const MainScreenBody = ({ teamData, curTeam, curTest } : MainScreenType) => {
   const dispatch = useDispatch();
-  
+
   const addTestEvent = () => {
-    dispatch(addTest(curTeam,teamData[curTeam].test,'xwxa'));
-  }
+    dispatch(addTest(curTeam, teamData[curTeam].test, 'xwxa'));
+  };
   return (
     <div className="main-screen-body">
       <div className="main-screen-tests">
@@ -24,7 +31,7 @@ const MainScreenBody = ({ teamData, curTeam, curTest }) => {
         })}
         <Link
           onClick={addTestEvent}
-          to="/makeTest"
+          to="/pro/makeTest"
           className="main-screen-test add"
           style={{ textDecoration: 'none', color: 'black' }}
         >

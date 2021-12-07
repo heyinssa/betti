@@ -1,5 +1,11 @@
-import React from 'react';
-const MainScreenHeader = ({ teamData, curTeam }) => {
+import { teamDataType } from "../../modules/Provider"
+
+type MainScreenType = {
+  teamData : teamDataType[],
+  curTeam : number,
+}
+
+const MainScreenHeader = ({ teamData, curTeam } : MainScreenType) => {
   return (
     <div className="main-screen-header">
       <div className="main-screen-team">{teamData[curTeam].name}</div>

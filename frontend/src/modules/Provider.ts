@@ -23,13 +23,13 @@ export const addTest = (curTeam: number, curTestArray: string[], newTestName: st
         curTeam, newTestName, curTestArray
     }
 });
-type curStateAction =
+export type curStateAction =
     | ReturnType<typeof changeTeam>
     | ReturnType<typeof changeTest>
     | ReturnType<typeof addTeam>
     | ReturnType<typeof addTest>
 
-type teamDataType = {
+export type teamDataType = {
 
     index: number,
     name: string,
@@ -59,7 +59,6 @@ const initalState: StateType = {
 const Provider = (state: StateType = initalState, action: curStateAction) => {
     const stateData = state.stateData;
     const teamData = state.teamData;
-
     switch (action.type) {
         case ADD_TEAM: {
             const newTeamIndex = teamData.length;

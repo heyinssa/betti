@@ -1,12 +1,10 @@
-import { React, useEffect, useReducer } from 'react';
 import { useSelector } from 'react-redux';
-import RootState from '../../modules'
-import { TeamBar, MainScreen } from '../../components';
+import { RootState } from '../../modules';
+import { TeamBar, MainScreen } from '../../components/index';
 
 import './Main.scss';
 
-
-const Main = () => {
+const ProviderMainPage = () => {
   const state = useSelector((state: RootState) => state.Provider);
   const curTeam = state.stateData.curTeam;
   const curTest = state.stateData.curTest;
@@ -17,15 +15,11 @@ const Main = () => {
       {teamData && (
         <div className="page-main">
           <TeamBar teamData={teamData} />
-          <MainScreen
-            teamData={teamData}
-            curTeam={curTeam}
-            curTest={curTest}
-          />
+          <MainScreen teamData={teamData} curTeam={curTeam} curTest={curTest} />
         </div>
       )}
     </>
   );
 };
 
-export default Main;
+export default ProviderMainPage;

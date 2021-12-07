@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TeamBarHeader = () => {
   const teamOptionEvent = () => {
     alert('option event!');

@@ -1,38 +1,38 @@
-import { React, useState } from 'react';
+import {  useState } from 'react';
 
-import './MakeTest.scss';
+import './ProviderMakeTest.scss';
 
 const MakeTest = () => {
   const [testName, setTestName] = useState('');
   const [testInfo, setTestInfo] = useState('');
   const [testLink, setTestLink] = useState('');
-  const [testPlatform, setTestPlatform] = useState([]);
+  const [testPlatform, setTestPlatform] = useState('');
 
   const [testScheduleStart, setTestScheduleStart] = useState('');
   const [testScheduleEnd, setTestScheduleEnd] = useState('');
 
   const [testMember, setTestMember] = useState('');
 
-  const changeName = e => {
+  const changeName = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestName(e.currentTarget.value);
   };
-  const changeInfo = e => {
+  const changeInfo = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestInfo(e.currentTarget.value);
   };
 
-  const changeLink = e => {
+  const changeLink = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestLink(e.currentTarget.value);
   };
-  const changePlatform = e => {
+  const changePlatform = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestPlatform(e.currentTarget.value);
   };
-  const changeScheduleStart = e => {
+  const changeScheduleStart = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestScheduleStart(e.currentTarget.value);
   };
-  const changeScheduleEnd = e => {
+  const changeScheduleEnd = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestScheduleEnd(e.currentTarget.value);
   };
-  const changeMember = e => {
+  const changeMember = (e : React.ChangeEvent<HTMLInputElement>) => {
     setTestMember(e.currentTarget.value);
   };
 
@@ -41,7 +41,7 @@ const MakeTest = () => {
       <div className="make-test">
         <input
           onChange={changeName}
-          maxLength="12"
+          maxLength={12}
           type="text"
           value={testName}
           placeholder="서비스 이름"
@@ -50,7 +50,7 @@ const MakeTest = () => {
         <div>서비스를 소개해주세요!</div>
         <input
           onChange={changeInfo}
-          maxLength="12"
+          maxLength={12}
           type="text"
           value={testInfo}
         />
@@ -59,7 +59,7 @@ const MakeTest = () => {
 
         <input
           onChange={changeLink}
-          maxLength="12"
+          maxLength={12}
           type="text"
           value={testLink}
         />
@@ -67,7 +67,7 @@ const MakeTest = () => {
         <div>서비스가 구동되는 플랫폼을 선택해주세요!</div>
         <input
           onChange={changePlatform}
-          maxLength="12"
+          maxLength={12}
           type="text"
           value={testPlatform}
         />
@@ -75,13 +75,13 @@ const MakeTest = () => {
         <div>베타 테스트를 진행할 일정을 지정해주세요!</div>
         <input
           onChange={changeScheduleStart}
-          maxLength="12"
+          maxLength={12}
           type="number"
           value={testScheduleStart}
         />
         <input
           onChange={changeMember}
-          maxLength="12"
+          maxLength={12}
           type="number"
           value={testMember}
         />
@@ -90,7 +90,7 @@ const MakeTest = () => {
 
         <input
           onChange={changeScheduleEnd}
-          maxLength="12"
+          maxLength={12}
           type="number"
           value={testScheduleEnd}
         />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ProviderRoutes from './ProviderRoutes';
 import UserRoutes from './UserRoutes';
@@ -12,11 +11,9 @@ const Which = () => {
     <>
       <Link to="/pro">
         <button>제공자 페이지!</button>
-
       </Link>
       <Link to="/use">
         <button>사용자 페이지!</button>
-
       </Link>
     </>
   )

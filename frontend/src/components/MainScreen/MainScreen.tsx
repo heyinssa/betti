@@ -1,9 +1,15 @@
-import { React } from 'react';
 import MainScreenHeader from './MainScreenHeader';
 import MainScreenBody from './MainScreenBody';
+import { teamDataType } from "../../modules/Provider"
 import './MainScreen.scss';
 
-const MainScreen = ({ teamData, curTeam, curTest }) => {
+type MainScreenType = {
+  teamData : teamDataType[],
+  curTeam : number,
+  curTest : number
+}
+
+const MainScreen = ({ teamData, curTeam, curTest } : MainScreenType) => {
   return (
     <div className="main-screen">
       <MainScreenHeader teamData={teamData} curTeam={curTeam} />

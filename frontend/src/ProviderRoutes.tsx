@@ -1,18 +1,12 @@
-import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ProviderMain, MakeTest } from './pages';
-
-const MyPage = () => {
-  return <div className="container">mypage</div>;
-};
+import { ProviderMainPage, ProviderMakeTest } from './pages';
 
 const Rounter = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/pro" component={ProviderMain} />
-        <Route exact path="/pro/makeTest" component={MakeTest} />
-        <Route exact path="/pro/mypage" component={MyPage} />
+        <Route exact path="/pro" component={ProviderMainPage} />
+        <Route exact path="/pro/makeTest" component={ProviderMakeTest} />
       </Switch>
     </Router>
   );

@@ -1,9 +1,16 @@
 import React from 'react';
-import {changeTeam } from '../../modules/Provider'
-const TeamBarBody = ({ teamData, dispatch, open }) => {
+import { changeTeam } from '../../modules/Provider'
+import {  teamDataType, curStateAction} from '../../modules/Provider'
+
+type TeamBarBodyType = {
+  teamData: teamDataType[],
+  dispatch: (action : curStateAction) => void
+  open : () => void
+}
+const TeamBarBody = ({ teamData, dispatch, open } : TeamBarBodyType) => {
   return (
     <div className="team-body">
-      {teamData.map(e => {
+      {teamData.map((e : teamDataType) => {
         return (
           <div
             className="team"

@@ -1,21 +1,25 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import TeamBarHeader from './TeamBarHeader';
 import TeamBarBody from './TeamBarBody';
 import Modal from '../../util/Modal';
 import useModalHandle from '../../util/hooks/useModalHandle';
 import { useDispatch } from 'react-redux'
-import {addTeam } from '../../modules/Provider'
+import { addTeam, teamDataType } from '../../modules/Provider'
 import './TeamBar.scss';
 
-const TeamBar = ({ teamData }) => {
+type TeamBarType = {
+  teamData : teamDataType[]
+}
+
+const TeamBar = ({ teamData }: TeamBarType) => {
   const [open, close, isOpen] = useModalHandle();
   const [teamName, setTeamName] = useState('');
   const dispatch = useDispatch();
 
-  const changeName = e => {
+  const changeName = (e :React.ChangeEvent<HTMLInputElement>) => {
     setTeamName(e.currentTarget.value);
   };
-  const addTeamEvent = e => {
+  const addTeamEvent = (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (teamName === '') return;
     dispatch(addTeam(teamName));
@@ -30,7 +34,7 @@ const TeamBar = ({ teamData }) => {
         <div>Name Your Team Before choosing a new project.</div>
         <input
           onChange={changeName}
-          maxLength="12"
+          maxLength={12}
           type="text"
           value={teamName}
         />

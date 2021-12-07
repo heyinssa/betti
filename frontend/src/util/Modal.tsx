@@ -1,8 +1,15 @@
 import React from 'react';
 
-const Modal = ({ isOpen, close, content }) => {
-  const isOuter = e => {
-    const clicked = e.target.className;
+type ModalType = {
+  isOpen : boolean,
+  close : () => void,
+  content : any 
+}
+const Modal = ({ isOpen, close, content } : ModalType) => {
+  const isOuter = (e : React.MouseEvent<HTMLDivElement>)=> {
+    console.log(e);
+    const target = e.target as Element;
+    const clicked = target.className;
     if (clicked === 'modal') close();
   };
   return (
