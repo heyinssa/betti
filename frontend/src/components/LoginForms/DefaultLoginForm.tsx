@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DefaultLoginForm: React.FC = () => {
   return (
     <form action="/login" method="post">
