@@ -1,5 +1,3 @@
-import React from 'react';
-
 type ModalType = {
   isOpen : boolean,
   close : () => void,
