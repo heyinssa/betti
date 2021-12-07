@@ -1,6 +1,6 @@
 import { LoginForms } from '../../components';
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   return (
     <>
       <div className="page-login">
