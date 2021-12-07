@@ -1,6 +1,5 @@
-import { React } from "react";
-import SideBarTeamIcon from "./sideBarTeamIcon";
-import SideBarAddIcon from "./sideBarAddIcon";
+import SideBarTeamIcon from "./SideBarTeamIcon";
+import SideBarAddIcon from "./SideBarAddIcon";
 import "./sideBar.scss";
 
 const FrontPage = () => {

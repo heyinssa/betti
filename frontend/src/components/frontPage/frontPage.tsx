@@ -1,4 +1,4 @@
-import TitleBar from "../titleBar/titleBar";
+import TitleBar from "../TitleBar/TitleBar";
 import FrontPageBody from "./FrontPageBody";
 import "./frontPage.scss";
 

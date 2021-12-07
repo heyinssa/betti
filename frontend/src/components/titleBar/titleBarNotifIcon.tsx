@@ -1,5 +1,3 @@
-import { React } from "react";
-
 const TitleBarNotifIcon = () => {
   return (
     <div className="titlebar-icon">

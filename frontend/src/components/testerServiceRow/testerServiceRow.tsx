@@ -1,5 +1,4 @@
-import { React } from "react";
-import TesterServiceContainer from "./testerServiceContainer";
+import TesterServiceContainer from "./TesterServiceContainer";
 
 const TesterServiceRow = () => {
   return (

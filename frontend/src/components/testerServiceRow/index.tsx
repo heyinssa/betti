@@ -1,3 +1,3 @@
-import TesterServiceRow from "./testerServiceRow";
+import TesterServiceRow from "./TesterServiceRow";
 
 export default TesterServiceRow;

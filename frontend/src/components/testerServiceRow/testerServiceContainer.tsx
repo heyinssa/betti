@@ -1,5 +1,3 @@
-import { React } from "react";
-
 const TesterServiceContainer = () => {
   return (
     <div className="tester-service-container">

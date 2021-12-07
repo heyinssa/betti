@@ -1,6 +1,6 @@
-import { FrontPage } from "./frontPage";
-import { SideBar } from "./sideBar";
-import { TesterServiceRow } from "./testerServiceRow";
-import { TitleBar } from "./titleBar";
+import { FrontPage } from "./FrontPage";
+import { SideBar } from "./SideBar";
+import { TesterServiceRow } from "./TesterServiceRow";
+import { TitleBar } from "./TitleBar";
 
 export { FrontPage, SideBar, TesterServiceRow };

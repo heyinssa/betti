@@ -1,3 +1,3 @@
-import ScreenSideBar from "./screenSideBar";
+import ScreenSideBar from "./ScreenSideBar";
 
 export default ScreenSideBar;

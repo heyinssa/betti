@@ -1,7 +1,6 @@
-import { React } from "react";
 import TitleLogo from "./titleLogo";
-import TitleBarNotifIcon from "./titleBarNotifIcon";
-import TitleBarProfileIcon from "./titleBarProfileIcon";
+import TitleBarNotifIcon from "./TitleBarNotifIcon";
+import TitleBarProfileIcon from "./TitleBarProfileIcon";
 
 const TitleBar = () => {
   return (
