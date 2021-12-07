@@ -1,8 +1,8 @@
-import TesterMainScreen from "./testerMainScreen";
-import TesterLoginScreen from "./testerLoginScreen";
-import TesterProfileScreen from "./testerProfileScreen";
-import TesterServiceDetailScreen from "./testerServiceDetailScreen";
-import TesterWriteFeedbackScreen from "./testerWriteFeedbackScreen";
+import TesterMainScreen from "./TesterMainScreen";
+import TesterLoginScreen from "./TesterLoginScreen";
+import TesterProfileScreen from "./TesterProfileScreen";
+import TesterServiceDetailScreen from "./TesterServiceDetailScreen";
+import TesterWriteFeedbackScreen from "./TesterWriteFeedbackScreen";
 
 export {
   TesterMainScreen,
