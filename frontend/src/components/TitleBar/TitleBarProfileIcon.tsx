@@ -1,5 +1,3 @@
-import { React } from "react";
-
 const TitleBarProfileIcon = () => {
   return (
     <div className="titlebar-icon">
