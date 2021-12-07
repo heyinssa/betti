@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ProviderRoutes from './ProviderRoutes';
 import UserRoutes from './UserRoutes';
 import './App.scss';
+import { LoginPage } from './pages';
 
 const Which = () => {
-
   return (
     <>
+      <LoginPage />
       <Link to="/pro">
         <button>제공자 페이지!</button>
       </Link>
@@ -14,11 +15,11 @@ const Which = () => {
         <button>사용자 페이지!</button>
       </Link>
     </>
-  )
-}
-const App = () => { 
+  );
+};
 
-  return ( 
+const App: React.FC = () => {
+  return (
     <Router>
       <Switch>
         <Route exact path="/" component={Which} />
@@ -26,7 +27,7 @@ const App = () => {
         <Route exact path="/use" component={UserRoutes} />
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
