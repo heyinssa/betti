@@ -7,6 +7,7 @@ import { LoginPage } from './pages';
 const Which = () => {
   return (
     <>
+      <LoginPage />
       <Link to="/pro">
         <button>제공자 페이지!</button>
       </Link>
