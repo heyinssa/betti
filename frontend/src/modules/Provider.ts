@@ -5,7 +5,6 @@ const CHANGE_TEST = 'Provider/CHANGE_TEST' as const;
 const ADD_TEAM = 'Provider/ADD_TEAM' as const;
 const ADD_TEST = 'Provider/ADD_TEST' as const;
 
-
 // 액션 생성 함수 선언
 
 export const changeTeam = (dst: number) => ({
