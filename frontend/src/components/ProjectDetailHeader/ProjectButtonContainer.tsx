@@ -3,8 +3,10 @@ import { Button, Icon, Label } from "semantic-ui-react";
 const ProjectButtonContainer = () => {
   return (
     <div className="project-button-container">
-      <Button positive>베타테스트 신청</Button>
-      <Button as="div" labelPosition="right">
+      <Button positive className="project-button">
+        베타테스트 신청
+      </Button>
+      <Button as="div" labelPosition="right" className="project-button">
         <Button icon>
           <Icon name="heart" />
           Like

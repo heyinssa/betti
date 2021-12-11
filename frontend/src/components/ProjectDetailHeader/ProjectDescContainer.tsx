@@ -1,21 +1,20 @@
-import { Image, Header, Label } from "semantic-ui-react";
+import { Image, Label } from "semantic-ui-react";
 
 const ProjectDescContainer = () => {
   return (
     <div className="project-desc-container">
       <Image
-        src="/images/wireframe/image.png"
-        size="small"
+        src="https://reactjs-kr.firebaseapp.com/logo-og.png"
         className="project-profile-image"
       />
       <div>
-        <Header as="h1">
+        <h1>
           {
             //프로젝트명
           }
           Transcendence
-        </Header>
-        <Header as="h2">
+        </h1>
+        <h2>
           <Image
             circular
             src="https://emoji.slack-edge.com/T039P7U66/captain_taeng/5ac2bf3abd5e3d44.png"
@@ -23,8 +22,8 @@ const ProjectDescContainer = () => {
           {
             //팀명
           }
-          Transcendence
-        </Header>
+          <span>Team Transcendence</span>
+        </h2>
         <div className="project-team-container">
           <Label as="a" image>
             <img src="https://a.slack-edge.com/production-standard-emoji-assets/13.0/apple-large/1f972@2x.png" />

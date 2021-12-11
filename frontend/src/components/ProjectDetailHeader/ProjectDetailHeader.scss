@@ -1,0 +1,74 @@
+.project-detail-header {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 25vw;
+  align-items: center;
+  .project-desc-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2vw;
+    width: 68vw;
+    .project-profile-image {
+      width: 20vw;
+      height: 20vw;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    h1 {
+      font-size: 4vw;
+    }
+    h2 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      img {
+        max-width: 4vw;
+        max-height: 4vw;
+        border: 2px solid gray;
+        margin-right: 10px;
+      }
+      span {
+        font-size: 2vw;
+        font-style: italic;
+        color: gray;
+      }
+    }
+    .project-team-container {
+      height: 6vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 1rem;
+      .label {
+        overflow: hidden;
+        text-align: center;
+        img {
+          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+  }
+  .project-button-container {
+    width: 28vw;
+    height: 20vw;
+    margin-right: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .project-button {
+      width: 20vw;
+      height: 4vw;
+      button {
+        width: 80%;
+      }
+      a {
+        text-align: center;
+        width: 20%;
+      }
+    }
+  }
+}
