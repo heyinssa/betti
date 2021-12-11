@@ -1,11 +1,11 @@
-import TesterMainScreen from "./TesterMainScreen";
-import TesterProfileScreen from "./TesterProfileScreen";
-import TesterServiceDetailScreen from "./TesterServiceDetailScreen";
-import TesterWriteFeedbackScreen from "./TesterWriteFeedbackScreen";
+import TesterMainPage from "./TesterMainPage";
+import TesterProfilePage from "./TesterProfilePage";
+import TesterServiceDetailPage from "./TesterServiceDetailPage";
+import TesterWriteFeedbackPage from "./TesterWriteFeedbackPage";
 
 export {
-  TesterMainScreen,
-  TesterProfileScreen,
-  TesterServiceDetailScreen,
-  TesterWriteFeedbackScreen,
+  TesterMainPage,
+  TesterProfilePage,
+  TesterServiceDetailPage,
+  TesterWriteFeedbackPage,
 };

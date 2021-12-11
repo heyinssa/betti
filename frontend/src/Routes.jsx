@@ -1,32 +1,32 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
-  TesterMainScreen,
-  TesterProfileScreen,
-  TesterServiceDetailScreen,
-  TesterWriteFeedbackScreen,
+  TesterMainPage,
+  TesterProfilePage,
+  TesterServiceDetailPage,
+  TesterWriteFeedbackPage,
 } from "./pages";
 
-const Rounter = () => {
+const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/profile" component={TesterProfileScreen} />
-        <Route exact path="/use" component={TesterMainScreen} />
-        <Route exact path="/use/test1" component={TesterServiceDetailScreen} />
+        <Route exact path="/profile" component={TesterProfilePage} />
+        <Route exact path="/use" component={TesterMainPage} />
+        <Route exact path="/use/test1" component={TesterServiceDetailPage} />
         <Route
           exact
           path="/use/test1/feedback"
-          component={TesterWriteFeedbackScreen}
+          component={TesterWriteFeedbackPage}
         />
-        <Route exact path="/use/Test2" component={TesterServiceDetailScreen} />
+        <Route exact path="/use/Test2" component={TesterServiceDetailPage} />
         <Route
           exact
           path="/use/test2/feedback"
-          component={TesterWriteFeedbackScreen}
+          component={TesterWriteFeedbackPage}
         />
       </Switch>
     </Router>
   );
 };
 
-export default Rounter;
+export default Routes;

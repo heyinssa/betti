@@ -2,11 +2,13 @@ import {
   MarkdownTextContainer,
   ProjectDetailHeader,
   ProjectImageRow,
+  TitleBar,
 } from "../../components";
 
-const TesterServiceDetailScreen = () => {
+const TesterServiceDetailPage = () => {
   return (
     <>
+      <TitleBar />
       <ProjectDetailHeader />
       <ProjectImageRow />
       <MarkdownTextContainer />
@@ -14,4 +16,4 @@ const TesterServiceDetailScreen = () => {
   );
 };
 
-export default TesterServiceDetailScreen;
+export default TesterServiceDetailPage;

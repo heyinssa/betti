@@ -1,8 +1,10 @@
+import { TitleBar } from "../../components";
 import TesterServiceRow from "../../components/TesterServiceRow";
 
-const TesterMainScreen = () => {
+const TesterMainPage = () => {
   return (
     <>
+      <TitleBar />
       <TesterServiceRow />
       <TesterServiceRow />
       <TesterServiceRow />
@@ -10,4 +12,4 @@ const TesterMainScreen = () => {
   );
 };
 
-export default TesterMainScreen;
+export default TesterMainPage;
