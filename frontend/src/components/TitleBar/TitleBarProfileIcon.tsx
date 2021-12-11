@@ -1,8 +1,11 @@
 const TitleBarProfileIcon = () => {
   return (
     <div className="titlebar-icon">
-      <a href="//로그인 페이지">
-        <img src="//프로필 이미지 링크" />
+      <a href="/profile">
+        <img
+          className="ui medium circular image"
+          src="/images/wireframe/square-image.png"
+        />
       </a>
     </div>
   );
