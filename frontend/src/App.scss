@@ -1,9 +1,12 @@
-@import 'theme.scss';
+@import "theme.scss";
 
 html,
 body,
 #root {
   height: 100%;
+  .App {
+    width: 100%;
+  }
 }
 
 #root {
