@@ -1,5 +1,6 @@
 import { TesterServiceRow, TitleBar } from "../../components";
 import TesterProfileContainer from "../../components/TesterProfileContainer";
+import "./TesterProfilePage.scss";
 
 const TesterProfilePage = () => {
   return (
