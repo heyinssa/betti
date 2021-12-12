@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40vw;
+  height: 40vmin;
   margin-bottom: 15px;
   .header {
     width: 90vw;
@@ -32,7 +32,7 @@
         object-fit: cover;
       }
       .image {
-        height: 20vw;
+        height: 20vmin;
         overflow: hidden;
         img {
           max-width: 100%;
