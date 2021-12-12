@@ -1,0 +1,16 @@
+.tester-feedback-container {
+  .tester-feedback-stars {
+    & i {
+      color: #c7c7c7;
+      cursor: pointer;
+    }
+
+    & div:hover i {
+      color: rgb(212, 180, 0);
+    }
+
+    & i:hover ~ i {
+      color: #c7c7c7;
+    }
+  }
+}
