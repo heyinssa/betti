@@ -5,7 +5,6 @@ import "./TesterFeedbackContainer.scss";
 const TesterFeedbackContainer = () => {
   const [score, setScore] = useState(0);
   const getFeedbackStars = (score: number) => {
-    console.log(score);
     setScore(score);
   };
 
