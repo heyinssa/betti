@@ -13,9 +13,11 @@ const TesterFeedbackContainer = () => {
       <h1>피드백 남기기</h1>
       <form>
         <h2>파일 업로드</h2>
-        <input type="file" accept="image/*" />
-        <TesterFeedbackStars getScoreFunc={getFeedbackStars} /> {String(score)}
-        점
+        <input type="file" name="review-image" accept="image/*" />
+        <TesterFeedbackStars getScoreFunc={getFeedbackStars} />
+        <div>{String(score)}점</div>
+        <textarea name="review-feedback"></textarea>
+        <input type="submit" />
       </form>
     </div>
   );
