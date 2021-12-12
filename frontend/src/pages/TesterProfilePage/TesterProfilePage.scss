@@ -8,14 +8,17 @@
   flex-direction: row;
   justify-content: center;
   .tester-profile-services {
-    width: 68vw;
-    overflow: hidden;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     .tester-service-row {
-      width: 100%;
-      max-width: 100%;
+      .header {
+        width: 60vw;
+      }
+      .tester-service-row-box {
+        width: 60vw;
+      }
     }
   }
 }
