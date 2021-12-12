@@ -16,6 +16,12 @@ const TesterServiceRow = () => {
         <TesterServiceContainer />
         <TesterServiceContainer />
         <TesterServiceContainer />
+        <TesterServiceContainer />
+        <TesterServiceContainer />
+        <TesterServiceContainer />
+        <TesterServiceContainer />
+        <TesterServiceContainer />
+        <TesterServiceContainer />
       </div>
     </div>
   );
