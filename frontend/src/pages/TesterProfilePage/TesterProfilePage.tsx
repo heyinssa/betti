@@ -10,7 +10,7 @@ const TesterProfilePage = () => {
     description: "안녕하세요\n반갑습니다..",
     teamName: "transendTeam",
     img: "https://avatars.githubusercontent.com/u/37893979?v=4",
-    link: "/use/test/feedback",
+    link: "/use/test1/feedback",
   };
   return (
     <>
