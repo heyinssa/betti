@@ -45,9 +45,9 @@ const TesterMainPage = () => {
   return (
     <>
       <TitleBar />
-      <TesterServiceRow serviceData={serviceData} />
-      <TesterServiceRow serviceData={serviceData} />
-      <TesterServiceRow serviceData={serviceData} />
+      <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
+      <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
+      <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
     </>
   );
 };

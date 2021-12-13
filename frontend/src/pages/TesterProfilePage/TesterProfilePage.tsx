@@ -47,9 +47,9 @@ const TesterProfilePage = () => {
       <TitleBar />
       <div className="tester-profile-page">
         <div className="tester-profile-services">
-          <TesterServiceRow serviceData={serviceData} />
-          <TesterServiceRow serviceData={serviceData} />
-          <TesterServiceRow serviceData={serviceData} />
+          <TesterServiceRow serviceData={serviceData} ifFeedback={true} />
+          <TesterServiceRow serviceData={serviceData} ifFeedback={true} />
+          <TesterServiceRow serviceData={serviceData} ifFeedback={true} />
         </div>
         <TesterProfileContainer />
       </div>
