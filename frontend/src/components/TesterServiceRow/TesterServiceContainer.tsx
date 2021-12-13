@@ -1,9 +1,19 @@
 import { Card, Icon, Image } from "semantic-ui-react";
-import { ServiceDataType } from "../../modules/Provider";
+import { ServiceType } from "../../modules/Provider";
 
-const TesterServiceContainer = ({ serviceData }: ServiceDataType) => {
+type ServiceRowType = {
+  serviceData: ServiceType;
+  ifFeedback: boolean;
+};
+
+const TesterServiceContainer = ({
+  serviceData,
+  ifFeedback,
+}: ServiceRowType) => {
   return (
-    <Card className="tester-service-container" href={serviceData.link}>
+    <Card
+      className="tester-service-container"
+      href={ifFeedback ? serviceData.link + "/feedback" : serviceData.link}>
       <Image src={serviceData.projectImage} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{serviceData.projectName}</Card.Header>

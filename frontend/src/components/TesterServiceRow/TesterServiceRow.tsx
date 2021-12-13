@@ -5,9 +5,10 @@ import { ServiceType } from "../../modules/Provider";
 
 type ServiceRowType = {
   serviceData: ServiceType;
+  ifFeedback: boolean;
 };
 
-const TesterServiceRow = ({ serviceData }: ServiceRowType) => {
+const TesterServiceRow = ({ serviceData, ifFeedback }: ServiceRowType) => {
   console.log(serviceData);
   return (
     <div className="tester-service-row">
@@ -18,16 +19,46 @@ const TesterServiceRow = ({ serviceData }: ServiceRowType) => {
         컨테이너 타이틀 임시
       </Header>
       <div className="tester-service-row-box">
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
-        <TesterServiceContainer serviceData={serviceData} />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
+        <TesterServiceContainer
+          serviceData={serviceData}
+          ifFeedback={ifFeedback}
+        />
       </div>
     </div>
   );
