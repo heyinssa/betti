@@ -36,6 +36,8 @@ const TesterServiceDetailPage = () => {
     ],
     favourites: 123,
     description: "안녕하세요 반갑습니다..",
+    descriptionDetail:
+      "안녕하세요 안녕하세요\n안녕하세요 안녕하세요 안녕하세요 안녕하세요 \n안녕하세요 안녕하세요 안녕하세요 안녕하세요\n뭐적지 반갑습니다\n행복한 크리스마스 즐거운 연말되세요",
     link: "/use/test1",
     detailImage: [
       "https://mblogthumb-phinf.pstatic.net/20151116_240/tnwlsss_1447661327738hWrCX_JPEG/DSC_0383.JPG?type=w2",
@@ -50,7 +52,9 @@ const TesterServiceDetailPage = () => {
       <TitleBar />
       <ProjectDetailHeader serviceData={serviceData} />
       <ProjectImageRow imageLinks={serviceData.detailImage} />
-      <MarkdownTextContainer />
+      <MarkdownTextContainer
+        projectDetailText={serviceData.descriptionDetail}
+      />
     </>
   );
 };
