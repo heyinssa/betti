@@ -11,6 +11,7 @@ export type ServiceType = {
   teammates: Array<TeammatesType>;
   favourites: number;
   description: string;
+  descriptionDetail: string;
   link: string;
   detailImage: Array<string>;
 };
