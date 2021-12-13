@@ -1,14 +1,10 @@
 import { Card, Icon, Image } from "semantic-ui-react";
-import { ServiceType } from "../../modules/Provider";
+import { ServiceDataType } from "../../modules/Provider";
 
-type ServiceRowType = {
-  serviceData: ServiceType;
-};
-
-const TesterServiceContainer = ({ serviceData }: ServiceRowType) => {
+const TesterServiceContainer = ({ serviceData }: ServiceDataType) => {
   return (
     <Card className="tester-service-container" href={serviceData.link}>
-      <Image src={serviceData.img} wrapped ui={false} />
+      <Image src={serviceData.projectImage} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{serviceData.projectName}</Card.Header>
         <Card.Meta>
