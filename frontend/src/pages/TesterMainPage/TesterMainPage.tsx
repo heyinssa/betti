@@ -7,7 +7,7 @@ const TesterMainPage = () => {
     projectName: "ft_betti",
     projectImage: "https://avatars.githubusercontent.com/u/37893979?v=4",
     teamName: "haeinsa",
-    teamImage: "https://github.com/organizations/heyinssa/settings/profile",
+    teamImage: "https://avatars.githubusercontent.com/u/95202825?s=200&v=4",
     teammates: [
       {
         name: "suhshin",
