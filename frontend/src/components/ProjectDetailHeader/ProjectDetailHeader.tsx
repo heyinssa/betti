@@ -1,11 +1,12 @@
 import ProjectButtonContainer from "./ProjectButtonContainer";
 import ProjectDescContainer from "./ProjectDescContainer";
 import "./ProjectDetailHeader.scss";
+import { ServiceDataType } from "../../modules/Provider";
 
-const ProjectDetailHeader = () => {
+const ProjectDetailHeader = ({ serviceData }: ServiceDataType) => {
   return (
     <div className="project-detail-header">
-      <ProjectDescContainer />
+      <ProjectDescContainer serviceData={serviceData} />
       <ProjectButtonContainer />
     </div>
   );

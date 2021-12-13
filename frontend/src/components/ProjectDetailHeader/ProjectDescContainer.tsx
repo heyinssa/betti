@@ -1,43 +1,18 @@
-import { Image, Label } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
+import { ServiceDataType } from "../../modules/Provider";
+import ProjectTeammateContainer from "./projectTeammateContainer";
 
-const ProjectDescContainer = () => {
+const ProjectDescContainer = ({ serviceData }: ServiceDataType) => {
   return (
     <div className="project-desc-container">
-      <Image
-        src="https://reactjs-kr.firebaseapp.com/logo-og.png"
-        className="project-profile-image"
-      />
+      <Image src={serviceData.projectImage} className="project-profile-image" />
       <div>
-        <h1>
-          {
-            //프로젝트명
-          }
-          Transcendence
-        </h1>
+        <h1>{serviceData.projectName}</h1>
         <h2>
-          <Image
-            circular
-            src="https://emoji.slack-edge.com/T039P7U66/captain_taeng/5ac2bf3abd5e3d44.png"
-          />
-          {
-            //팀명
-          }
-          <span>Team Transcendence</span>
+          <Image circular src={serviceData.teamImage} />
+          <span>{serviceData.teamName}</span>
         </h2>
-        <div className="project-team-container">
-          <Label as="a" image>
-            <img src="https://a.slack-edge.com/production-standard-emoji-assets/13.0/apple-large/1f972@2x.png" />
-            Joe
-          </Label>
-          <Label as="a" image>
-            <img src="https://a.slack-edge.com/production-standard-emoji-assets/13.0/apple-large/1f304@2x.png" />
-            Elliot
-          </Label>
-          <Label as="a" image>
-            <img src="https://emoji.slack-edge.com/T039P7U66/ceilingcat/d14f47a9b7ec364e.jpg" />
-            Stevie
-          </Label>
-        </div>
+        <ProjectTeammateContainer teammates={serviceData.teammates} />
       </div>
     </div>
   );
