@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { changeTest } from '../../modules/Provider';
-import { teamDataType } from "../../modules/Provider"
+import { changeTest, teamDataType } from '../../modules/Provider';
+import ShowTest from './ShowTest';
 
 type MainScreenType = {
   teamData: teamDataType[],
   curTeam: number,
   curTest: number
 }
+
 
 const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
   const dispatch = useDispatch();
@@ -35,9 +36,8 @@ const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
           +
         </Link>
       </div>
-      <div className="main-screen-test-info">
-        {teamData[curTeam].test[curTest].name}
-      </div>
+      <ShowTest testData={teamData[curTeam].test[curTest]} />
+
     </div>
   );
 };
