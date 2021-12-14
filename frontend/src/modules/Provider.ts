@@ -21,11 +21,10 @@ export const addTeam = (name: string) => ({
     payload: name
 });
 
-export const addTest = (curTeam: number, curTestArray: string[], newTestName: string) => ({
+export const addTest = (newTest: TestType) => ({
     type: ADD_TEST,
-    payload: {
-        curTeam, newTestName, curTestArray
-    }
+    payload: newTest
+
 });
 
 
@@ -40,11 +39,20 @@ export type curStateAction =
 
 // 상태의 타입 및 초깃값 선언
 
+export type TestType = {
+    name: string,
+    intro: string,
+    link: string,
+    platform: string,
+    startDay: number,
+    endDay: number
+}
+
 export type teamDataType = {
 
     index: number,
     name: string,
-    test: string[]
+    test: TestType[]
 }
 
 export type StateType = {
@@ -62,8 +70,18 @@ const initalState: StateType = {
         curTest: 0,
     },
     teamData: [
-        { index: 0, name: 'asg Team', test: ['qwre', 'asdg', 'asd'] }, // 각 테스트는 객체 형태여야 함.
-        { index: 1, name: 'qwer Team', test: ['test1', 'test2', 'test3'] },
+        {
+            index: 0, name: 'asg Team', test: [
+                {
+                    name: "temp",
+                    intro: "temp",
+                    link: "temp",
+                    platform: "temp",
+                    startDay: 20211012,
+                    endDay: 20211016
+                }
+            ]
+        }, // 각 테스트는 객체 형태여야 함.
     ],
 };
 
@@ -83,11 +101,9 @@ const Provider = (state: StateType = initalState, action: curStateAction) => {
             return { ...state };
         }
         case ADD_TEST: {
-            console.log('실행됨!');
-            const curTeamIndex = action.payload.curTeam;
-            const testName = action.payload.newTestName;
-            const temp = [...action.payload.curTestArray, testName];
-            teamData[curTeamIndex].test = temp;
+            const curTeam = stateData.curTeam;
+            const curTestArray = teamData[curTeam].test;
+            curTestArray.push(action.payload);
             return { ...state };
         }
         case CHANGE_TEAM: {

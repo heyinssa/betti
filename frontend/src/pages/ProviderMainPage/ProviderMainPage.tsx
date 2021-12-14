@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-import { TeamBar, MainScreen } from '../../components/index';
+import { TeamBar, MainScreen } from '../../components';
 
 import './Main.scss';
 
