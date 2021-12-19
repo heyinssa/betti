@@ -16,6 +16,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'prettier/prettier': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    'no-var': 'off',
   },
   settings: {
     react: {
