@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Button, List } from 'semantic-ui-react';
-import { changeTest, addTest, TestType } from '../../modules/Provider';
+import { addTest, TestType } from '../../modules/Provider';
 
 const MakeTestForms = () => {
   // useState<string | null>('');

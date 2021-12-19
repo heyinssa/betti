@@ -14,7 +14,12 @@ import {
   TesterProfilePage,
   TesterServiceDetailPage,
   TesterWriteFeedbackPage,
+  ProviderTestPage,
 } from './pages';
+
+const errorPage = () => {
+  return <div>error!</div>;
+};
 
 const Rounter = () => {
   const state = useSelector((state: RootState) => state.Login);
@@ -25,7 +30,8 @@ const Rounter = () => {
         <Switch>
           <Route exact path="/" component={LoginPage} /> //로그인 페이지로 변경
           <Route exact path="/pro" component={ProviderMainPage} />
-          <Route exact path="/pro/makeTest" component={ProviderMakeTestPage} />
+          <Route exact path="/pro/make" component={ProviderMakeTestPage} />
+          <Route exact path="/pro/:team/:test" component={ProviderTestPage} />
           <Route exact path="/profile" component={TesterProfilePage} />
           <Route exact path="/use" component={TesterMainPage} />
           <Route exact path="/use/test1" component={TesterServiceDetailPage} />
@@ -40,6 +46,7 @@ const Rounter = () => {
             path="/use/test2/feedback"
             component={TesterWriteFeedbackPage}
           />
+          <Route path="/" component={errorPage} />
         </Switch>
         {/* {!state.isLogin && <Redirect to="/"/>} */}
       </Router>
