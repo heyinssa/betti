@@ -1,0 +1,68 @@
+[
+    {
+        "roomId" : 7,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    },
+    {
+        "roomId" : 8,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    },
+    {
+        "roomId" : 9,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    },
+    {
+        "roomId" : 10,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    },
+    {
+        "roomId" : 11,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    },
+    {
+        "roomId" : 12,
+        "title" : 11,
+        "menus" : ["한식", "중식"],
+        "meetTime" : "14:00~15:00",
+        "location" : "개포",
+        "capacity" : 8,
+        "owner" : "조영후",
+        "participants" : ["김치", "야호"],
+        "status" :"되여"
+    }
+]

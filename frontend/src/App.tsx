@@ -1,13 +1,8 @@
-import React from "react";
-import Routes from "./Routes";
-import "./App.scss";
+import Route from './Routes';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <Routes />
-    </div>
-  );
-}
+const App: React.FC = () => {
+  return <Route />;
+};
 
 export default App;
