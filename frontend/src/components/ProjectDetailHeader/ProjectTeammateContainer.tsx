@@ -1,5 +1,5 @@
-import { Label } from "semantic-ui-react";
-import { TeammatesType } from "../../modules/Provider";
+import { Label } from 'semantic-ui-react';
+import { TeammatesType } from '../../modules/User';
 
 type TeammateType = {
   teammates: Array<TeammatesType>;
@@ -8,7 +8,7 @@ type TeammateType = {
 const ProjectTeammateContainer = ({ teammates }: TeammateType) => {
   return (
     <div className="project-team-container">
-      {teammates.map((teammate) => (
+      {teammates.map(teammate => (
         <Label as="a" image>
           <img src={teammate.profileImage} alt="teammate" />
           {teammate.name}

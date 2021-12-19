@@ -1,7 +1,7 @@
-import TesterServiceContainer from "./TesterServiceContainer";
-import { Header } from "semantic-ui-react";
-import "./TesterServiceRow.scss";
-import { ServiceType } from "../../modules/Provider";
+import TesterServiceContainer from './TesterServiceContainer';
+import { Header } from 'semantic-ui-react';
+import './TesterServiceRow.scss';
+import { ServiceType } from '../../modules/User';
 
 type ServiceRowType = {
   serviceData: ServiceType;

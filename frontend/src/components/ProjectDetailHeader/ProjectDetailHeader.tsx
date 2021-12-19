@@ -1,7 +1,7 @@
-import ProjectButtonContainer from "./ProjectButtonContainer";
-import ProjectDescContainer from "./ProjectDescContainer";
-import "./ProjectDetailHeader.scss";
-import { ServiceDataType } from "../../modules/Provider";
+import ProjectButtonContainer from './ProjectButtonContainer';
+import ProjectDescContainer from './ProjectDescContainer';
+import './ProjectDetailHeader.scss';
+import { ServiceDataType } from '../../modules/User';
 
 const ProjectDetailHeader = ({ serviceData }: ServiceDataType) => {
   return (

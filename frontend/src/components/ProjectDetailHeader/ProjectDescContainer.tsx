@@ -1,6 +1,6 @@
-import { Image } from "semantic-ui-react";
-import { ServiceDataType } from "../../modules/Provider";
-import ProjectTeammateContainer from "./ProjectTeammateContainer";
+import { Image } from 'semantic-ui-react';
+import { ServiceDataType } from '../../modules/User';
+import ProjectTeammateContainer from './ProjectTeammateContainer';
 
 const ProjectDescContainer = ({ serviceData }: ServiceDataType) => {
   return (
