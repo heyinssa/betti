@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeTest, teamDataType } from '../../modules/Provider';
+import { RootState } from '../../modules';
+
 import ShowTest from './ShowTest';
 
 type MainScreenType = {
-  teamData: teamDataType[],
-  curTeam: number,
-  curTest: number
-}
-
+  teamData: teamDataType[];
+  curTeam: number;
+  curTest: number;
+};
 
 const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
   const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.Provider);
 
   return (
     <div className="main-screen-body">
@@ -28,7 +30,7 @@ const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
           );
         })}
         <Link
-          to="/pro/makeTest"
+          to="/pro/make"
           className="main-screen-test add"
           style={{ textDecoration: 'none', color: 'black' }}
         >
@@ -36,8 +38,12 @@ const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
           +
         </Link>
       </div>
-      <ShowTest testData={teamData[curTeam].test[curTest]} />
-
+      <Link
+        to={`/pro/${state.stateData.curTeam}/${state.stateData.curTest}`}
+        className="main-screen-test-info"
+      >
+        <ShowTest testData={teamData[curTeam].test[curTest]} />
+      </Link>
     </div>
   );
 };
