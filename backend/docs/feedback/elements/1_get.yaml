@@ -1,0 +1,36 @@
+paths:
+  /api/elements/{element}:
+    get:
+      tags:
+        - 피드백 / 요소
+      summary: 요소 정보를 가져옵니다.
+      parameters:
+        - in: path
+          name: element
+          description: 요소 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 요소 정보를 보여줍니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Element'
+              example:
+                element_id: '[UUID]'
+                content: '요소 내용'
+                apply_state: '0'
+                image_id: '[UUID]'
+                feedback_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 요소입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Element not found: [UUID]'

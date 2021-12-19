@@ -1,0 +1,71 @@
+paths:
+  /api/versions/:
+    put:
+      tags:
+        - 버전 / 버전
+      summary: 버전를 생성합니다.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                version_id:
+                  type: string
+                  format: uuid
+                introduce:
+                  type: string
+                link:
+                  type: string
+                platform:
+                  type: integer
+                start_date:
+                  type: date
+                end_date:
+                  type: date
+                max_number:
+                  type: integer
+                team_id:
+                  type: string
+                  format: uuid
+              required:
+                - version_id
+                - introduce
+                - link
+                - platform
+                - start_date
+                - end_date
+                - max_number
+                - team_id
+      responses:
+        '200':
+          description: 버전 생성에 성공하였습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+              example:
+                version_id: '[UUID]'
+                introduce: 소개
+                link: 링크
+                platform: 플랫폼
+                start_date: 시작하는 날짜
+                end_date: 끝나는 날짜
+                max_number: 최대 숫자
+                team_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 버전입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Version not found: [UUID]'
+        '406':
+          description: 잘못된 요청으로 인한 DB 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'DB ERROR: [error message]'

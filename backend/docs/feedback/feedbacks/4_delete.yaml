@@ -1,0 +1,26 @@
+paths:
+  /api/feedbacks/{feedback}:
+    delete:
+      tags:
+        - 피드백 / 피드백
+      summary: 피드백를 삭제합니다.
+      parameters:
+        - in: path
+          name: feedback
+          description: 피드백 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 피드백를 삭제하였습니다.
+        '404':
+          description: 존재하지 않는 피드백입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Feedback not found: [UUID]'

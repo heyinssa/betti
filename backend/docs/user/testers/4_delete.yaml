@@ -1,0 +1,26 @@
+paths:
+  /api/testers/{tester}:
+    delete:
+      tags:
+        - 유저 / 테스터
+      summary: 테스터를 삭제합니다.
+      parameters:
+        - in: path
+          name: tester
+          description: 테스터 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 테스터를 삭제하였습니다.
+        '404':
+          description: 존재하지 않는 테스터입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Tester not found: [UUID]'

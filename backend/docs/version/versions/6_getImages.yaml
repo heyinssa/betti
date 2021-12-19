@@ -1,0 +1,35 @@
+paths:
+  /api/versions/{version}/images:
+    get:
+      tags:
+        - 버전 / 버전
+      summary: 버전이 가지고 있는 이미지들을 가져옵니다.
+      parameters:
+        - in: path
+          name: version
+          description: 버전 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      responses:
+        '200':
+          description: 버전이 가지고 있는 이미지들을 가져옵니다.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Image'
+              example:
+                - image_id: '[UUID]'
+                - image_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 버전입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Version not found: [UUID]'
