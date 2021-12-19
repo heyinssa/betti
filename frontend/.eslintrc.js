@@ -1,28 +1,23 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    es6: true,
-    node: true,
-  },
+  parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
   parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
-    sourceType: 'module',
   },
   rules: {
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
-    'react/prop-types': ['off'],
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
+    // 추후 .prettierrc.js 파일에서 설정해줄 예정
+    '@typescript-eslint/no-empty-function': 'off',
+    'prettier/prettier': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    'no-var': 'off',
   },
   settings: {
     react: {

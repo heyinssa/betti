@@ -1,11 +1,37 @@
-npm install 후 다음 VScode 익스텐션 설치
+# Betti
 
-1. vscode 플러그인 설치 <br/><br/>
-  ![설치해야할 플러그인](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FNV6IF%2FbtqMBv0iyPf%2F9BJjeft5LapetvnTXvu07k%2Fimg.png)
-  
-2. vscode 세팅 설정 <br/><br/>
-  ![format on Save](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv46oC%2FbtqMvgcLZ0P%2FubkYYTDPtKn5KkOkNlK64k%2Fimg.png)
-  format On Save 체크박스 체크
-  <br/><br/>
-  ![format Javascript](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJLJW5%2FbtqMCfv80in%2F6r5YB4IXWURYZUjnWFyPG1%2Fimg.png)
-  javascript Formatter 비활성화
+42 project Betti<br>
+Betti는 베타테스터와 서비스 개발자를 이어주는 솔루션 프로그램을 개발하는 프로젝트 입니다!
+
+## 개발 숙지 사항
+
+- 컨벤션
+- 개발환경
+
+<br>
+
+## 프로젝트 일정
+
+| 주차  | 내용                      | 상태    |
+| ----- | ------------------------- | ------- |
+| 0주차 | 기획, 화면설계, 팀원모집  | Done    |
+| 1주차 | 개발 환경 세팅, 업무 분담 | onGoing |
+
+<br>
+
+## 프로젝트 개발기
+
+- [1 주차 프로젝트 개발기 - ~~](https://www.google.com)
+
+<br>
+
+## 팀원 소개
+
+| 팀원    | stack   |
+| ------- | ------- |
+| ycha    | express |
+| suhshin | express |
+| sham    | express |
+| jiychoi | express |
+
+#

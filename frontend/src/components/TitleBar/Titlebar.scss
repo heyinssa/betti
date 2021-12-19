@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.titlebar {
+  width: 100vw;
+  height: 5vh;
+  background-color: black;
+  margin-bottom: 30px;
+  .title-logo {
+    float: left;
+  }
+  .titlebar-align-right {
+    display: flex;
+    flex-direction: row;
+    float: right;
+  }
+  .titlebar-icon {
+    margin: 1vh;
+    height: 3vh;
+    width: 3vh;
+    i {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 3vh;
+    }
+    img {
+      width: 3vh;
+      height: 3vh;
+      display: block;
+      background-color: white;
+      border-radius: 500rem;
+      object-fit: cover;
+    }
+  }
+}

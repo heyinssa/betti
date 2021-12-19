@@ -1,8 +1,33 @@
 $bgColor: #c4c4c4;
 
-@mixin text($size: 16px, $color: $mainColor) {
-  font-size: $size;
+@mixin text-nanum($size: 16px) {
+  //font-size: $size;
   font-family: 'nanum-gothic';
-  color: $color;
+  // color: $color;
   src: url(https://fonts.google.com/specimen/Nanum+Gothic?query=nanum#about);
+}
+
+@mixin text-inter($size: 20px) {
+  font-size: $size;
+  font-family: 'Inter', sans-serif;
+  // color: $color;
+}
+
+@mixin bold {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

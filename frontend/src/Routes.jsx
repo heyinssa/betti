@@ -1,25 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { Main, Chatting, Login, MyPage } from './src/pages';
-
-const Main = () => {
-  return <div className="container">main page</div>;
-};
-
-const Search = () => {
-  return <div className="container">search page</div>;
-};
-const MyPage = () => {
-  return <div className="container">mypage</div>;
-};
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  TesterMainPage,
+  TesterProfilePage,
+  TesterServiceDetailPage,
+  TesterWriteFeedbackPage,
+} from "./pages";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/mypage" component={MyPage} />
+        <Route exact path="/profile" component={TesterProfilePage} />
+        <Route exact path="/use" component={TesterMainPage} />
+        <Route exact path="/use/test1" component={TesterServiceDetailPage} />
+        <Route
+          exact
+          path="/use/test1/feedback"
+          component={TesterWriteFeedbackPage}
+        />
+        <Route exact path="/use/Test2" component={TesterServiceDetailPage} />
+        <Route
+          exact
+          path="/use/test2/feedback"
+          component={TesterWriteFeedbackPage}
+        />
       </Switch>
     </Router>
   );
