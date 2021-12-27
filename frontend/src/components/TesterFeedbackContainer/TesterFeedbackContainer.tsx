@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import TesterFeedbackStars from './TesterFeedbackStars';
 import Rating from '@mui/material/Rating';
 import './TesterFeedbackContainer.scss';
 
