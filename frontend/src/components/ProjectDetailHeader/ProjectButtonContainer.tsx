@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Icon, Label } from 'semantic-ui-react';
 import Modal from 'react-modal';
+import ProjectApplyModal from './ProjectApplyModal';
 
 const ProjectButtonContainer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,8 @@ const ProjectButtonContainer = () => {
   return (
     <div className="project-button-container">
       <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
-        hi //내용채울곳 <button onClick={handleClickCloseModal}>닫기</button>
+        <ProjectApplyModal />
+        <button onClick={handleClickCloseModal}>닫기</button>
       </Modal>
       <Button
         positive
