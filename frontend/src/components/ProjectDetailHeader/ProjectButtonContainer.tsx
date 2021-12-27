@@ -9,29 +9,27 @@ const ProjectButtonContainer = () => {
   ) => {
     e.preventDefault();
     setIsOpen(true);
-    console.log(isOpen);
   };
   const handleClickCloseModal = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
     setIsOpen(false);
-    console.log(isOpen);
   };
   useEffect(() => {
     Modal.setAppElement('body');
   }, []);
   return (
     <div className="project-button-container">
+      <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+        hi //내용채울곳 <button onClick={handleClickCloseModal}>닫기</button>
+      </Modal>
       <Button
         positive
         className="project-button"
         onClick={handleClickOpenModal}
       >
         베타테스트 신청
-        <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
-          hi //내용채울곳 <button onClick={handleClickCloseModal}>닫기</button>
-        </Modal>
       </Button>
       <Button as="div" labelPosition="right" className="project-button">
         <Button icon>
