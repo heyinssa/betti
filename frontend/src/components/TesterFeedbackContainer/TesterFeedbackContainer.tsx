@@ -1,10 +1,15 @@
-import { useState } from "react";
-import TesterFeedbackStars from "./TesterFeedbackStars";
-import "./TesterFeedbackContainer.scss";
+import { useState } from 'react';
+import TesterFeedbackStars from './TesterFeedbackStars';
+import Rating from '@mui/material/Rating';
+import './TesterFeedbackContainer.scss';
 
 const TesterFeedbackContainer = () => {
-  const [score, setScore] = useState(0);
-  const getFeedbackStars = (score: number) => {
+  const [score, setScore] = useState<number | null>(0);
+  const getFeedbackStars = (
+    e: React.SyntheticEvent<Element, Event>,
+    score: number | null,
+  ) => {
+    e.preventDefault;
     setScore(score);
   };
 
@@ -14,7 +19,7 @@ const TesterFeedbackContainer = () => {
       <form>
         <h2>파일 업로드</h2>
         <input type="file" name="review-image" accept="image/*" />
-        <TesterFeedbackStars getScoreFunc={getFeedbackStars} />
+        <Rating name="review-stars" value={score} onChange={getFeedbackStars} />
         <div>{String(score)}점</div>
         <textarea name="review-feedback"></textarea>
         <input type="submit" />
