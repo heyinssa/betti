@@ -45,12 +45,12 @@ const TesterMainPage = () => {
   };
 
   return (
-    <>
+    <div className="tester-body">
       <TitleBar />
       <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
       <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
       <TesterServiceRow serviceData={serviceData} ifFeedback={false} />
-    </>
+    </div>
   );
 };
 

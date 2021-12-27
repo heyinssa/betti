@@ -48,14 +48,14 @@ const TesterServiceDetailPage = () => {
     ],
   };
   return (
-    <>
+    <div className="tester-body">
       <TitleBar />
       <ProjectDetailHeader serviceData={serviceData} />
       <ProjectImageRow imageLinks={serviceData.detailImage} />
       <MarkdownTextContainer
         projectDetailText={serviceData.descriptionDetail}
       />
-    </>
+    </div>
   );
 };
 

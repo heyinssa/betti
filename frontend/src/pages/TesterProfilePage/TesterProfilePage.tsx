@@ -45,7 +45,7 @@ const TesterProfilePage = () => {
     ],
   };
   return (
-    <>
+    <div className="tester-body">
       <TitleBar />
       <div className="tester-profile-page">
         <div className="tester-profile-services">
@@ -55,7 +55,7 @@ const TesterProfilePage = () => {
         </div>
         <TesterProfileContainer />
       </div>
-    </>
+    </div>
   );
 };
 
