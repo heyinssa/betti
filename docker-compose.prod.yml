@@ -1,0 +1,61 @@
+version: "3.7"
+
+services:
+  proxy:
+    image: petercha2000/betti:proxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile.prod
+    platform: linux/amd64
+    restart: always
+    networks:
+      - default
+      - web_gate
+    depends_on:
+      - admin
+      - backend
+      - frontend
+  admin:
+    image: petercha2000/betti:admin
+    build:
+      context: ./admin
+      dockerfile: Dockerfile.prod
+      args:
+        PUBLIC_URL: $ADMIN__PUBLIC_URL
+        REACT_APP_BASE: $ADMIN__REACT_APP_BASE
+    platform: linux/amd64
+    restart: always
+    networks:
+      - default
+  frontend:
+    image: petercha2000/betti:frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        PUBLIC_URL: $FRONTEND__PUBLIC_URL
+        REACT_APP_BASE: $FRONTEND__REACT_APP_BASE
+    platform: linux/amd64
+    restart: always
+    networks:
+      - default
+    depends_on:
+      - backend
+  backend:
+    image: petercha2000/betti:backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    platform: linux/amd64
+    restart: always
+    volumes:
+      - ./backend/env:/usr/src/app/env
+    networks:
+      - default
+
+networks:
+  web_gate:
+    driver: bridge
+    external: true
+  default:
+    driver: bridge

@@ -1,0 +1,88 @@
+version: "3.7"
+
+services:
+  proxy:
+    image: betti:proxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile.dev
+    platform: linux/amd64
+    restart: always
+    stdin_open: true
+    tty: true
+    networks:
+      - default
+      - web_gate
+    depends_on:
+      - admin
+      - backend
+  admin:
+    image: betti:admin
+    build:
+      context: ./admin
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./admin/env/.env.development
+    platform: linux/amd64
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./admin:/usr/src/app
+    networks:
+      - default
+  frontend:
+    image: betti:frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./frontend/env/.env.development
+    platform: linux/amd64
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/usr/src/app
+    networks:
+      - default
+    depends_on:
+      - backend
+  backend:
+    image: betti:backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    platform: linux/amd64
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - default
+    depends_on:
+      - db
+  db:
+    image: mysql
+    restart: always
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db/data_dev:/var/lib/mysql
+    env_file:
+      - ./db/env/.env.development
+    networks:
+      - default
+      - tcp_gate
+
+networks:
+  web_gate:
+    driver: bridge
+    external: true
+  tcp_gate:
+    driver: bridge
+    external: true
+  default:
+    driver: bridge

@@ -6,7 +6,7 @@ import TeamRouter from './team/team.js';
 import ProviderRouter from './user/provider.js';
 import TesterRouter from './user/tester.js';
 import VersionRouter from './version/version.js';
-import UserRouter from './user/user.js'
+import UserRouter from './user/user.js';
 
 /**
  * Route
@@ -39,7 +39,6 @@ import UserRouter from './user/user.js'
 
 export default () => {
   const router = Router();
-
 
   router.use('/users', UserRouter);
   router.use('/elements', ElementRouter);
