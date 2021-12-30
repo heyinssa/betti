@@ -13,8 +13,9 @@ all		: build
 .PHONY:	build
 build	: clean
 	cat ./admin/env/.env.production > .env
+	echo '\n' >> .env
 	cat ./frontend/env/.env.production >> .env
-	sudo docker-compose -f docker-compose.prod.yml -p $(PROJECT)-prod --env-file .env build
+	sudo docker-compose -f docker-compose.prod.yml -p $(PROJECT)-prod --env-file .env build  
 	sudo docker-compose -f docker-compose.prod.yml -p $(PROJECT)-prod push
 	rm .env
 
