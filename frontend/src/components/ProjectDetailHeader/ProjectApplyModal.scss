@@ -1,0 +1,24 @@
+.apply-modal {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.date-container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: 10px 0px;
+}
+
+.date-button {
+  background-color: rgb(62, 62, 108);
+  color: white;
+  padding: 5px 10px;
+  width: 20ch;
+  border-radius: 50rem;
+  margin: 3px 3px;
+  i:hover {
+    cursor: pointer;
+  }
+}
