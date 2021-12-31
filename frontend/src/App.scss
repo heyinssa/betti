@@ -16,3 +16,7 @@ body,
 * {
   @include text-inter;
 }
+
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
