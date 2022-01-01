@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  build:
+  build_proxy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -29,6 +29,21 @@ jobs:
         push: true
         tags: petercha2000/betti:proxy
 
+  build_admin:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     - name: Build Admin and Push
       uses: docker/build-push-action@v2
       with:
@@ -37,8 +52,23 @@ jobs:
         push: true
         tags: petercha2000/betti:admin
         build-args: |
-            PUBLIC_URL: ${{ secrets.ADMIN__PUBLIC_URL }}
-            REACT_APP_BASE: ${{ secrets.ADMIN__REACT_APP_BASE }}
+            PUBLIC_URL=${{ secrets.ADMIN__PUBLIC_URL }}
+            REACT_APP_BASE=${{ secrets.ADMIN__REACT_APP_BASE }}
+
+  build_frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build Frontend and Push
       uses: docker/build-push-action@v2
@@ -48,8 +78,23 @@ jobs:
         push: true
         tags: petercha2000/betti:frontend
         build-args: |
-            PUBLIC_URL: ${{ secrets.FRONTEND__PUBLIC_URL }}
-            REACT_APP_BASE: ${{ secrets.FRONTEND__REACT_APP_BASE }}
+            PUBLIC_URL=${{ secrets.FRONTEND__PUBLIC_URL }}
+            REACT_APP_BASE=${{ secrets.FRONTEND__REACT_APP_BASE }}
+
+  build_backend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build Backend and Push
       uses: docker/build-push-action@v2
@@ -60,7 +105,7 @@ jobs:
         tags: petercha2000/betti:backend
 
   deploy:
-    needs: build
+    needs: [build_proxy, build_admin, build_frontend, build_backend]
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using key
