@@ -8,4 +8,5 @@ servers:
     description: 'Development server'
   - url: 'http://betti.kr:8001'
     description: 'Production server'
-basePath: '/api'
+basePath: '/'
+path: /documentation/v2/api-docs

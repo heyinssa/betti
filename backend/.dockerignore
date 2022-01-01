@@ -3,7 +3,6 @@
 .gitignore
 .vscode
 firebase_private.json
-docs
 env
 node_modules
 Dockerfile.*

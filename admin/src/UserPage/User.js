@@ -9,25 +9,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 
-const User = ({ dice_count }) => {
+const User = () => {
   const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const url = `https://skyrich3.synology.me:7780/dueldice/dev/api/statistic/users/${dice_count}`;
-
-    axios
-      .get(url)
-      .then((response) => {
-        setUsers(
-          response.data.sort(function (a, b) {
-            return new Date(b.createdAt) - new Date(a.createdAt);
-          })
-        );
-      })
-      .catch((error) => {
-        console.log(`${url} 호출 실패!`);
-      });
-  }, [dice_count]);
 
   return (
     <Stack sx={{ width: "100%", maxWidth: 200, bgcolor: "background.paper" }}>
@@ -37,7 +20,7 @@ const User = ({ dice_count }) => {
         gutterBottom
         sx={{ textAlign: "center" }}
       >
-        User {dice_count}
+        User
       </Typography>
       <List>
         {users.map((user, index) => {

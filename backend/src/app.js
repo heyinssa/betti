@@ -11,7 +11,7 @@ import errorLoader from './loaders/error.js';
 
 const app = express();
 
-app.use('/api/docs', ...swaggerLoader);
+app.use('/docs', ...swaggerLoader);
 app.use(...expressLoader);
 // uploadLoader();
 
