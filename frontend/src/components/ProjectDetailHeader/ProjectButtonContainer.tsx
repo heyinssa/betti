@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Icon, Label } from 'semantic-ui-react';
 import Modal from 'react-modal';
-import ProjectApplyModal from './ProjectApplyModal';
+import { ProjectApplyModal } from '../Modals';
 
 const ProjectButtonContainer = () => {
   const [isOpen, setIsOpen] = useState(false);
