@@ -67,7 +67,9 @@ const ProjectApplyModal = () => {
       <DatePicker
         selected={new Date()}
         minDate={new Date()}
+        showPopperArrow={false}
         onChange={handleOnChangeDate}
+        excludeDates={availableDate as Date[]}
         inline
       />
       <div className="date-container">
