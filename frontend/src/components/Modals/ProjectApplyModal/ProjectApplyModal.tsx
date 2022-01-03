@@ -61,7 +61,7 @@ const ProjectApplyModal = () => {
   };
 
   return (
-    <div className="apply-modal">
+    <>
       <h1>서비스 베타테스트 신청하기</h1>
       <h2>날짜 선택</h2>
       <DatePicker
@@ -87,7 +87,7 @@ const ProjectApplyModal = () => {
           </>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
