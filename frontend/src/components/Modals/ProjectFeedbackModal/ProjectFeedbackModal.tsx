@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Rating from '@mui/material/Rating';
+import TextareaAutosize from 'react-textarea-autosize';
+import './ProjectFeedbackModal.scss';
 
 const ProjectFeedbackModal = () => {
   const [score, setScore] = useState<number | null>(0);
@@ -21,7 +23,7 @@ const ProjectFeedbackModal = () => {
         <Rating name="review-stars" value={score} onChange={getFeedbackStars} />
         <div>{String(score)}점</div>
         <br />
-        <textarea name="review-feedback"></textarea>
+        <TextareaAutosize id="review-feedback" name="review-feedback" />
         <input type="submit" />
       </form>
     </>
