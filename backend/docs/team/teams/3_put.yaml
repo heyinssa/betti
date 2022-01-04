@@ -1,0 +1,62 @@
+paths:
+  /api/teams/{id}:
+    put:
+      tags:
+        - 팀 / 팀
+      summary: 팀 정보를 수정합니다.
+      description: >
+        팀를 수정합니다. <br>
+        주어진 id의 팀 정보를 수정합니다.
+      parameters:
+        - in: path
+          name: id
+          description: 팀 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: 예시 id 넣어야함
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                team_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                introduce:
+                  type: string
+                image_id:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 팀 정보가 변경되었습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+              example:
+                team_id: '[UUID]'
+                name: 팀 이름
+                introduce: 팀 소개
+                image_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 팀입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'User not found: 6e846587-3c40-44c7-bf90-5033e396196b'
+        '406':
+          description: 잘못된 요청으로 인한 DB 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'DB ERROR: [error message]'

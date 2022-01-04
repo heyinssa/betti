@@ -4,6 +4,9 @@ info:
   version: '0.0.1'
   description: 'Betti API docs'
 servers:
-  - url: 'http://ec2-3-34-2-242.ap-northeast-2.compute.amazonaws.com:8000'
+  - url: 'http://betti.kr:8000'
     description: 'Development server'
-basePath: '/api'
+  - url: 'http://betti.kr:8001'
+    description: 'Production server'
+basePath: '/'
+path: /documentation/v2/api-docs

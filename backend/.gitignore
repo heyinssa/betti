@@ -4,8 +4,11 @@ Pull requests
 Issues
 Marketplace
 Explore
- 
-@Skyrich2000 
+
+.vscode
+res/upload
+
+@Skyrich2000
 github
 /
 gitignore
@@ -27,7 +30,7 @@ Latest commit d0f9781 on 25 May
  61 contributors
 @stuartpb@shiftkey@SimonSiefke@TennyZhuang@venatoria@ro31337@Richienb@melonmanchan@kachick@gouthamve@jucrouzet@cheddar
 118 lines (88 sloc)  1.81 KB
-   
+
 # Logs
 logs
 *.log
@@ -152,7 +155,6 @@ Terms
 Privacy
 Security
 Status
-Docs
 Contact GitHub
 Pricing
 API

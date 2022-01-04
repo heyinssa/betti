@@ -1,0 +1,58 @@
+paths:
+  /api/testers/{tester}:
+    post:
+      tags:
+        - 유저 / 테스터
+      summary: 테스터를 수정합니다.
+      parameters:
+        - in: path
+          name: tester
+          description: 테스터 고유 아이디
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: '[UUID]'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                tester_id:
+                  type: string
+                  format: uuid
+                id:
+                  type: string
+                password:
+                  type: string
+                birth:
+                  type: string
+                nickname:
+                  type: string
+                image_id:
+                  type: string
+                  format: uuid
+
+      responses:
+        '200':
+          description: 테스터를 수정합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tester'
+              example:
+                tester_id: '[UUID]'
+                id: 테스터 아이디
+                password: 테스터 비밀번호
+                birth: 테스터 생년월일
+                nickname: 테스터 닉네임
+                image_id: '[UUID]'
+        '404':
+          description: 존재하지 않는 테스터입니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: 'Tester not found: [UUID]'

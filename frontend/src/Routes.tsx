@@ -26,7 +26,7 @@ const Rounter = () => {
 
   return (
     <>
-      <Router>
+      <Router basename={process.env.REACT_APP_BASE}>
         <Switch>
           <Route exact path="/" component={LoginPage} /> //로그인 페이지로 변경
           <Route exact path="/pro" component={ProviderMainPage} />

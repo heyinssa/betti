@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+.vscode
+firebase_private.json
+env
+node_modules
+Dockerfile.*
+Makefile
+docker-compose.yml
+README.md
+npm-debug.log
+.prettierrc.cjs
+.eslintrc.cjs

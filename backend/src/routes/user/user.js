@@ -1,15 +1,22 @@
 import express from 'express';
 import 'express-async-errors';
 
-import UserController from '../../controllers/user/user.js';
-import { validateUserBody } from '../../middleware/validator/validateUser.js';
-import { validateError } from '../../middleware/validator/validateError.js';
+import { uploadImage } from '../../middleware/upload/imageHandle.js';
+import { UserController } from '../../controllers/index.js';
 
 const router = express.Router();
 
-router.get('/:id', UserController.getUser);
-router.post('/', validateUserBody, validateError, UserController.createUser);
-router.put('/:id', validateUserBody, validateError, UserController.updateUser);
-router.delete('/:id', UserController.deleteUser);
+/* User (PK) */
+
+router.get('/:user', UserController.get);
+router.post('/', ...uploadImage('image'), UserController.create);
+router.put('/:user', UserController.update);
+router.delete('/:user', UserController.remove);
+
+// /* Team (Equal FK) */
+
+// router.get('/:user/teams', UserController.getTeams);
+// router.post('/:user/teams/:team', UserController.joinTeam);
+// router.delete('/:user/teams/:team', UserController.leaveTeam);
 
 export default router;

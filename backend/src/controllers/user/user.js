@@ -1,41 +1,120 @@
-import UserService from '../../services/user/user.js';
+import { FeedbackService, UserService } from '../../services/index.js';
+import jsonwebtoken from 'jsonwebtoken';
 
-async function getUser(req, res, next) {
-  const { id } = req.params;
+/* JWT  */
+const YOUR_SECRET_KEY = process.env.SECRET_KEY;
 
-  const user = await UserService.getUser(id);
+async function createToken(req, res, next) {
+  const user_id = req.params.user;
+  try {
+    const user = await UserService.getByUserId(user_id);
+    if (user.length) {
+      const token = jsonwebtoken.sign(
+        {
+          user_id: user[0].user_id,
+        },
+        YOUR_SECRET_KEY,
+        {
+          expiresIn: '1h',
+        },
+      );
+      res.cookie('user', token);
+      res.status(201).json({
+        result: 'ok',
+        token,
+      });
+    } else {
+      res.status(400).json({ error: 'invalid user' });
+    }
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+}
+
+/* User (PK) */
+
+async function get(req, res, next) {
+  const user_id = req.params.user;
+
+  const user = await UserService.getByUserId(user_id);
 
   res.status(200).json(user);
 }
 
-async function createUser(req, res, next) {
-  const { name } = req.body;
+async function create(req, res, next) {
+  const imagefile = req.image;
+  const {
+    id, //
+    password,
+    birth,
+    nickname,
+    oauth_token,
+    access_token,
+  } = req.body;
 
-  const user = await UserService.createUser(name);
+  const user = await UserService.create(
+    id, //
+    password,
+    birth,
+    nickname,
+    imagefile,
+    oauth_token,
+    access_token,
+  );
 
   res.status(200).json(user);
 }
 
-async function updateUser(req, res, next) {
-  const { id } = req.params;
-  const { name } = req.body;
+async function update(req, res, next) {
+  const user_id = req.params.user;
+  const {
+    id, //
+    password,
+    birth,
+    nickname,
+    image_id,
+    oauth_token,
+    access_token,
+  } = req.body;
 
-  const user = await UserService.updateUser(id, name);
+  const user = await UserService.update(
+    user_id, //
+    id,
+    password,
+    birth,
+    nickname,
+    image_id,
+    oauth_token,
+    access_token,
+  );
 
   res.status(200).json(user);
 }
 
-async function deleteUser(req, res, next) {
-  const { id } = req.params;
+async function remove(req, res, next) {
+  const user_id = req.params.user;
 
-  await UserService.deleteUser(id);
+  await UserService.removeByUserId(user_id);
 
   res.sendStatus(200);
 }
 
+/* Feedback (Lower FK) */
+
+async function getFeedbacks(req, res, next) {
+  const user_id = req.params.user;
+
+  const user = await FeedbackService.getByUserId(user_id);
+
+  res.status(200).json(user);
+}
+
 export default {
-  getUser,
-  createUser,
-  updateUser,
-  deleteUser,
+  createToken,
+  get,
+  create,
+  update,
+  remove,
+  getFeedbacks,
 };
