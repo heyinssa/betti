@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Button, List } from 'semantic-ui-react';
+import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+
 import { addTest, TestType } from '../../modules/Provider';
 
 const MakeTestForms = () => {
@@ -10,13 +13,16 @@ const MakeTestForms = () => {
   const [testInfo, setTestInfo] = useState('');
   const [testLink, setTestLink] = useState('');
   const [testPlatform, setTestPlatform] = useState('');
-  const [testScheduleStart, setTestScheduleStart] = useState(0);
-  const [testScheduleEnd, setTestScheduleEnd] = useState(0);
+  const [testSchedule, setTestSchedule] = useState<Date | Date[]>();
   const [testMember, setTestMember] = useState('');
   const [formState, setformState] = useState('first');
   const dispatch = useDispatch();
+  let val: Date | Date[] | null | undefined;
 
-  const isEmtpy = (state: string | number, data: string) => {
+  const isEmtpy = (
+    state: string | number | Date | Date[] | undefined,
+    data: string,
+  ) => {
     if (formState === 'wrong' && (state === '' || state === 0)) {
       return { content: `${data} 입력하세요`, pointing: 'left' };
     }
@@ -24,13 +30,19 @@ const MakeTestForms = () => {
   };
   const handleSumbitTest = () => {
     console.log(formState);
+    console.log(testSchedule);
+    console.log(val);
+    // const testScheduleStart = testSchedule === undefined ? 0 : testSchedule[0];
+    // const testScheduleEnd = testSchedule === undefined ? 0 : testSchedule[1];
+    // console.log(testScheduleStart.toLocaleString);
+    val = null;
     if (
       testName === '' ||
       testInfo === '' ||
       testLink === '' ||
-      testPlatform === '' ||
-      testScheduleStart === 0 ||
-      testScheduleEnd === 0
+      testPlatform === ''
+      // testScheduleStart === '' ||
+      // testScheduleEnd === ''
     ) {
       setformState('wrong');
     } else {
@@ -39,8 +51,8 @@ const MakeTestForms = () => {
         intro: testInfo,
         link: testLink,
         platform: testPlatform,
-        startDay: testScheduleStart,
-        endDay: testScheduleEnd,
+        startDay: 0,
+        endDay: 0,
       };
       dispatch(addTest(form));
       setformState('cleared');
@@ -61,67 +73,66 @@ const MakeTestForms = () => {
   const changePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTestPlatform(e.currentTarget.value);
   };
-  const changeScheduleStart = (e: any) => {
-    setTestScheduleStart(e.currentTarget.value);
+  const changeSchedule = (
+    event: React.SyntheticEvent<Element, Event> | undefined,
+    data: any,
+  ) => {
+    setTestSchedule(data.value);
   };
-  const changeScheduleEnd = (e: any) => {
-    setTestScheduleEnd(e.currentTarget.value);
-  };
+
   const changeMember = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTestMember(e.currentTarget.value);
   };
   return (
     <>
       <Form>
-        <Form.Field
-          control="input"
-          label="서비스 이름"
-          type="string"
-          placeholder="서비스 이름"
-          onChange={changeName}
-          error={isEmtpy(testName, '이름을')}
-        />
+        <div>
+          <Form.Field
+            control="input"
+            label="서비스 이름"
+            type="string"
+            placeholder="서비스 이름"
+            onChange={changeName}
+            error={isEmtpy(testName, '이름을')}
+          />
+          <Form.Field
+            control="input"
+            label="서비스 소개"
+            type="string"
+            placeholder="서비스 소개"
+            onChange={changeInfo}
+            error={isEmtpy(testInfo, '정보를')}
+          />
+          <Form.Field
+            control="input"
+            label="서비스 링크"
+            type="string"
+            placeholder="링크"
+            onChange={changeLink}
+            error={isEmtpy(testLink, '링크를')}
+          />
+          <Form.Field
+            control="input"
+            label="플랫폼"
+            type="string"
+            placeholder="플랫폼"
+            onChange={changePlatform}
+            error={isEmtpy(testPlatform, '플랫폼을')}
+          />
+          <SemanticDatepicker
+            locale="en-US"
+            label="일정"
+            onChange={changeSchedule}
+            type="range"
+            value={val}
+          />
+          {testSchedule === undefined && formState === 'wrong' && (
+            <div className="ui left pointing red basic label">
+              Please enter a value
+            </div>
+          )}
+        </div>
 
-        <Form.Field
-          control="input"
-          label="서비스 소개"
-          type="string"
-          placeholder="서비스 소개"
-          onChange={changeInfo}
-          error={isEmtpy(testInfo, '정보를')}
-        />
-        <Form.Field
-          control="input"
-          label="서비스 링크"
-          type="string"
-          placeholder="링크"
-          onChange={changeLink}
-          error={isEmtpy(testLink, '링크를')}
-        />
-        <Form.Field
-          control="input"
-          label="플랫폼"
-          type="string"
-          placeholder="플랫폼"
-          onChange={changePlatform}
-          error={isEmtpy(testPlatform, '플랫폼을')}
-        />
-        <Form.Input
-          control="input"
-          label="시작 일정"
-          type="number"
-          placeholder="일정"
-          onChange={changeScheduleStart}
-          error={isEmtpy(testScheduleStart, '시작 날짜를')}
-        />
-        <Form.Field
-          control="input"
-          label="종료 일정"
-          type="number"
-          placeholder="일정"
-          onChange={changeScheduleEnd}
-          error={isEmtpy(testScheduleEnd, '끝나는 날짜를')}
-        />
         <List horizontal>
           <List.Item>
             <Form.Field control={Button} onClick={handleSumbitTest}>
