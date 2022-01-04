@@ -5,6 +5,7 @@ import ProjectImageRow from './ProjectImageRow';
 import TesterServiceRow from './TesterServiceRow';
 import TesterServiceColumn from './TesterServiceColumn';
 import TitleBar from './TitleBar';
+import NotificationCenter from './NotificationCenter';
 
 //개발자 페이지
 import { MainScreen } from './MainScreen';
@@ -23,4 +24,5 @@ export {
   TesterServiceRow,
   TesterServiceColumn,
   TitleBar,
+  NotificationCenter,
 };
