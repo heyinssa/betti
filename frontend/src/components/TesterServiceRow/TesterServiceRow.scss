@@ -22,6 +22,9 @@
     overflow-x: scroll;
     overflow-y: hidden;
     margin: 10px;
+    a.ui.card:hover {
+      z-index: 0 !important;
+    }
     .tester-service-container {
       margin-top: 0;
       height: 100%;
