@@ -11,7 +11,6 @@ type feedbackType = {
 
 const ProjectFeedbackModal = () => {
   const [score, setScore] = useState<number | null>(0);
-  const [ifUpdate, setIfUpdate] = useState<boolean>(false);
   const getFeedbackStars = (
     e: React.SyntheticEvent<Element, Event>,
     score: number | null,
