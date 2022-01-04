@@ -25,6 +25,7 @@ const ProjectFeedbackModal = () => {
       errors.review_feedback = '피드백 길이가 너무 짧습니다';
     if (value.review_stars < 0 || value.review_stars > 5)
       errors.review_stars = '';
+    return errors;
   };
   const feedbackForm = useFormik({
     enableReinitialize: true,
