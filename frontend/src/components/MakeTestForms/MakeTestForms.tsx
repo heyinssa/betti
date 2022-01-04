@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form, Button, List } from 'semantic-ui-react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
@@ -146,7 +146,7 @@ const MakeTestForms = () => {
           </List.Item>
         </List>
       </Form>
-      {formState === 'cleared' && <Redirect to="/pro" />}
+      {/* {formState === 'cleared' && <Redirect to="/pro" />} */}
     </>
   );
 };

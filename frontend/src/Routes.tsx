@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './modules';
 import {
@@ -27,27 +22,25 @@ const Rounter = () => {
   return (
     <>
       <Router basename={process.env.REACT_APP_BASE}>
-        <Switch>
-          <Route exact path="/" component={LoginPage} /> //로그인 페이지로 변경
-          <Route exact path="/pro" component={ProviderMainPage} />
-          <Route exact path="/pro/make" component={ProviderMakeTestPage} />
-          <Route exact path="/pro/:team/:test" component={ProviderTestPage} />
-          <Route exact path="/profile" component={TesterProfilePage} />
-          <Route exact path="/use" component={TesterMainPage} />
-          <Route exact path="/use/test1" component={TesterServiceDetailPage} />
+        <Routes>
+          <Route path="/" element={<LoginPage />} /> //로그인 페이지로 변경
+          <Route path="/pro" element={<ProviderMainPage />} />
+          <Route path="/pro/make" element={<ProviderMakeTestPage />} />
+          <Route path="/pro/:team/:test" element={<ProviderTestPage />} />
+          <Route path="/profile" element={<TesterProfilePage />} />
+          <Route path="/use" element={<TesterMainPage />} />
+          <Route path="/use/test1" element={<TesterServiceDetailPage />} />
           <Route
-            exact
             path="/use/test1/feedback"
-            component={TesterWriteFeedbackPage}
+            element={<TesterWriteFeedbackPage />}
           />
-          <Route exact path="/use/Test2" component={TesterServiceDetailPage} />
+          <Route path="/use/Test2" element={<TesterServiceDetailPage />} />
           <Route
-            exact
             path="/use/test2/feedback"
-            component={TesterWriteFeedbackPage}
+            element={<TesterWriteFeedbackPage />}
           />
-          <Route path="/" component={errorPage} />
-        </Switch>
+          <Route path="/" element={errorPage} />
+        </Routes>
         {/* {!state.isLogin && <Redirect to="/"/>} */}
       </Router>
     </>

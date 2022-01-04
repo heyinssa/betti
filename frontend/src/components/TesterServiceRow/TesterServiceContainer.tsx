@@ -1,5 +1,5 @@
 import { Card, CardProps, Icon, Image } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ServiceType } from '../../modules/User';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
@@ -15,7 +15,7 @@ const TesterServiceContainer = ({
   ifFeedback,
 }: ServiceRowType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleClickIfFeedback = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
@@ -27,7 +27,7 @@ const TesterServiceContainer = ({
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     e.preventDefault();
-    history.push(serviceData.link);
+    navigate(serviceData.link);
   };
 
   const handleClickCloseModal = (
