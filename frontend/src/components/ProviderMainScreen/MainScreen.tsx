@@ -4,12 +4,12 @@ import { teamDataType } from "../../modules/Provider"
 import './MainScreen.scss';
 
 type MainScreenType = {
-  teamData : teamDataType[],
-  curTeam : number,
-  curTest : number
+  teamData: teamDataType[],
+  curTeam: number,
+  curTest: number
 }
 
-const MainScreen = ({ teamData, curTeam, curTest } : MainScreenType) => {
+const ProviderMainScreen = ({ teamData, curTeam, curTest }: MainScreenType) => {
   return (
     <div className="main-screen">
       <MainScreenHeader teamData={teamData} curTeam={curTeam} />
@@ -23,4 +23,4 @@ const MainScreen = ({ teamData, curTeam, curTest } : MainScreenType) => {
   );
 };
 
-export default MainScreen;
+export default ProviderMainScreen;

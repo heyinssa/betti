@@ -8,18 +8,18 @@ import { addTeam, teamDataType } from '../../modules/Provider'
 import './TeamBar.scss';
 
 type TeamBarType = {
-  teamData : teamDataType[]
+  teamData: teamDataType[]
 }
 
-const TeamBar = ({ teamData }: TeamBarType) => {
+const ProviderTeamBar = ({ teamData }: TeamBarType) => {
   const [open, close, isOpen] = useModalHandle();
   const [teamName, setTeamName] = useState('');
   const dispatch = useDispatch();
 
-  const changeName = (e :React.ChangeEvent<HTMLInputElement>) => {
+  const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTeamName(e.currentTarget.value);
   };
-  const addTeamEvent = (e : React.FormEvent<HTMLFormElement>) => {
+  const addTeamEvent = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (teamName === '') return;
     dispatch(addTeam(teamName));
@@ -51,4 +51,4 @@ const TeamBar = ({ teamData }: TeamBarType) => {
   );
 };
 
-export default TeamBar;
+export default ProviderTeamBar;

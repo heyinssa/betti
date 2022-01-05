@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-import { TeamBar, MainScreen } from '../../components';
+import { ProviderTeamBar, ProviderMainScreen } from '../../components';
 
 import './Main.scss';
 
@@ -14,8 +14,8 @@ const ProviderMainPage = () => {
     <>
       {teamData && (
         <div className="page-main">
-          <TeamBar teamData={teamData} />
-          <MainScreen teamData={teamData} curTeam={curTeam} curTest={curTest} />
+          <ProviderTeamBar teamData={teamData} />
+          <ProviderMainScreen teamData={teamData} curTeam={curTeam} curTest={curTest} />
         </div>
       )}
     </>
