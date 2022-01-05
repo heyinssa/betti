@@ -8,12 +8,12 @@ const ShowTest = ({ testData }: ShowTestType) => {
     <div className="main-screen-test-info">
       {testData && (
         <>
-          <h1>{testData.name}</h1>
-          <h1>{testData.intro}</h1>
-          <h1>{testData.link}</h1>
-          <h1>{testData.platform}</h1>
-          <h1>{testData.startDay}</h1>
-          <h1>{testData.endDay}</h1>
+          <h1>팀 이름 : {testData.name}</h1>
+          <h1>팀 정보 : {testData.intro}</h1>
+          <h1>팀 링크 : {testData.link}</h1>
+          <h1>팀 플랫폼 : {testData.platform}</h1>
+          <h1>{testData.members.map(e => { return (<text> {e} </text>) })}</h1>
+          <h1>{testData.startDay} ~ {testData.endDay}</h1>
         </>
       )}
     </div>

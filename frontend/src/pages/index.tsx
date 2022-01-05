@@ -7,13 +7,13 @@ import TesterWriteFeedbackPage from './TesterWriteFeedbackPage';
 // 개발자 페이지
 import ProviderMainPage from './ProviderMainPage';
 import ProviderMakeTestPage from './ProviderMakeTestPage';
-import ProviderTestPage from './ProviderTestPage';
+import ProviderTestDetailPage from './ProviderTestDetailPage';
 import LoginPage from './LoginPage';
 
 export {
   ProviderMainPage,
   ProviderMakeTestPage,
-  ProviderTestPage,
+  ProviderTestDetailPage,
   LoginPage,
   TesterMainPage,
   TesterProfilePage,
