@@ -12,10 +12,6 @@ import {
   ProviderTestPage,
 } from './pages';
 
-const errorPage = () => {
-  return <div>error!</div>;
-};
-
 const Rounter = () => {
   const state = useSelector((state: RootState) => state.Login);
 
@@ -39,7 +35,7 @@ const Rounter = () => {
             path="/use/test2/feedback"
             element={<TesterWriteFeedbackPage />}
           />
-          <Route path="/" element={errorPage} />
+          <Route path="/*" element={<LoginPage />} />
         </Routes>
         {/* {!state.isLogin && <Redirect to="/"/>} */}
       </Router>

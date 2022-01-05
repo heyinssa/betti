@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, List } from 'semantic-ui-react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
-
 import { addTest, TestType } from '../../modules/Provider';
+
 const returnMonth = (month: string): string => {
   switch (month) {
     case 'Jan':
@@ -37,14 +37,12 @@ const returnMonth = (month: string): string => {
   }
 };
 
-const returnDate = (data: string): string => {
-  console.log('data : ', data);
+const returnDate = (data: string): number => {
+  if (data === undefined) return -1;
   const year = data.substr(11, 4);
   const month = returnMonth(data.substr(4, 3));
   const day = data.substr(8, 2);
-  console.log(year + month + day);
-  //Thu Feb 17 2022 00:00:00 GMT+0900
-  return 'temp';
+  return parseInt(year + month + day);
 };
 const MakeTestForms = () => {
   // useState<string | null>('');
@@ -56,6 +54,7 @@ const MakeTestForms = () => {
   const [testMember, setTestMember] = useState('');
   const [formState, setformState] = useState('first');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isEmtpy = (state: string | number | any | undefined, data: string) => {
     if (formState === 'wrong' && (state === '' || state === 0)) {
@@ -65,22 +64,16 @@ const MakeTestForms = () => {
   };
   const handleSumbitTest = () => {
     console.log(formState);
-    if (testSchedule !== undefined) {
-      console.log(typeof testSchedule[0]);
-      const testScheduleStart = returnDate(testSchedule[0].toString());
-      const testScheduleEnd = returnDate(testSchedule[1].toString());
-    }
+    const testScheduleStart = returnDate(testSchedule[0]?.toString());
+    const testScheduleEnd = returnDate(testSchedule[1]?.toString());
+    if (testScheduleStart === -1) setTestSchedule(undefined);
     console.log(testSchedule);
-    // const testScheduleStart = testSchedule === undefined ? 0 : testSchedule[0];
-    // const testScheduleEnd = testSchedule === undefined ? 0 : testSchedule[1];
-    // console.log(testScheduleStart.toLocaleString);
     if (
       testName === '' ||
       testInfo === '' ||
       testLink === '' ||
-      testPlatform === ''
-      // testScheduleStart === '' ||
-      // testScheduleEnd === ''
+      testPlatform === '' ||
+      testSchedule === undefined
     ) {
       setformState('wrong');
     } else {
@@ -89,11 +82,12 @@ const MakeTestForms = () => {
         intro: testInfo,
         link: testLink,
         platform: testPlatform,
-        startDay: 0,
-        endDay: 0,
+        startDay: testScheduleStart,
+        endDay: testScheduleEnd,
       };
       dispatch(addTest(form));
-      setformState('cleared');
+      // setformState('cleared');
+      navigate('/pro');
     }
   };
 
@@ -121,6 +115,7 @@ const MakeTestForms = () => {
   const changeMember = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTestMember(e.currentTarget.value);
   };
+
   return (
     <>
       <Form>
@@ -165,7 +160,7 @@ const MakeTestForms = () => {
           />
           {testSchedule === undefined && formState === 'wrong' && (
             <div className="ui left pointing red basic label">
-              Please enter a value
+              날짜를 입력해주세요
             </div>
           )}
         </div>
