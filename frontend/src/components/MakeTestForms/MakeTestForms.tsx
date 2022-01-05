@@ -6,23 +6,58 @@ import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 import { addTest, TestType } from '../../modules/Provider';
+const returnMonth = (month: string): string => {
+  switch (month) {
+    case 'Jan':
+      return '01';
+    case 'Feb':
+      return '02';
+    case 'Mar':
+      return '03';
+    case 'Apr':
+      return '04';
+    case 'May':
+      return '05';
+    case 'Jun':
+      return '06';
+    case 'Jul':
+      return '07';
+    case 'Aug':
+      return '08';
+    case 'Sep':
+      return '09';
+    case 'Oct':
+      return '10';
+    case 'Nov':
+      return '11';
+    case 'Dec':
+      return '12';
+    default:
+      return '00';
+  }
+};
 
+const returnDate = (data: string): string => {
+  console.log('data : ', data);
+  const year = data.substr(11, 4);
+  const month = returnMonth(data.substr(4, 3));
+  const day = data.substr(8, 2);
+  console.log(year + month + day);
+  //Thu Feb 17 2022 00:00:00 GMT+0900
+  return 'temp';
+};
 const MakeTestForms = () => {
   // useState<string | null>('');
   const [testName, setTestName] = useState('');
   const [testInfo, setTestInfo] = useState('');
   const [testLink, setTestLink] = useState('');
   const [testPlatform, setTestPlatform] = useState('');
-  const [testSchedule, setTestSchedule] = useState<Date | Date[]>();
+  const [testSchedule, setTestSchedule] = useState<any | undefined>([]);
   const [testMember, setTestMember] = useState('');
   const [formState, setformState] = useState('first');
   const dispatch = useDispatch();
-  let val: Date | Date[] | null | undefined;
 
-  const isEmtpy = (
-    state: string | number | Date | Date[] | undefined,
-    data: string,
-  ) => {
+  const isEmtpy = (state: string | number | any | undefined, data: string) => {
     if (formState === 'wrong' && (state === '' || state === 0)) {
       return { content: `${data} 입력하세요`, pointing: 'left' };
     }
@@ -30,12 +65,15 @@ const MakeTestForms = () => {
   };
   const handleSumbitTest = () => {
     console.log(formState);
+    if (testSchedule !== undefined) {
+      console.log(typeof testSchedule[0]);
+      const testScheduleStart = returnDate(testSchedule[0].toString());
+      const testScheduleEnd = returnDate(testSchedule[1].toString());
+    }
     console.log(testSchedule);
-    console.log(val);
     // const testScheduleStart = testSchedule === undefined ? 0 : testSchedule[0];
     // const testScheduleEnd = testSchedule === undefined ? 0 : testSchedule[1];
     // console.log(testScheduleStart.toLocaleString);
-    val = null;
     if (
       testName === '' ||
       testInfo === '' ||
@@ -124,7 +162,6 @@ const MakeTestForms = () => {
             label="일정"
             onChange={changeSchedule}
             type="range"
-            value={val}
           />
           {testSchedule === undefined && formState === 'wrong' && (
             <div className="ui left pointing red basic label">
