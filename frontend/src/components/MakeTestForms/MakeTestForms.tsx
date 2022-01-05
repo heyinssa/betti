@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button, List } from 'semantic-ui-react';
+import { Form, Button, List, Label, Icon, Grid } from 'semantic-ui-react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import { addTest, TestType } from '../../modules/Provider';
@@ -44,30 +44,43 @@ const returnDate = (data: string): number => {
   const day = data.substr(8, 2);
   return parseInt(year + month + day);
 };
+
 const MakeTestForms = () => {
-  // useState<string | null>('');
   const [testName, setTestName] = useState('');
   const [testInfo, setTestInfo] = useState('');
   const [testLink, setTestLink] = useState('');
   const [testPlatform, setTestPlatform] = useState('');
-  const [testSchedule, setTestSchedule] = useState<any | undefined>([]);
+  const [testSchedule, setTestSchedule] = useState<any | null | undefined>(
+    null,
+  );
   const [testMember, setTestMember] = useState('');
+  const [testMembers, setTestMembers] = useState<string[]>([]);
   const [formState, setformState] = useState('first');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isEmtpy = (state: string | number | any | undefined, data: string) => {
+  const isEmtpy = (state: string | number, data: string) => {
     if (formState === 'wrong' && (state === '' || state === 0)) {
       return { content: `${data} 입력하세요`, pointing: 'left' };
     }
     return false;
   };
+
+  const handleSumbitMember = () => {
+    setTestMembers(prevArray => {
+      return [...prevArray, testMember];
+    });
+    setTestMember('');
+  };
   const handleSumbitTest = () => {
-    console.log(formState);
+    console.log(testSchedule);
+    if (testSchedule === null || testSchedule === undefined) {
+      setformState('wrong');
+      return;
+    }
     const testScheduleStart = returnDate(testSchedule[0]?.toString());
     const testScheduleEnd = returnDate(testSchedule[1]?.toString());
-    if (testScheduleStart === -1) setTestSchedule(undefined);
-    console.log(testSchedule);
+    if (testScheduleEnd === -1) setTestSchedule(undefined);
     if (
       testName === '' ||
       testInfo === '' ||
@@ -105,15 +118,15 @@ const MakeTestForms = () => {
   const changePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTestPlatform(e.currentTarget.value);
   };
+  const changeMember = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTestMember(e.currentTarget.value);
+  };
   const changeSchedule = (
     event: React.SyntheticEvent<Element, Event> | undefined,
     data: any,
   ) => {
+    console.log(data.value);
     setTestSchedule(data.value);
-  };
-
-  const changeMember = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTestMember(e.currentTarget.value);
   };
 
   return (
@@ -152,17 +165,41 @@ const MakeTestForms = () => {
             onChange={changePlatform}
             error={isEmtpy(testPlatform, '플랫폼을')}
           />
+          <Grid>
+            <Form.Field
+              control="input"
+              label="멤버"
+              type="string"
+              placeholder="멤버 이름"
+              value={testMember}
+              onChange={changeMember}
+              error={isEmtpy(testPlatform, '멤버를')}
+            />
+            <Form.Field control={Button} onClick={handleSumbitMember}>
+              멤버 추가
+            </Form.Field>
+            {testMembers.map((e, i) => (
+              <Label id={i}>
+                {e}
+                <Icon name="delete" />
+              </Label>
+            ))}
+          </Grid>
+
           <SemanticDatepicker
             locale="en-US"
             label="일정"
+            format="YYYY-MM-DD"
+            datePickerOnly
             onChange={changeSchedule}
             type="range"
           />
-          {testSchedule === undefined && formState === 'wrong' && (
-            <div className="ui left pointing red basic label">
-              날짜를 입력해주세요
-            </div>
-          )}
+          {(testSchedule === undefined || testSchedule === null) &&
+            formState === 'wrong' && (
+              <div className="ui left pointing red basic label">
+                날짜를 입력해주세요
+              </div>
+            )}
         </div>
 
         <List horizontal>
