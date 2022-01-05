@@ -59,34 +59,36 @@ const MakeTestForms = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isEmtpy = (state: string | number, data: string) => {
-    if (formState === 'wrong' && (state === '' || state === 0)) {
-      return { content: `${data} 입력하세요`, pointing: 'left' };
+  const isEmpty = (data: string | number, message: string) => {
+    if (formState === 'wrong' && (data === '' || data === 0)) {
+      return { content: `${message} 입력하세요`, pointing: 'left' };
     }
     return false;
   };
 
-  const handleSumbitMember = () => {
-    setTestMembers(prevArray => {
-      return [...prevArray, testMember];
-    });
-    setTestMember('');
-  };
+  const isEmptyArray = (data: string[]) => {
+    if (formState === 'wrong' && data.length === 0) {
+      return { content: `멤버를 추가하세요`, pointing: 'left' };
+    }
+    return false;
+  }
+
   const handleSumbitTest = () => {
     console.log(testSchedule);
     if (testSchedule === null || testSchedule === undefined) {
       setformState('wrong');
       return;
     }
-    const testScheduleStart = returnDate(testSchedule[0]?.toString());
-    const testScheduleEnd = returnDate(testSchedule[1]?.toString());
+    const testScheduleStart = returnDate(testSchedule[0] ?.toString());
+    const testScheduleEnd = returnDate(testSchedule[1] ?.toString());
     if (testScheduleEnd === -1) setTestSchedule(undefined);
     if (
       testName === '' ||
       testInfo === '' ||
       testLink === '' ||
       testPlatform === '' ||
-      testSchedule === undefined
+      testSchedule === undefined ||
+      testMembers.length === 0
     ) {
       setformState('wrong');
     } else {
@@ -97,12 +99,27 @@ const MakeTestForms = () => {
         platform: testPlatform,
         startDay: testScheduleStart,
         endDay: testScheduleEnd,
+        members: testMembers,
       };
       dispatch(addTest(form));
       // setformState('cleared');
       navigate('/pro');
     }
   };
+
+  const handleSumbitMember = () => {
+    if (testMember !== '') {
+      setTestMembers(prevArray => {
+        return [...prevArray, testMember];
+      });
+      setTestMember('');
+    }
+  };
+
+  const handleRemoveMember = (remove: string) => {
+    const tempArray = testMembers;
+    setTestMembers(tempArray.filter((member) => { return (remove !== member) }));
+  }
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);
@@ -139,7 +156,7 @@ const MakeTestForms = () => {
             type="string"
             placeholder="서비스 이름"
             onChange={changeName}
-            error={isEmtpy(testName, '이름을')}
+            error={isEmpty(testName, '이름을')}
           />
           <Form.Field
             control="input"
@@ -147,7 +164,7 @@ const MakeTestForms = () => {
             type="string"
             placeholder="서비스 소개"
             onChange={changeInfo}
-            error={isEmtpy(testInfo, '정보를')}
+            error={isEmpty(testInfo, '정보를')}
           />
           <Form.Field
             control="input"
@@ -155,7 +172,7 @@ const MakeTestForms = () => {
             type="string"
             placeholder="링크"
             onChange={changeLink}
-            error={isEmtpy(testLink, '링크를')}
+            error={isEmpty(testLink, '링크를')}
           />
           <Form.Field
             control="input"
@@ -163,7 +180,7 @@ const MakeTestForms = () => {
             type="string"
             placeholder="플랫폼"
             onChange={changePlatform}
-            error={isEmtpy(testPlatform, '플랫폼을')}
+            error={isEmpty(testPlatform, '플랫폼을')}
           />
           <Grid>
             <Form.Field
@@ -173,15 +190,15 @@ const MakeTestForms = () => {
               placeholder="멤버 이름"
               value={testMember}
               onChange={changeMember}
-              error={isEmtpy(testPlatform, '멤버를')}
+              error={isEmptyArray(testMembers)}
             />
-            <Form.Field control={Button} onClick={handleSumbitMember}>
+            <Form.Field control={Button} onClick={handleSumbitMember} >
               멤버 추가
             </Form.Field>
-            {testMembers.map((e, i) => (
-              <Label id={i}>
+            {testMembers.map((e) => (
+              <Label>
                 {e}
-                <Icon name="delete" />
+                <Icon name="delete" onClick={() => handleRemoveMember(e)} />
               </Label>
             ))}
           </Grid>

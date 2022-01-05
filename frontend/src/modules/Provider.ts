@@ -43,6 +43,7 @@ export type TestType = {
   platform: string;
   startDay: number;
   endDay: number;
+  members: string[];
 };
 
 export type teamDataType = {
@@ -76,6 +77,7 @@ const initalState: StateType = {
           platform: 'temp',
           startDay: 20211012,
           endDay: 20211016,
+          members: ['temp1', 'temp2', 'temp3']
         },
       ],
     }, // 각 테스트는 객체 형태여야 함.
