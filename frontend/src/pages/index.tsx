@@ -10,6 +10,9 @@ import ProviderMakeTestPage from './ProviderMakeTestPage';
 import ProviderTestDetailPage from './ProviderTestDetailPage';
 import LoginPage from './LoginPage';
 
+// 에러 페이지
+import ErrorPage from './ErrorPage'
+
 export {
   ProviderMainPage,
   ProviderMakeTestPage,
@@ -19,4 +22,5 @@ export {
   TesterProfilePage,
   TesterServiceDetailPage,
   TesterWriteFeedbackPage,
+  ErrorPage
 };
