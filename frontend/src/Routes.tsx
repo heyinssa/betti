@@ -10,7 +10,7 @@ import {
   TesterServiceDetailPage,
   TesterWriteFeedbackPage,
   ProviderTestDetailPage,
-  ErrorPage
+  ErrorPage,
 } from './pages';
 
 const Rounter = () => {
@@ -21,7 +21,6 @@ const Rounter = () => {
       <Router basename={process.env.REACT_APP_BASE}>
         <Routes>
           <Route path="/*" element={<ErrorPage />} />
-
           <Route path="/" element={<LoginPage />} /> //로그인 페이지로 변경
           <Route path="/pro" element={<ProviderMainPage />} />
           <Route path="/pro/make" element={<ProviderMakeTestPage />} />

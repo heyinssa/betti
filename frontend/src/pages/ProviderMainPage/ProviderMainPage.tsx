@@ -9,13 +9,16 @@ const ProviderMainPage = () => {
   const curTeam = state.stateData.curTeam;
   const curTest = state.stateData.curTest;
   const teamData = state.teamData;
-
   return (
     <>
       {teamData && (
         <div className="page-main">
           <ProviderTeamBar teamData={teamData} />
-          <ProviderMainScreen teamData={teamData} curTeam={curTeam} curTest={curTest} />
+          <ProviderMainScreen
+            teamData={teamData}
+            curTeam={curTeam}
+            curTest={curTest}
+          />
         </div>
       )}
     </>

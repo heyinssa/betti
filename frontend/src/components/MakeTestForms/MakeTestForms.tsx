@@ -71,7 +71,7 @@ const MakeTestForms = () => {
       return { content: `멤버를 추가하세요`, pointing: 'left' };
     }
     return false;
-  }
+  };
 
   const handleSumbitTest = () => {
     console.log(testSchedule);
@@ -79,8 +79,8 @@ const MakeTestForms = () => {
       setformState('wrong');
       return;
     }
-    const testScheduleStart = returnDate(testSchedule[0] ?.toString());
-    const testScheduleEnd = returnDate(testSchedule[1] ?.toString());
+    const testScheduleStart = returnDate(testSchedule[0]?.toString());
+    const testScheduleEnd = returnDate(testSchedule[1]?.toString());
     if (testScheduleEnd === -1) setTestSchedule(undefined);
     if (
       testName === '' ||
@@ -118,8 +118,12 @@ const MakeTestForms = () => {
 
   const handleRemoveMember = (remove: string) => {
     const tempArray = testMembers;
-    setTestMembers(tempArray.filter((member) => { return (remove !== member) }));
-  }
+    setTestMembers(
+      tempArray.filter(member => {
+        return remove !== member;
+      }),
+    );
+  };
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);
@@ -192,10 +196,10 @@ const MakeTestForms = () => {
               onChange={changeMember}
               error={isEmptyArray(testMembers)}
             />
-            <Form.Field control={Button} onClick={handleSumbitMember} >
+            <Form.Field control={Button} onClick={handleSumbitMember}>
               멤버 추가
             </Form.Field>
-            {testMembers.map((e) => (
+            {testMembers.map(e => (
               <Label>
                 {e}
                 <Icon name="delete" onClick={() => handleRemoveMember(e)} />
