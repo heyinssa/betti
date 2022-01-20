@@ -1,10 +1,11 @@
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, List, Label, Icon, Grid } from 'semantic-ui-react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
-import { addTest, TestType } from '../../modules/Provider';
+import { addVersion, changeVersion, VersionType } from '../../modules/Provider';
 
 const returnMonth = (month: string): string => {
   switch (month) {
@@ -79,8 +80,8 @@ const MakeTestForms = () => {
       setformState('wrong');
       return;
     }
-    const testScheduleStart = returnDate(testSchedule[0]?.toString());
-    const testScheduleEnd = returnDate(testSchedule[1]?.toString());
+    const testScheduleStart = returnDate(testSchedule[0] ?.toString());
+    const testScheduleEnd = returnDate(testSchedule[1] ?.toString());
     if (testScheduleEnd === -1) setTestSchedule(undefined);
     if (
       testName === '' ||
@@ -92,7 +93,7 @@ const MakeTestForms = () => {
     ) {
       setformState('wrong');
     } else {
-      const form: TestType = {
+      const form: VersionType = {
         name: testName,
         intro: testInfo,
         link: testLink,
@@ -101,7 +102,9 @@ const MakeTestForms = () => {
         endDay: testScheduleEnd,
         members: testMembers,
       };
-      dispatch(addTest(form));
+      dispatch(addVersion(form));
+      dispatch(changeVersion(form));
+
       // setformState('cleared');
       navigate('/pro');
     }

@@ -1,17 +1,18 @@
+
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTest, teamDataType } from '../../modules/Provider';
+import { changeVersion, TeamDataType, VersionType } from '../../modules/Provider';
 import { RootState } from '../../modules';
 
 import ShowTest from './ShowTest';
 
 type MainScreenType = {
-  teamData: teamDataType[];
-  curTeam: number;
-  curTest: number;
+  teamData: TeamDataType[];
+  curTeam: TeamDataType;
+  curVersion: VersionType;
 };
 
-const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
+const MainScreenBody = ({ teamData, curTeam, curVersion }: MainScreenType) => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.Provider);
   const navigate = useNavigate();
@@ -19,11 +20,11 @@ const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
   return (
     <div className="main-screen-body">
       <div className="main-screen-tests">
-        {teamData[curTeam].test.map((e, i) => {
+        {curTeam && curTeam.version.map((e, i) => {
           return (
             <div
               className="main-screen-test"
-              onClick={() => dispatch(changeTest(i))}
+              onClick={() => dispatch(changeVersion(curTeam.version[i]))}
             >
               {e.name}
             </div>
@@ -34,10 +35,9 @@ const MainScreenBody = ({ teamData, curTeam, curTest }: MainScreenType) => {
         </div>
       </div>
       <div className="main-screen-test-info"
-        onClick={() => { navigate(`/pro/${state.stateData.curTeam}/${state.stateData.curTest}`) }}
-
+      // onClick={() => { navigate(`/pro/${state.stateData.curTeam}/${state.stateData.curVersion}`) }}
       >
-        <ShowTest testData={teamData[curTeam].test[curTest]} />
+        <ShowTest versionData={curVersion} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 const TitleBarProfileIcon = () => {
   return (
     <div className="titlebar-icon">

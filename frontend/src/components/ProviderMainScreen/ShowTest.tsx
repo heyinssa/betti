@@ -1,19 +1,20 @@
-import { TestType } from '../../modules/Provider';
-type ShowTestType = {
-  testData: TestType;
+
+import { VersionType } from '../../modules/Provider';
+type ShowVersionType = {
+  versionData: VersionType;
 };
-const ShowTest = ({ testData }: ShowTestType) => {
-  console.log(testData);
+const ShowTest = ({ versionData }: ShowVersionType) => {
+  console.log(versionData);
   return (
     <div className="main-screen-test-info">
-      {testData && (
+      {versionData && (
         <>
-          <h1>팀 이름 : {testData.name}</h1>
-          <h1>팀 정보 : {testData.intro}</h1>
-          <h1>팀 링크 : {testData.link}</h1>
-          <h1>팀 플랫폼 : {testData.platform}</h1>
-          <h1>{testData.members.map(e => { return (<text> {e} </text>) })}</h1>
-          <h1>{testData.startDay} ~ {testData.endDay}</h1>
+          <h1>팀 이름 : {versionData.name}</h1>
+          <h1>팀 정보 : {versionData.intro}</h1>
+          <h1>팀 링크 : {versionData.link}</h1>
+          <h1>팀 플랫폼 : {versionData.platform}</h1>
+          <h1>{versionData.members.map(e => { return (<text> {e} </text>) })}</h1>
+          <h1>{versionData.startDay} ~ {versionData.endDay}</h1>
         </>
       )}
     </div>

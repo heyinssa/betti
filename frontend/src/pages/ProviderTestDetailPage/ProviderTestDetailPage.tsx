@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
+import React from 'react';
 
 const ProviderTestDetailPage = () => {
   const location = useLocation();
@@ -19,26 +20,29 @@ const ProviderTestDetailPage = () => {
   // 숫자일 경우에는 해당 숫자가 존재하는지, 하나하나 대조해봐야함.
   // 테스트를 한 자리 수 (9개)까지 만들 수 있게 제한하면 pathname의 길이로 파싱이 가능해짐.
   const state = useSelector((state: RootState) => state.Provider);
-  const { curTeam, curTest } = state.stateData;
-  const teamData = state.teamData;
-  const showData = teamData[curTeam].test[curTest];
-  console.log(curTeam, curTest);
-  console.log(showData);
+  const { curVersion } = state.stateData;
+  console.log(curVersion);
 
   return (
     <>
-      <div>팀 이름 : {showData.name}</div>
-      <div>팀 정보 : {showData.intro}</div>
-      <div>팀 링크 : {showData.link}</div>
-      <div>팀 플랫폼 : {showData.platform}</div>
-      <div>
-        {showData.members.map(e => {
-          return <text> {e} </text>;
-        })}
-      </div>
-      <div>
-        {showData.startDay} ~ {showData.endDay}
-      </div>
+      {curVersion &&
+        (
+          <>
+            <div>팀 이름 : {curVersion.name}</div>
+            <div>팀 정보 : {curVersion.intro}</div>
+            <div>팀 링크 : {curVersion.link}</div>
+            <div>팀 플랫폼 : {curVersion.platform}</div>
+            <div>
+              {curVersion.members.map(e => {
+                return <text> {e} </text>;
+              })}
+            </div>
+            <div>
+              {curVersion.startDay} ~ {curVersion.endDay}
+            </div>
+          </>
+        )
+      }
     </>
   );
 };

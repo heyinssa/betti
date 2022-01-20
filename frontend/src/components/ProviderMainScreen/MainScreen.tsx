@@ -1,24 +1,25 @@
+
 import MainScreenHeader from './MainScreenHeader';
 import MainScreenBody from './MainScreenBody';
-import { teamDataType } from "../../modules/Provider"
+import { TeamDataType, VersionType } from "../../modules/Provider"
 import './MainScreen.scss';
 
 type MainScreenType = {
-  teamData: teamDataType[],
-  curTeam: number,
-  curTest: number
+  teamData: TeamDataType[],
+  curTeam: TeamDataType,
+  curVersion: VersionType
 }
 
-const ProviderMainScreen = ({ teamData, curTeam, curTest }: MainScreenType) => {
+const ProviderMainScreen = ({ teamData, curTeam, curVersion }: MainScreenType) => {
   return (
     <div className="main-screen">
-      <MainScreenHeader teamData={teamData} curTeam={curTeam} />
+      <MainScreenHeader curTeam={curTeam} />
       <MainScreenBody
         teamData={teamData}
         curTeam={curTeam}
-        curTest={curTest}
+        curVersion={curVersion}
       />
-      <div className="separation"></div>
+      <div className="main-screen"></div>
     </div>
   );
 };

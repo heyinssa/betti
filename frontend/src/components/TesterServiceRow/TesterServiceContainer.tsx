@@ -1,3 +1,4 @@
+
 import { Card, CardProps, Icon, Image } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { ServiceType } from '../../modules/User';
