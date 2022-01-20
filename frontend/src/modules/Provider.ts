@@ -1,19 +1,19 @@
 // 액션 타입 선언
 
 const CHANGE_TEAM = 'Provider/CHANGE_TEAM' as const;
-const CHANGE_TEST = 'Provider/CHANGE_TEST' as const;
+const CHANGE_VERSION = 'Provider/CHANGE_VERSION' as const;
 const ADD_TEAM = 'Provider/ADD_TEAM' as const;
-const ADD_TEST = 'Provider/ADD_TEST' as const;
+const ADD_VERSION = 'Provider/ADD_VERSION' as const;
 
 // 액션 생성 함수 선언
 
-export const changeTeam = (dst: number) => ({
+export const changeTeam = (dst: TeamDataType) => ({
   type: CHANGE_TEAM,
   payload: dst,
 });
 
-export const changeTest = (dst: number) => ({
-  type: CHANGE_TEST,
+export const changeVersion = (dst: VersionType) => ({
+  type: CHANGE_VERSION,
   payload: dst,
 });
 export const addTeam = (name: string) => ({
@@ -21,54 +21,55 @@ export const addTeam = (name: string) => ({
   payload: name,
 });
 
-export const addTest = (newTest: TestType) => ({
-  type: ADD_TEST,
-  payload: newTest,
+export const addVersion = (newVersion: VersionType) => ({
+  type: ADD_VERSION,
+  payload: newVersion,
 });
 
 // 액션 객체들에 대한 타입 설정
 
 export type curStateAction =
   | ReturnType<typeof changeTeam>
-  | ReturnType<typeof changeTest>
+  | ReturnType<typeof changeVersion>
   | ReturnType<typeof addTeam>
-  | ReturnType<typeof addTest>;
+  | ReturnType<typeof addVersion>;
 
 // 상태의 타입 및 초깃값 선언
 
-export type TestType = {
+export type VersionType = {
   name: string;
   intro: string;
   link: string;
   platform: string;
   startDay: number;
   endDay: number;
+  members: string[];
 };
 
-export type teamDataType = {
+export type TeamDataType = {
   index: number;
   name: string;
-  test: TestType[];
+  version: VersionType[];
 };
 
 export type StateType = {
   stateData: {
-    curTeam: number;
-    curTest: number;
+    curTeam: TeamDataType | null;
+    curVersion: VersionType | null;
   };
-  teamData: teamDataType[];
+  teamData: TeamDataType[];
 };
 
 const initalState: StateType = {
   stateData: {
-    curTeam: 0,
-    curTest: 0,
+    curTeam: null,
+    curVersion: null,
   },
   teamData: [
     {
       index: 0,
       name: 'asg Team',
-      test: [
+      version: [
         {
           name: 'temp',
           intro: 'temp',
@@ -76,6 +77,7 @@ const initalState: StateType = {
           platform: 'temp',
           startDay: 20211012,
           endDay: 20211016,
+          members: ['temp1', 'temp2', 'temp3']
         },
       ],
     }, // 각 테스트는 객체 형태여야 함.
@@ -91,24 +93,28 @@ const Provider = (state: StateType = initalState, action: curStateAction) => {
     case ADD_TEAM: {
       const newTeamIndex = teamData.length;
       const newTeamName = action.payload;
-      const newTeam = { index: newTeamIndex, name: newTeamName, test: [] };
-      stateData.curTeam = newTeamIndex;
+      const newTeam = { index: newTeamIndex, name: newTeamName, version: [] };
+      stateData.curTeam = newTeam;
       state.teamData.push(newTeam);
       return { ...state };
     }
-    case ADD_TEST: {
+    case ADD_VERSION: {
       const curTeam = stateData.curTeam;
-      const curTestArray = teamData[curTeam].test;
-      curTestArray.push(action.payload);
+      let curVersionArray;
+      if (curTeam)
+        curVersionArray = curTeam.version;
+      else
+        curVersionArray = [];
+      curVersionArray.push(action.payload);
       return { ...state };
     }
     case CHANGE_TEAM: {
       stateData.curTeam = action.payload;
-      stateData.curTest = 0;
+      stateData.curVersion = action.payload.version[0];
       return { ...state };
     }
-    case CHANGE_TEST: {
-      stateData.curTest = action.payload;
+    case CHANGE_VERSION: {
+      stateData.curVersion = action.payload;
       return { ...state };
     }
     default: {

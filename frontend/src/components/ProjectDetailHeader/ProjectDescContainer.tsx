@@ -1,3 +1,4 @@
+
 import { Image } from 'semantic-ui-react';
 import { ServiceDataType } from '../../modules/User';
 import ProjectTeammateContainer from './ProjectTeammateContainer';

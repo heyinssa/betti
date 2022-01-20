@@ -1,3 +1,4 @@
+
 type NotifType = {
   onClick: React.MouseEventHandler<HTMLDivElement>;
 };

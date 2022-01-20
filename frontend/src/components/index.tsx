@@ -8,14 +8,14 @@ import TitleBar from './TitleBar';
 import NotificationCenter from './NotificationCenter';
 
 //개발자 페이지
-import { MainScreen } from './MainScreen';
-import TeamBar from './TeamBar';
+import ProviderMainScreen from './ProviderMainScreen';
+import ProviderTeamBar from './ProviderTeamBar';
 import LoginForms from './LoginForms';
 import MakeTestForms from './MakeTestForms';
 
 export {
-  MainScreen,
-  TeamBar,
+  ProviderMainScreen,
+  ProviderTeamBar,
   LoginForms,
   MakeTestForms,
   MarkdownTextContainer,

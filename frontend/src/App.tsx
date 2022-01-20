@@ -1,8 +1,8 @@
 import Route from './Routes';
 import './App.scss';
 
-const App: React.FC = () => {
-  return <Route />;
+const App = () => {
+  return (<Route />);
 };
 
 export default App;
