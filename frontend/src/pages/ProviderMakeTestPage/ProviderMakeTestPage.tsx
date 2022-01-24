@@ -1,4 +1,4 @@
-import { MakeTestForms } from '../../components'
+import { MakeTestForms } from './Components'
 import './ProviderMakeTestPage.scss';
 
 const ProviderMakeTestPage = () => {

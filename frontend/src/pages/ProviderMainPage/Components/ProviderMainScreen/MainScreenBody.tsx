@@ -1,18 +1,17 @@
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeVersion, TeamDataType, VersionType } from '../../modules/Provider';
-import { RootState } from '../../modules';
+import { changeVersion, TeamDataType, VersionType } from '../../../../modules/Provider';
+import { RootState } from '../../../../modules';
 
 import ShowTest from './ShowTest';
 
-type MainScreenType = {
+
+const MainScreenBody = ({ teamData, curTeam, curVersion }: {
   teamData: TeamDataType[];
   curTeam: TeamDataType;
   curVersion: VersionType;
-};
-
-const MainScreenBody = ({ teamData, curTeam, curVersion }: MainScreenType) => {
+}) => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.Provider);
   const navigate = useNavigate();

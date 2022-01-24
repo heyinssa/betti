@@ -1,5 +1,5 @@
 
-import { VersionType } from '../../modules/Provider';
+import { VersionType } from '../../../../modules/Provider';
 type ShowVersionType = {
   versionData: VersionType;
 };

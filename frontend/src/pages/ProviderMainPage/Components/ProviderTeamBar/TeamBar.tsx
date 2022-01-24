@@ -2,17 +2,14 @@
 import { useEffect, useState } from 'react';
 import TeamBarHeader from './TeamBarHeader';
 import TeamBarBody from './TeamBarBody';
-import Modal from '../../util/Modal';
-import useModalHandle from '../../util/hooks/useModalHandle';
+import Modal from '../../../../util/Modal';
+import useModalHandle from '../../../../util/hooks/useModalHandle';
 import { useDispatch } from 'react-redux';
-import { addTeam, TeamDataType } from '../../modules/Provider';
+import { addTeam, TeamDataType } from '../../../../modules/Provider';
 import './TeamBar.scss';
 
-type TeamBarType = {
-  teamData: TeamDataType[];
-};
 
-const ProviderTeamBar = ({ teamData }: TeamBarType) => {
+const ProviderTeamBar = ({ teamData }: { teamData: TeamDataType[] }) => {
   const [open, close, isOpen] = useModalHandle();
   const [teamName, setTeamName] = useState('');
   const dispatch = useDispatch();

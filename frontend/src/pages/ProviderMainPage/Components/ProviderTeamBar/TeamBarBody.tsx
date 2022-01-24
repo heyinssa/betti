@@ -1,13 +1,12 @@
 
-import { changeTeam } from '../../modules/Provider'
-import { TeamDataType, curStateAction } from '../../modules/Provider'
+import { changeTeam } from '../../../../modules/Provider'
+import { TeamDataType, curStateAction } from '../../../../modules/Provider'
 
-type TeamBarBodyType = {
+const TeamBarBody = ({ teamData, dispatch, open }: {
   teamData: TeamDataType[],
   dispatch: (action: curStateAction) => void
   open: () => void
-}
-const TeamBarBody = ({ teamData, dispatch, open }: TeamBarBodyType) => {
+}) => {
   return (
     <div className="team-body">
       {teamData.map((e: TeamDataType) => {

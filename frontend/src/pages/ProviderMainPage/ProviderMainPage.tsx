@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-import { ProviderTeamBar, ProviderMainScreen } from '../../components';
+import { ProviderTeamBar, ProviderMainScreen } from './Components';
 
 import './Main.scss';
 
